@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ajout de transitions fluides pour les changements de thème */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Éviter la transition sur les éléments qui ne devraient pas en avoir */
+.no-transition {
+  transition: none !important;
+}
