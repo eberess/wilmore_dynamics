@@ -18,6 +18,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigation = [
+    { name: 'Accueil', href: '/' },
+    { name: 'Open Source Store', href: '/open-source/apps' },
+    { name: 'Services', href: '/services' },
+    { name: 'À propos', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       hasScrolled || isMenuOpen ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'

@@ -484,83 +484,81 @@ export default function Home() {
         </FadeIn>
 
         {/* Section Open Source & Self-Hosted */}
-        <FadeIn delay={200}>
-          <section className="py-20 px-4 bg-gray-50/50 dark:bg-black/[0.2]">
-            <div className="max-w-[1200px] mx-auto">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                  <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
-                    SOLUTIONS OPEN SOURCE
-                  </span>
-                  <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                    Reprenez le contrôle <br/>de vos données
-                  </h2>
-                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-                    Des solutions open source auto-hébergées pour une indépendance totale et une sécurité maximale
-                  </p>
+        <section className="py-20 px-4 bg-gray-50/50 dark:bg-black/[0.2]">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div>
+                <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+                  SOLUTIONS OPEN SOURCE
+                </span>
+                <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
+                  Reprenez le contrôle <br/>de vos données
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+                  Des solutions open source auto-hébergées pour une indépendance totale et une sécurité maximale
+                </p>
 
-                  <div className="space-y-6 mb-8">
-                    {[
-                      {
-                        title: "Souveraineté des données",
-                        description: "Gardez le contrôle total sur vos données sensibles"
-                      },
-                      {
-                        title: "Sécurité renforcée",
-                        description: "Infrastructure isolée et protocoles de sécurité avancés"
-                      },
-                      {
-                        title: "Personnalisation totale",
-                        description: "Solutions adaptées à vos besoins spécifiques"
-                      }
-                    ].map((item, index) => (
-                      <div key={index} className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10 flex items-center justify-center">
-                          <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
-                              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                          <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
-                        </div>
+                <div className="space-y-6 mb-8">
+                  {[
+                    {
+                      title: "Alternatives open source",
+                      description: "Découvrez des alternatives aux outils propriétaires"
+                    },
+                    {
+                      title: "Auto-hébergement simplifié",
+                      description: "Déployez facilement vos applications avec Docker"
+                    },
+                    {
+                      title: "Catalogue complet",
+                      description: "Une sélection d'applications testées et approuvées"
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="flex gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10 flex items-center justify-center">
+                        <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
+                          <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
+                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="/open-source"
-                      className="px-8 py-3 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors text-[15px] font-medium inline-flex items-center justify-center"
-                    >
-                      En savoir plus →
-                    </a>
-                    <a
-                      href="#contact"
-                      className="px-8 py-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/[0.15] text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-white/[0.1] transition-colors text-[15px] font-medium inline-flex items-center justify-center"
-                    >
-                      Nous contacter
-                    </a>
-                  </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="/open-source/apps"
+                    className="px-8 py-3 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors text-[15px] font-medium inline-flex items-center justify-center"
+                  >
+                    Explorer le Store →
+                  </a>
+                  <a
+                    href="#contact"
+                    className="px-8 py-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/[0.15] text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-white/[0.1] transition-colors text-[15px] font-medium inline-flex items-center justify-center"
+                  >
+                    Nous contacter
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/5 dark:from-[#8ab4f8]/5 to-transparent rounded-[40px]" />
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/5 dark:from-[#8ab4f8]/5 to-transparent rounded-[40px]" />
-                  <div className="relative">
-                    <Image
-                      src="/open-source-illustration.svg"
-                      alt="Open Source Illustration"
-                      width={600}
-                      height={600}
-                      className="w-full"
-                    />
-                  </div>
+                  <Image
+                    src="/open-source-illustration.svg"
+                    alt="Open Source Illustration"
+                    width={600}
+                    height={600}
+                    className="w-full"
+                  />
                 </div>
               </div>
             </div>
-          </section>
-        </FadeIn>
+          </div>
+        </section>
 
         {/* Section Tech News */}
         <FadeIn delay={200}>

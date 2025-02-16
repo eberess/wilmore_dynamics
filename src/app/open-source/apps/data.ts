@@ -8,6 +8,7 @@ export const apps: App[] = [
     longDescription: "Plateforme open source qui automatise le déploiement, la mise à l'échelle et la gestion des applications conteneurisées. Conçue pour évoluer sans augmenter votre équipe d'ops.",
     category: 'Infrastructure',
     logo: '/apps/kubernetes.svg',
+    logoBackground: true,
     url: 'https://kubernetes.io',
     tags: ['Container', 'Orchestration', 'Cloud Native'],
     highlights: [
@@ -15,7 +16,6 @@ export const apps: App[] = [
       'Haute disponibilité',
       'Déploiement sans interruption'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'kubernetes/kubernetes',
       license: 'Apache-2.0'
@@ -38,6 +38,7 @@ export const apps: App[] = [
     longDescription: "Solution open source de visualisation et d'analyse qui vous permet de créer des tableaux de bord élégants et de comprendre facilement vos données.",
     category: 'Infrastructure',
     logo: '/apps/grafana.svg',
+    logoBackground: true,
     url: 'https://grafana.com',
     tags: ['Monitoring', 'Visualisation', 'Observability'],
     highlights: [
@@ -45,7 +46,6 @@ export const apps: App[] = [
       'Multi-sources de données',
       'Alerting intelligent'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'grafana/grafana',
       license: 'AGPL-3.0'
@@ -76,7 +76,6 @@ export const apps: App[] = [
       'Édition collaborative',
       'Visioconférence intégrée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'nextcloud/server',
       license: 'AGPL-3.0'
@@ -106,7 +105,6 @@ export const apps: App[] = [
       'Appels vidéo',
       'Fédération décentralisée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'matrix-org/synapse',
       license: 'Apache-2.0'
@@ -129,6 +127,7 @@ export const apps: App[] = [
     longDescription: 'Système de monitoring et d\'alerting open source conçu pour la fiabilité. Collecte et analyse vos métriques pour une visibilité complète de votre infrastructure.',
     category: 'Infrastructure',
     logo: '/apps/prometheus.svg',
+    logoBackground: true,
     url: 'https://prometheus.io',
     tags: ['Monitoring', 'Alerting', 'Metrics'],
     highlights: [
@@ -136,7 +135,6 @@ export const apps: App[] = [
       'Requêtes et alertes puissantes',
       'Service discovery intégré'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'prometheus/prometheus',
       license: 'Apache-2.0'
@@ -159,6 +157,7 @@ export const apps: App[] = [
     longDescription: "Solution de gestion des secrets qui permet de sécuriser, stocker et contrôler l'accès aux jetons, mots de passe, certificats et clés de chiffrement. ",
     category: 'Sécurité',
     logo: '/apps/vault.svg',
+    logoBackground: true,
     tags: ['Secrets', 'PKI', 'Encryption'],
     url: 'https://www.vaultproject.io',
     highlights: [
@@ -166,7 +165,6 @@ export const apps: App[] = [
       'PKI dynamique',
       "Contrôle d'accès"
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'hashicorp/vault',
       license: 'MPL-2.0'
@@ -189,6 +187,7 @@ export const apps: App[] = [
     longDescription: 'Solution IAM open source qui sécurise vos applications et services avec une gestion centralisée des identités et des accès.',
     category: 'Sécurité',
     logo: '/apps/keycloak.svg',
+    logoBackground: true,
     tags: ['IAM', 'SSO', 'OAuth2'],
     url: 'https://www.keycloak.org',
     highlights: [
@@ -196,7 +195,6 @@ export const apps: App[] = [
       'Support des standards OAuth2',
       'Intégration simplifiée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'keycloak/keycloak',
       license: 'Apache-2.0'
@@ -219,6 +217,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme de développement collaborative légère et auto-hébergée qui simplifie la gestion de vos projets Git.',
     category: 'Développement',
     logo: '/apps/gitea.svg',
+    logoBackground: true,
     tags: ['Git', 'CI/CD', 'DevOps'],
     url: 'https://gitea.io',
     highlights: [
@@ -226,7 +225,6 @@ export const apps: App[] = [
       'Faible consommation de ressources',
       'Installation simple'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'go-gitea/gitea',
       license: 'MIT'
@@ -249,6 +247,7 @@ export const apps: App[] = [
     longDescription: 'Solution de stockage objet compatible S3 conçue pour les charges de travail exigeantes et l\'IA/ML.',
     category: 'Infrastructure',
     logo: '/apps/minio.svg',
+    logoBackground: true,
     tags: ['S3', 'Storage', 'Cloud'],
     url: 'https://min.io',
     highlights: [
@@ -256,7 +255,6 @@ export const apps: App[] = [
       'Performances élevées',
       'Architecture moderne'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'minio/minio',
       license: 'AGPL-3.0'
@@ -286,7 +284,6 @@ export const apps: App[] = [
       'Interface d\'administration personnalisable',
       'Extensible via plugins'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'strapi/strapi',
       license: 'MIT'
@@ -316,7 +313,6 @@ export const apps: App[] = [
       'Gestion fine des permissions',
       'Interface moderne'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'directus/directus',
       license: 'GPL-3.0'
@@ -346,7 +342,6 @@ export const apps: App[] = [
       'Optimisé pour le SEO',
       'Système de membres intégré'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'TryGhost/Ghost',
       license: 'MIT'
@@ -369,6 +364,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme d\'analyse web qui vous donne le contrôle total de vos données tout en respectant la vie privée de vos utilisateurs.',
     category: 'Productivité',
     logo: '/apps/matomo.svg',
+    logoBackground: true,
     url: 'https://matomo.org',
     tags: ['Analytics', 'Privacy', 'RGPD'],
     highlights: [
@@ -376,7 +372,6 @@ export const apps: App[] = [
       'Respect de la vie privée',
       'Analyses avancées'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'matomo-org/matomo',
       license: 'GPL-3.0'
@@ -399,6 +394,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme de communication d\'équipe open source qui combine la messagerie, le partage de fichiers et la gestion de projet.',
     category: 'Communication',
     logo: '/apps/mattermost.svg',
+    logoBackground: true,
     url: 'https://mattermost.com',
     tags: ['Chat', 'Collaboration', 'DevOps'],
     highlights: [
@@ -406,7 +402,6 @@ export const apps: App[] = [
       'Intégrations DevOps',
       'Personnalisation complète'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'mattermost/mattermost',
       license: 'AGPL-3.0'
@@ -429,6 +424,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme d\'automatisation qui vous permet de connecter n\'importe quel service et de créer des workflows complexes.',
     category: 'Productivité',
     logo: '/apps/n8n.svg',
+    logoBackground: true,
     url: 'https://n8n.io',
     tags: ['Automation', 'Workflow', 'Integration'],
     highlights: [
@@ -436,7 +432,6 @@ export const apps: App[] = [
       'Plus de 200 intégrations',
       'Extensible via code'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'n8n-io/n8n',
       license: 'Apache-2.0'
@@ -459,6 +454,7 @@ export const apps: App[] = [
     longDescription: 'Solution de virtualisation enterprise qui combine la gestion de machines virtuelles et de conteneurs dans une interface unifiée.',
     category: 'Infrastructure',
     logo: '/apps/proxmox.svg',
+    logoBackground: true,
     url: 'https://www.proxmox.com',
     tags: ['Virtualisation', 'Conteneurs', 'Backup'],
     highlights: [
@@ -466,7 +462,6 @@ export const apps: App[] = [
       'Haute disponibilité',
       'Sauvegarde intégrée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'proxmox/pve-manager',
       license: 'AGPL-3.0'
@@ -489,6 +484,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme IAM moderne qui unifie l\'authentification et l\'autorisation pour tous vos services.',
     category: 'Sécurité',
     logo: '/apps/authentik.svg',
+    logoBackground: true,
     url: 'https://goauthentik.io',
     tags: ['IAM', 'SSO', 'MFA'],
     highlights: [
@@ -496,7 +492,6 @@ export const apps: App[] = [
       'Flux adaptatifs',
       'Multi-tenant natif'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'goauthentik/authentik',
       license: 'GPL-3.0'
@@ -519,6 +514,7 @@ export const apps: App[] = [
     longDescription: 'Solution d\'analyse web minimaliste qui respecte la vie privée de vos utilisateurs tout en offrant les métriques essentielles.',
     category: 'Productivité',
     logo: '/apps/umami.svg',
+    logoBackground: true,
     url: 'https://umami.is',
     tags: ['Analytics', 'Privacy', 'Performance'],
     highlights: [
@@ -526,7 +522,6 @@ export const apps: App[] = [
       'Interface épurée',
       'Temps réel natif'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'umami-software/umami',
       license: 'MIT'
@@ -549,6 +544,7 @@ export const apps: App[] = [
     longDescription: 'Solution de gestion documentaire qui numérise, indexe et organise automatiquement tous vos documents papier.',
     category: 'Productivité',
     logo: '/apps/paperless-ngx.svg',
+    logoBackground: true,
     url: 'https://docs.paperless-ngx.com',
     tags: ['Documents', 'OCR', 'Archive'],
     highlights: [
@@ -556,7 +552,6 @@ export const apps: App[] = [
       'Classification intelligente',
       'Recherche avancée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'paperless-ngx/paperless-ngx',
       license: 'GPL-3.0'
@@ -579,6 +574,7 @@ export const apps: App[] = [
     longDescription: 'Wiki nouvelle génération avec éditeur WYSIWYG, recherche temps réel et support multi-langues.',
     category: 'Développement',
     logo: '/apps/wikijs.svg',
+    logoBackground: true,
     url: 'https://js.wiki',
     tags: ['Wiki', 'Documentation', 'Markdown'],
     highlights: [
@@ -586,7 +582,6 @@ export const apps: App[] = [
       'Gestion des droits granulaire',
       'Multi-langues natif'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'Requarks/wiki',
       license: 'AGPL-3.0'
@@ -608,7 +603,7 @@ export const apps: App[] = [
     description: 'Plateforme de création d\'applications internes. Alternative à Retool.',
     longDescription: 'Créez rapidement des applications métier personnalisées avec une interface drag-and-drop et des connexions à vos données.',
     category: 'Développement',
-    logo: '/apps/appsmith.svg',
+    logo: '/apps/appsmith.webp',
     url: 'https://www.appsmith.com',
     tags: ['Low-Code', 'Internal Tools', 'Dashboard'],
     highlights: [
@@ -616,7 +611,6 @@ export const apps: App[] = [
       'Connexion multi-sources',
       'Déploiement simplifié'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'appsmithorg/appsmith',
       license: 'Apache-2.0'
@@ -639,6 +633,7 @@ export const apps: App[] = [
     longDescription: 'Forum de discussion nouvelle génération qui modernise les échanges communautaires avec des fonctionnalités modernes et une interface intuitive.',
     category: 'Communication',
     logo: '/apps/discourse.svg',
+    logoBackground: true,
     url: 'https://www.discourse.org',
     tags: ['Forum', 'Communauté', 'Discussion'],
     highlights: [
@@ -646,7 +641,6 @@ export const apps: App[] = [
       'Modération intelligente',
       'Gamification intégrée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'discourse/discourse',
       license: 'GPL-2.0'
@@ -669,6 +663,7 @@ export const apps: App[] = [
     longDescription: 'Application de messagerie professionnelle qui offre un contrôle total sur vos communications avec chiffrement de bout en bout.',
     category: 'Communication',
     logo: '/apps/element.svg',
+    logoBackground: true,
     url: 'https://element.io',
     tags: ['Chat', 'E2E', 'Collaboration'],
     highlights: [
@@ -676,7 +671,6 @@ export const apps: App[] = [
       'Salles de discussion',
       'Collaboration avancée'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'vector-im/element-web',
       license: 'Apache-2.0'
@@ -706,7 +700,6 @@ export const apps: App[] = [
       'Performances natives',
       'Multi-plateforme'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'rustdesk/rustdesk',
       license: 'AGPL-3.0'
@@ -729,6 +722,7 @@ export const apps: App[] = [
     longDescription: 'Outil de dessin collaboratif qui permet de créer des diagrammes et des croquis avec un style manuscrit élégant.',
     category: 'Communication',
     logo: '/apps/excalidraw.svg',
+    logoBackground: true,
     url: 'https://excalidraw.com',
     tags: ['Whiteboard', 'Diagrammes', 'Collaboration'],
     highlights: [
@@ -736,7 +730,6 @@ export const apps: App[] = [
       'Collaboration en temps réel',
       'Export multiple formats'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'excalidraw/excalidraw',
       license: 'MIT'
@@ -759,6 +752,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme ITSM open source qui gère l\'inventaire, le support et les services IT de votre organisation.',
     category: 'Infrastructure',
     logo: '/apps/glpi.svg',
+    logoBackground: true,
     url: 'https://glpi-project.org',
     tags: ['ITSM', 'Helpdesk', 'Inventaire'],
     highlights: [
@@ -766,7 +760,6 @@ export const apps: App[] = [
       'Tickets et workflows',
       'Portail utilisateur'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'glpi-project/glpi',
       license: 'GPL-3.0'
@@ -788,7 +781,7 @@ export const apps: App[] = [
     description: 'Plateforme de newsletter auto-hébergée. Alternative à Mailchimp.',
     longDescription: 'Solution de gestion de campagnes email performante et respectueuse de la vie privée pour vos newsletters et communications.',
     category: 'Communication',
-    logo: '/apps/listmonk.svg',
+    logo: '/apps/listmonkl.webp',
     url: 'https://listmonk.app',
     tags: ['Email', 'Newsletter', 'Marketing'],
     highlights: [
@@ -796,7 +789,6 @@ export const apps: App[] = [
       'Templates personnalisables',
       'Analytics intégrés'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'knadh/listmonk',
       license: 'AGPL-3.0'
@@ -819,6 +811,7 @@ export const apps: App[] = [
     longDescription: 'Outil de documentation technique qui transforme vos fichiers markdown en un site web moderne et optimisé pour le référencement.',
     category: 'Développement',
     logo: '/apps/docusaurus.svg',
+    logoBackground: true,
     url: 'https://docusaurus.io',
     tags: ['Documentation', 'Markdown', 'React'],
     highlights: [
@@ -826,7 +819,6 @@ export const apps: App[] = [
       'Recherche intégrée',
       'Déploiement optimisé'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'facebook/docusaurus',
       license: 'MIT'
@@ -856,7 +848,6 @@ export const apps: App[] = [
       'Export multi-formats',
       'Intégration facile'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'jgraph/drawio',
       license: 'Apache-2.0'
@@ -879,6 +870,7 @@ export const apps: App[] = [
     longDescription: 'Premier outil de design et de prototypage open source conçu pour les équipes de design et de développement.',
     category: 'Développement',
     logo: '/apps/penpot.svg',
+    logoBackground: true,
     url: 'https://penpot.app',
     tags: ['Design', 'Prototypage', 'SVG'],
     highlights: [
@@ -886,7 +878,6 @@ export const apps: App[] = [
       'Collaboration en temps réel',
       'Design Systems'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'penpot/penpot',
       license: 'MPL-2.0'
@@ -909,6 +900,7 @@ export const apps: App[] = [
     longDescription: 'Solution de déploiement qui simplifie l\'hébergement de vos applications, bases de données et services en quelques clics.',
     category: 'Développement',
     logo: '/apps/coolify.svg',
+    logoBackground: true,
     url: 'https://coolify.io',
     tags: ['PaaS', 'Déploiement', 'DevOps'],
     highlights: [
@@ -916,7 +908,6 @@ export const apps: App[] = [
       'Déploiement automatisé',
       'Multi-technologies'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'coollabsio/coolify',
       license: 'Apache-2.0'
@@ -939,6 +930,7 @@ export const apps: App[] = [
     longDescription: 'Système de gestion de contenu flexible qui propulse plus d\'un tiers du web avec une grande communauté.',
     category: 'Productivité',
     logo: '/apps/wordpress.svg',
+    logoBackground: true,
     url: 'https://wordpress.org',
     tags: ['CMS', 'Blog', 'eCommerce'],
     highlights: [
@@ -946,7 +938,6 @@ export const apps: App[] = [
       'Thèmes personnalisables',
       'Grande communauté'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'WordPress/WordPress',
       license: 'GPL-2.0'
@@ -969,6 +960,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme qui permet aux équipes de développement de créer, partager et sécuriser des environnements de développement à distance.',
     category: 'Développement',
     logo: '/apps/coder.svg',
+    logoBackground: true,
     url: 'https://coder.com',
     tags: ['IDE', 'Remote', 'DevOps'],
     highlights: [
@@ -976,7 +968,6 @@ export const apps: App[] = [
       'Sécurité renforcée',
       'Intégration DevOps'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'coder/coder',
       license: 'AGPL-3.0'
@@ -999,6 +990,7 @@ export const apps: App[] = [
     longDescription: 'Solution de questions-réponses qui permet de créer une base de connaissances collaborative pour votre entreprise ou communauté.',
     category: 'Communication',
     logo: '/apps/answer.svg',
+    logoBackground: true,
     url: 'https://answer.dev',
     tags: ['Q&A', 'Knowledge Base', 'Community'],
     highlights: [
@@ -1006,7 +998,6 @@ export const apps: App[] = [
       'Gamification intégrée',
       'Personnalisation avancée'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'answerdev/answer',
       license: 'Apache-2.0'
@@ -1029,6 +1020,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme d\'automatisation de documents qui simplifie la création et le traitement de documents juridiques complexes.',
     category: 'Productivité',
     logo: '/apps/docassemble.svg',
+    logoBackground: true,
     url: 'https://docassemble.org',
     tags: ['Legal Tech', 'Automation', 'Documents'],
     highlights: [
@@ -1036,7 +1028,6 @@ export const apps: App[] = [
       'Logique conditionnelle',
       'Multi-langues'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'jhpyle/docassemble',
       license: 'MIT'
@@ -1066,7 +1057,6 @@ export const apps: App[] = [
       'Workflow personnalisable',
       'Audit trail complet'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'documenso/documenso',
       license: 'AGPL-3.0'
@@ -1088,7 +1078,8 @@ export const apps: App[] = [
     description: 'Plateforme de documentation collaborative. Alternative à Notion.',
     longDescription: 'Solution de documentation d\'entreprise qui combine notes, wikis et gestion de documents dans une interface moderne.',
     category: 'Communication',
-    logo: '/apps/docmost.svg',
+    logo: '/apps/docmost.webp',
+    logoBackground: true,
     url: 'https://docmost.com',
     tags: ['Documentation', 'Wiki', 'Collaboration'],
     highlights: [
@@ -1096,7 +1087,6 @@ export const apps: App[] = [
       'Organisation flexible',
       'Partage sécurisé'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'docmost/docmost',
       license: 'MIT'
@@ -1119,6 +1109,7 @@ export const apps: App[] = [
     longDescription: 'Solution complète de facturation et de gestion financière pour les freelances et les petites entreprises.',
     category: 'Productivité',
     logo: '/apps/invoice-ninja.svg',
+    logoBackground: true,
     url: 'https://invoiceninja.com',
     tags: ['Facturation', 'Comptabilité', 'Paiements'],
     highlights: [
@@ -1126,7 +1117,6 @@ export const apps: App[] = [
       'Paiements en ligne',
       'Suivi du temps'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'invoiceninja/invoiceninja',
       license: 'AAL'
@@ -1149,6 +1139,7 @@ export const apps: App[] = [
     longDescription: 'Solution VPN moderne qui simplifie la connexion sécurisée entre vos appareils et services.',
     category: 'Sécurité',
     logo: '/apps/netbird.svg',
+    logoBackground: true,
     url: 'https://netbird.io',
     tags: ['VPN', 'Mesh', 'Networking'],
     highlights: [
@@ -1156,7 +1147,6 @@ export const apps: App[] = [
       'Réseau maillé',
       'Gestion centralisée'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'netbirdio/netbird',
       license: 'BSD-3-Clause'
@@ -1179,6 +1169,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme de gestion des changements qui permet de communiquer efficacement les évolutions de vos produits.',
     category: 'Développement',
     logo: '/apps/openchangelog.svg',
+    logoBackground: true,
     url: 'https://openchangelog.com',
     tags: ['Changelog', 'Product', 'Communication'],
     highlights: [
@@ -1186,7 +1177,6 @@ export const apps: App[] = [
       'Personnalisation complète',
       'Notifications intégrées'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'openchangelog/openchangelog',
       license: 'MIT'
@@ -1209,6 +1199,7 @@ export const apps: App[] = [
     longDescription: 'Solution de partage de documents qui permet de suivre et de contrôler l\'accès à vos documents sensibles.',
     category: 'Productivité',
     logo: '/apps/papermark.svg',
+    logoBackground: true,
     url: 'https://papermark.io',
     tags: ['Documents', 'Analytics', 'Sécurité'],
     highlights: [
@@ -1216,7 +1207,6 @@ export const apps: App[] = [
       'Contrôle d\'accès granulaire',
       'Analytics détaillés'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'mfts/papermark',
       license: 'AGPL-3.0'
@@ -1239,6 +1229,7 @@ export const apps: App[] = [
     longDescription: 'Outil de gestion de projet qui combine simplicité et puissance pour les équipes de toutes tailles.',
     category: 'Développement',
     logo: '/apps/plane.svg',
+    logoBackground: true,
     url: 'https://plane.so',
     tags: ['Project', 'Agile', 'Collaboration'],
     highlights: [
@@ -1246,7 +1237,6 @@ export const apps: App[] = [
       'Vues personnalisables',
       'Intégrations DevOps'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'makeplane/plane',
       license: 'AGPL-3.0'
@@ -1269,6 +1259,7 @@ export const apps: App[] = [
     longDescription: 'Solution de synchronisation de fichiers qui respecte votre vie privée en synchronisant vos données directement entre vos appareils.',
     category: 'Productivité',
     logo: '/apps/syncthing.svg',
+    logoBackground: true,
     url: 'https://syncthing.net',
     tags: ['Sync', 'P2P', 'Privacy'],
     highlights: [
@@ -1276,7 +1267,6 @@ export const apps: App[] = [
       'Chiffrement de bout en bout',
       'Sans serveur central'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'syncthing/syncthing',
       license: 'MPL-2.0'
@@ -1299,6 +1289,7 @@ export const apps: App[] = [
     longDescription: 'Protocole VPN nouvelle génération qui offre des performances supérieures avec une configuration simplifiée.',
     category: 'Sécurité',
     logo: '/apps/wireguard.svg',
+    logoBackground: true,
     url: 'https://www.wireguard.com',
     tags: ['VPN', 'Networking', 'Security'],
     highlights: [
@@ -1306,7 +1297,6 @@ export const apps: App[] = [
       'Configuration simple',
       'Cryptographie moderne'
     ],
-    maturity: 'Stable',
     projectInfo: {
       github: 'WireGuard/wireguard-linux',
       license: 'GPL-2.0'
@@ -1329,6 +1319,7 @@ export const apps: App[] = [
     longDescription: 'Plateforme de création de formulaires qui permet de concevoir des expériences de collecte de données engageantes et personnalisées.',
     category: 'Productivité',
     logo: '/apps/heyform.svg',
+    logoBackground: true,
     url: 'https://heyform.net',
     tags: ['Forms', 'Surveys', 'Data Collection'],
     highlights: [
@@ -1336,7 +1327,6 @@ export const apps: App[] = [
       'Logique conditionnelle',
       'Analytics intégrés'
     ],
-    maturity: 'En croissance',
     projectInfo: {
       github: 'heyform/heyform',
       license: 'MIT'

@@ -6,11 +6,10 @@ export type Category =
   | 'Développement'
   | 'Productivité';
 
-type MaturityStatus = 'Stable' | 'En croissance' | 'Émergent';
-
 interface ProjectInfo {
   github: string;        // Lien GitHub
   license: string;       // Type de licence
+  stars?: number;        // Nombre d'étoiles GitHub (optionnel)
 }
 
 export interface App {
@@ -20,10 +19,10 @@ export interface App {
   longDescription: string;  // Description détaillée pour le modal
   category: Category;       // Catégorie principale
   logo: string;            // Chemin vers le logo
+  logoBackground?: boolean; // Nouvelle propriété optionnelle
   url: string;             // Site officiel
   tags: string[];          // Mots-clés (max 3)
   highlights: string[];    // Points clés (max 3)
-  maturity: MaturityStatus;
   projectInfo: ProjectInfo;
   alternatives: string[];      // Solutions propriétaires alternatives
   integrations?: string[];     // Intégrations principales pertinentes
