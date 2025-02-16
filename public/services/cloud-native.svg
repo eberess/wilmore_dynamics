@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond avec motif de grille -->
+  <rect width="800" height="600" fill="#F8FAFC"/>
+  <path d="M0 50h800 M0 150h800 M0 250h800 M0 350h800 M0 450h800 M0 550h800" stroke="#E2E8F0" stroke-width="1"/>
+  <path d="M50 0v600 M150 0v600 M250 0v600 M350 0v600 M450 0v600 M550 0v600 M650 0v600 M750 0v600" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <!-- Conteneurs et connexions -->
+  <g transform="translate(200,150)">
+    <!-- Conteneur central -->
+    <rect x="150" y="100" width="100" height="100" rx="8" fill="#1a73e8" opacity="0.9"/>
+    <rect x="160" y="120" width="80" height="10" rx="2" fill="white" opacity="0.6"/>
+    <rect x="160" y="140" width="60" height="10" rx="2" fill="white" opacity="0.4"/>
+    
+    <!-- Conteneurs satellites -->
+    <rect x="50" y="50" width="80" height="80" rx="8" fill="#1a73e8" opacity="0.7"/>
+    <rect x="270" y="50" width="80" height="80" rx="8" fill="#1a73e8" opacity="0.7"/>
+    <rect x="50" y="170" width="80" height="80" rx="8" fill="#1a73e8" opacity="0.7"/>
+    <rect x="270" y="170" width="80" height="80" rx="8" fill="#1a73e8" opacity="0.7"/>
+    
+    <!-- Lignes de connexion -->
+    <path d="M130 90L150 150 M270 90L250 150 M130 210L150 150 M270 210L250 150" 
+      stroke="#1a73e8" stroke-width="2" stroke-dasharray="4 4"/>
+  </g>
+  
+  <!-- Symboles Kubernetes -->
+  <g transform="translate(400,300)">
+    <path d="M0,0 L40,-20 L80,0 L80,40 L40,60 L0,40 Z" fill="#326CE5" opacity="0.2"/>
+    <path d="M-60,100 L-20,80 L20,100 L20,140 L-20,160 L-60,140 Z" fill="#326CE5" opacity="0.2"/>
+    <path d="M60,100 L100,80 L140,100 L140,140 L100,160 L60,140 Z" fill="#326CE5" opacity="0.2"/>
+  </g>
+</svg> 

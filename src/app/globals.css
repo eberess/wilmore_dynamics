@@ -28,3 +28,24 @@ body {
 .no-transition {
   transition: none !important;
 }
+
+/* Styles pour le contenu Markdown */
+.prose h2 {
+  @apply text-xl font-medium text-gray-900 dark:text-gray-100 mt-8 mb-4;
+}
+
+.prose p {
+  @apply text-gray-600 dark:text-gray-400 mb-4;
+}
+
+.prose ul {
+  @apply list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400;
+}
+
+.prose code {
+  @apply px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply p-4 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-x-auto my-4;
+}

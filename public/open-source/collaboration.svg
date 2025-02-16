@@ -1,0 +1,74 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Effet de lueur -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feComposite in="blur" in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Cercles de fond -->
+  <circle cx="400" cy="300" r="250" fill="#8ab4f8" fill-opacity="0.08"/>
+  <circle cx="400" cy="300" r="200" fill="#8ab4f8" fill-opacity="0.12"/>
+  
+  <!-- Forme centrale -->
+  <g transform="translate(275,175)">
+    <!-- Cercle principal -->
+    <circle cx="125" cy="125" r="100" fill="#8ab4f8" fill-opacity="0.2"/>
+    
+    <!-- Cercle intérieur -->
+    <circle cx="125" cy="125" r="70" fill="#8ab4f8" fill-opacity="0.3" filter="url(#glow)"/>
+    
+    <!-- Icône centrale - Collaboration -->
+    <g transform="translate(95,95)">
+      <circle cx="30" cy="30" r="25" fill="#8ab4f8" fill-opacity="0.9"/>
+      <path d="M20 30a10 10 0 0120 0m-10-15a5 5 0 110 10 5 5 0 010-10" stroke="white" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+  
+  <!-- Points de connexion -->
+  <g transform="translate(400,300)">
+    <!-- Lignes pointillées -->
+    <g stroke="#8ab4f8" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.4">
+      <path d="M0,-125 L0,125"/>
+      <path d="M-125,0 L125,0"/>
+    </g>
+    
+    <!-- Points avec icônes -->
+    <g>
+      <!-- Point haut - Visio -->
+      <circle cx="0" cy="-125" r="30" fill="#8ab4f8" fill-opacity="0.2"/>
+      <circle cx="0" cy="-125" r="25" fill="#8ab4f8" fill-opacity="0.8" filter="url(#glow)"/>
+      <g transform="translate(-15,-140)">
+        <path d="M5 10v10a2 2 0 002 2h16a2 2 0 002-2V10a2 2 0 00-2-2H7a2 2 0 00-2 2z" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M25 15l5-3v6l-5-3" fill="white"/>
+      </g>
+      
+      <!-- Point bas - Documents -->
+      <circle cx="0" cy="125" r="30" fill="#8ab4f8" fill-opacity="0.2"/>
+      <circle cx="0" cy="125" r="25" fill="#8ab4f8" fill-opacity="0.8" filter="url(#glow)"/>
+      <g transform="translate(-15,110)">
+        <path d="M8 5h8l6 6v14H8V5z" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M16 5v6h6" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M12 15h8M12 19h6" stroke="white" stroke-width="2"/>
+      </g>
+      
+      <!-- Point gauche - Calendrier -->
+      <circle cx="-125" cy="0" r="30" fill="#8ab4f8" fill-opacity="0.2"/>
+      <circle cx="-125" cy="0" r="25" fill="#8ab4f8" fill-opacity="0.8" filter="url(#glow)"/>
+      <g transform="translate(-140,-15)">
+        <path d="M8 5h14v20H8V5z" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M8 10h14M12 3v4m8-4v4" stroke="white" stroke-width="2"/>
+        <circle cx="15" cy="17" r="2" fill="white"/>
+      </g>
+      
+      <!-- Point droit - Chat -->
+      <circle cx="125" cy="0" r="30" fill="#8ab4f8" fill-opacity="0.2"/>
+      <circle cx="125" cy="0" r="25" fill="#8ab4f8" fill-opacity="0.8" filter="url(#glow)"/>
+      <g transform="translate(110,-15)">
+        <path d="M5 5h20v15l-5 5H5V5z" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M10 12h10M10 17h7" stroke="white" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg> 

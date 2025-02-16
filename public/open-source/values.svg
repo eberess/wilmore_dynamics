@@ -1,0 +1,67 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Effet de lueur -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feComposite in="blur" in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Cercles de fond -->
+  <circle cx="400" cy="300" r="250" fill="#8ab4f8" fill-opacity="0.08"/>
+  <circle cx="400" cy="300" r="200" fill="#8ab4f8" fill-opacity="0.12"/>
+  
+  <!-- Forme centrale -->
+  <g transform="translate(275,175)">
+    <!-- Hexagone principal -->
+    <path d="M125,0 
+             L250,72 
+             L250,216 
+             L125,288 
+             L0,216 
+             L0,72 Z" 
+          fill="#8ab4f8" 
+          fill-opacity="0.2"/>
+    
+    <!-- Hexagone intérieur -->
+    <path d="M125,30 
+             L225,87 
+             L225,201 
+             L125,258 
+             L25,201 
+             L25,87 Z" 
+          fill="#8ab4f8" 
+          fill-opacity="0.3"
+          filter="url(#glow)"/>
+    
+    <!-- Code (3 lignes) -->
+    <rect x="75" y="120" width="100" height="12" rx="6" fill="#8ab4f8" fill-opacity="0.9"/>
+    <rect x="75" y="144" width="80" height="12" rx="6" fill="#8ab4f8" fill-opacity="0.6"/>
+    <rect x="75" y="168" width="60" height="12" rx="6" fill="#8ab4f8" fill-opacity="0.4"/>
+  </g>
+  
+  <!-- Croix centrale avec points -->
+  <g transform="translate(400,319)">
+    <!-- Lignes pointillées -->
+    <g stroke="#8ab4f8" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.4">
+      <path d="M0,-144 L0,144"/>
+      <path d="M-125,0 L125,0"/>
+    </g>
+    
+    <!-- Points de connexion -->
+    <g>
+      <circle cx="0" cy="-144" r="8" fill="#8ab4f8" fill-opacity="1" filter="url(#glow)"/>
+      <circle cx="0" cy="144" r="8" fill="#8ab4f8" fill-opacity="1" filter="url(#glow)"/>
+      <circle cx="-125" cy="0" r="8" fill="#8ab4f8" fill-opacity="1" filter="url(#glow)"/>
+      <circle cx="125" cy="0" r="8" fill="#8ab4f8" fill-opacity="1" filter="url(#glow)"/>
+    </g>
+  </g>
+  
+  <!-- Points décoratifs -->
+  <g>
+    <circle cx="100" cy="100" r="3" fill="#8ab4f8" fill-opacity="0.4"/>
+    <circle cx="700" cy="100" r="3" fill="#8ab4f8" fill-opacity="0.4"/>
+    <circle cx="100" cy="500" r="3" fill="#8ab4f8" fill-opacity="0.4"/>
+    <circle cx="700" cy="500" r="3" fill="#8ab4f8" fill-opacity="0.4"/>
+  </g>
+</svg> 
