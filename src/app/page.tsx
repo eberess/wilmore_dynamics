@@ -140,51 +140,54 @@ export default function Home() {
 
         {/* Why Us Section */}
         <FadeIn delay={200}>
-          <section className="py-20 px-4 bg-gray-50/50 dark:bg-black/[0.2]" id="about">
+          <section className="py-32 px-4 bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0" id="about">
             <div className="max-w-[1200px] mx-auto">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                  <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+              <div className="grid md:grid-cols-2 gap-20 items-start">
+                <div className="sticky top-32 pt-12">
+                  <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
                     POURQUOI NOUS CHOISIR
                   </span>
-                  <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                    Une expertise unique
+                  <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                    Une expertise
+                    <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                      qui fait la différence
+                    </span>
                   </h2>
-                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-12">
+                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-16 leading-relaxed max-w-[540px]">
                     Notre approche combine excellence technique et vision stratégique pour des résultats exceptionnels
                   </p>
-                  <div className="space-y-8">
+                  <div className="space-y-12">
                     {[
                       {
                         title: "Excellence technique",
-                        description: "Architectures modernes et solutions robustes conçues selon les meilleures pratiques"
+                        description: "Solutions robustes conçues selon les standards les plus exigeants",
+                        icon: "⚡️"
                       },
                       {
                         title: "Innovation continue",
-                        description: "Veille technologique permanente et adoption des technologies les plus performantes"
+                        description: "Veille technologique et adoption des meilleures pratiques",
+                        icon: "💡"
                       },
                       {
                         title: "Support réactif",
-                        description: "Accompagnement personnalisé et support technique par nos experts"
+                        description: "Accompagnement personnalisé et support technique expert",
+                        icon: "🎯"
                       },
                       {
                         title: "Méthodologie éprouvée",
-                        description: "Processus itératif et collaboratif pour garantir la réussite de vos projets"
+                        description: "Processus itératif et collaboratif pour des projets réussis",
+                        icon: "⚙️"
                       }
                     ].map((item, index) => (
                       <div key={index} className="flex gap-6 group">
-                        <div className="mt-1">
-                          <div className="w-6 h-6 rounded-full bg-[#1a73e8] dark:bg-[#8ab4f8] group-hover:scale-110 transition-transform">
-                            <div className="w-full h-full flex items-center justify-center">
-                              <div className="w-2 h-2 rounded-full bg-white" />
-                            </div>
-                          </div>
+                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#1a73e8]/[0.08] dark:group-hover:bg-[#8ab4f8]/[0.08] transition-all duration-300">
+                          <span className="text-2xl transition-transform duration-300 group-hover:-rotate-3">{item.icon}</span>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold mb-2 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                          <h3 className="text-xl font-medium mb-2 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
                             {item.title}
                           </h3>
-                          <p className="text-gray-600 dark:text-gray-400">
+                          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                             {item.description}
                           </p>
                         </div>
@@ -192,16 +195,19 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="relative aspect-square">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/10 dark:from-[#8ab4f8]/10 to-transparent rounded-[40px]" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Image
-                      src="/category_24dp_E8EAED_FILL1_wght200_GRAD0_opsz24.svg"
-                      alt="Expertise Illustration"
-                      width={400}
-                      height={400}
-                      className="relative z-10 invert-0 dark:invert opacity-75"
-                    />
+                <div className="md:h-[800px] flex items-center justify-center pt-12">
+                  <div className="relative w-full max-w-[540px] aspect-square group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/[0.06] dark:from-[#8ab4f8]/[0.06] to-transparent rounded-[40px] transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:translate-y-[-5px]">
+                      <Image
+                        src="/expertise-illustration.svg"
+                        alt="Expertise Illustration"
+                        width={540}
+                        height={540}
+                        className="relative z-10 w-[85%] h-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

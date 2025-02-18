@@ -1,0 +1,60 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cercle de fond avec gradient subtil -->
+  <defs>
+    <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a73e8;stop-opacity:0.03"/>
+      <stop offset="100%" style="stop-color:#1a73e8;stop-opacity:0.01"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Cercle de fond -->
+  <circle cx="400" cy="400" r="320" fill="url(#circleGradient)"/>
+  
+  <!-- Hexagone principal -->
+  <g transform="translate(400 400)">
+    <!-- Hexagone avec effet de profondeur -->
+    <path d="M0 -180L155.885 -90L155.885 90L0 180L-155.885 90L-155.885 -90Z" 
+          stroke="#1a73e8" 
+          stroke-width="2"
+          fill="none"
+          opacity="0.8"/>
+          
+    <!-- Hexagone intérieur -->
+    <path d="M0 -140L121.244 -70L121.244 70L0 140L-121.244 70L-121.244 -70Z" 
+          stroke="#1a73e8" 
+          stroke-width="1.5"
+          fill="none"
+          opacity="0.4"/>
+    
+    <!-- Points de connexion -->
+    <g>
+      <!-- Points principaux -->
+      <circle cx="0" cy="-180" r="6" fill="#1a73e8"/>
+      <circle cx="155.885" cy="-90" r="6" fill="#1a73e8"/>
+      <circle cx="155.885" cy="90" r="6" fill="#1a73e8"/>
+      <circle cx="0" cy="180" r="6" fill="#1a73e8"/>
+      <circle cx="-155.885" cy="90" r="6" fill="#1a73e8"/>
+      <circle cx="-155.885" cy="-90" r="6" fill="#1a73e8"/>
+      
+      <!-- Points secondaires avec opacité -->
+      <circle cx="0" cy="-140" r="3" fill="#1a73e8" opacity="0.4"/>
+      <circle cx="121.244" cy="-70" r="3" fill="#1a73e8" opacity="0.4"/>
+      <circle cx="121.244" cy="70" r="3" fill="#1a73e8" opacity="0.4"/>
+      <circle cx="0" cy="140" r="3" fill="#1a73e8" opacity="0.4"/>
+      <circle cx="-121.244" cy="70" r="3" fill="#1a73e8" opacity="0.4"/>
+      <circle cx="-121.244" cy="-70" r="3" fill="#1a73e8" opacity="0.4"/>
+    </g>
+  </g>
+  
+  <!-- Icône centrale -->
+  <g transform="translate(400 400)" stroke="#1a73e8" stroke-width="2" stroke-linecap="round">
+    <!-- Symbole de code/tech simplifié -->
+    <path d="M-20 0L0 -20L20 0L0 20Z" fill="none" opacity="0.8"/>
+    <circle cx="0" cy="0" r="30" opacity="0.4" fill="none"/>
+    <!-- Petits points décoratifs -->
+    <circle cx="-40" cy="0" r="4" fill="#1a73e8" opacity="0.6"/>
+    <circle cx="40" cy="0" r="4" fill="#1a73e8" opacity="0.6"/>
+    <circle cx="0" cy="-40" r="4" fill="#1a73e8" opacity="0.6"/>
+    <circle cx="0" cy="40" r="4" fill="#1a73e8" opacity="0.6"/>
+  </g>
+</svg> 
