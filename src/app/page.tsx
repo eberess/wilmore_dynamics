@@ -9,68 +9,46 @@ export default function Home() {
     <>
       <Navbar />
       <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
-          {/* Background Pattern */}
+        {/* Hero Section avec style Google/Apple */}
+        <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden">
+          {/* Background Pattern simplifié et plus subtil */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute right-[-20%] md:right-[-10%] top-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] transform rotate-12">
-              <div className="w-full h-full bg-gradient-to-br from-[#1a73e8]/[0.02] dark:from-[#8ab4f8]/[0.02] to-transparent rounded-[40px] backdrop-blur-sm" />
-              <Image
-                src="/category_24dp_E8EAED_FILL1_wght200_GRAD0_opsz24.svg"
-                alt="Pattern"
-                width={400}
-                height={400}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.05] rotate-12 scale-[0.75] md:scale-150 invert-0 dark:invert"
-              />
+            <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
+              <div className="w-full h-full bg-gradient-to-br from-[#1a73e8]/[0.03] via-[#4285f4]/[0.02] to-transparent rounded-[60px] blur-3xl" />
             </div>
-            <div className="absolute left-[-20%] md:left-[-5%] bottom-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] transform -rotate-12">
-              <div className="w-full h-full bg-gradient-to-tr from-[#1a73e8]/[0.02] dark:from-[#8ab4f8]/[0.02] to-transparent rounded-[40px] backdrop-blur-sm" />
-              <Image
-                src="/category_24dp_E8EAED_FILL1_wght200_GRAD0_opsz24.svg"
-                alt="Pattern"
-                width={300}
-                height={300}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] dark:opacity-[0.05] -rotate-12 scale-[0.75] md:scale-125 invert-0 dark:invert"
-              />
+            <div className="absolute left-[-10%] bottom-1/3 w-[800px] h-[800px] transform -rotate-12">
+              <div className="w-full h-full bg-gradient-to-tr from-[#1a73e8]/[0.03] via-[#4285f4]/[0.02] to-transparent rounded-[60px] blur-3xl" />
             </div>
           </div>
 
-          {/* Content */}
-          <div className="max-w-[640px] mx-auto text-center relative z-10">
-            <div className="flex justify-center mb-12">
-              <Image
-                src="/category_24dp_E8EAED_FILL1_wght200_GRAD0_opsz24.svg"
-                alt="Wilmore Icon"
-                width={48}
-                height={48}
-                className="invert-0 dark:invert"
-                priority
-              />
-            </div>
-            
-            <h1 className="text-[44px] md:text-[64px] leading-[1.1] font-bold mb-8">
-              Solutions
-              <span className="block text-[#4285f4] dark:text-[#8ab4f8]">
-                intelligentes
+          {/* Content avec style plus épuré */}
+          <div className="max-w-[800px] mx-auto text-center relative z-10">
+            <h1 className="text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8 animate-fade-in">
+              Des solutions
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                qui transforment
+              </span>
+              <span className="block text-[40px] md:text-[64px] mt-4 font-normal text-gray-600 dark:text-gray-300">
+                votre entreprise
               </span>
             </h1>
-
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-[480px] mx-auto px-4 md:px-0">
-              Nous créons des expériences technologiques exceptionnelles qui transforment les entreprises.
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto mb-16 leading-relaxed">
+              Nous concevons des expériences technologiques innovantes pour propulser votre croissance
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 md:px-0">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a
                 href="#contact"
-                className="px-8 py-3 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors text-[15px] font-medium"
+                className="group px-8 py-4 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]"
               >
-                Démarrer un projet →
+                Démarrer un projet
+                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
               </a>
               <a
                 href="#solutions"
-                className="px-8 py-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/[0.15] text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-white/[0.1] transition-colors text-[15px] font-medium"
+                className="group px-8 py-4 rounded-full bg-gray-100 dark:bg-white/[0.08] hover:bg-gray-200 dark:hover:bg-white/[0.12] text-gray-700 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]"
               >
                 En savoir plus
+                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
               </a>
             </div>
           </div>
