@@ -129,11 +129,17 @@ const GRADIENTS = {
 
 const ANIMATIONS = {
   hover: "transition-all duration-300 hover:scale-[1.03]",
-  rotate: "group-hover:rotate-3",
+  rotate: "transition-transform duration-300 group-hover:-rotate-3",
   fadeIn: "animate-fade-in",
   gradient: "animate-gradient bg-[length:200%_200%]",
-  slideUp: "hover:-translate-y-1",
-  groupHover: "group-hover:scale-110"
+  slideUp: "transition-all duration-500 hover:-translate-y-1",
+  groupHover: "transition-transform duration-300 group-hover:scale-110",
+  cardHover: "transition-all duration-500 hover:shadow-xl hover:-translate-y-1",
+  iconHover: "transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
+  linkHover: "transition-transform duration-300 group-hover:translate-x-1",
+  imageHover: "transition-transform duration-500 group-hover:scale-105",
+  contentHover: "transition-transform duration-500 group-hover:translate-y-[-5px]",
+  backgroundHover: "transition-all duration-500 group-hover:from-[#1a73e8]/[0.05] dark:group-hover:from-[#8ab4f8]/[0.05]"
 } as const;
 
 // Classes communes
@@ -229,10 +235,10 @@ export default function Home() {
           {/* Background Pattern */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
-              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
+              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl ${ANIMATIONS.backgroundHover}`} />
             </div>
             <div className="absolute left-[-10%] bottom-1/3 w-[800px] h-[800px] transform -rotate-12">
-              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
+              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl ${ANIMATIONS.backgroundHover}`} />
             </div>
           </div>
 
@@ -253,11 +259,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a href="#contact" className={COMMON_CLASSES.primaryButton}>
                 Démarrer un projet
-                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                <span className={ANIMATIONS.linkHover}>→</span>
               </a>
               <a href="#solutions" className={COMMON_CLASSES.secondaryButton}>
                 En savoir plus
-                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                <span className={ANIMATIONS.linkHover}>→</span>
               </a>
             </div>
           </div>
@@ -303,8 +309,8 @@ export default function Home() {
                 features: ["Chiffrement", "RGPD", "Audit", "Veille sécurité"]
               }
             ].map((solution, index) => (
-              <div key={index} className={COMMON_CLASSES.card}>
-                <div className={COMMON_CLASSES.iconContainer}>
+              <div key={index} className={`${COMMON_CLASSES.card} ${ANIMATIONS.cardHover}`}>
+                <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                   {solution.icon}
                 </div>
                 <h3 className="text-2xl font-medium mb-4 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors duration-300">
@@ -381,15 +387,15 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden md:flex md:h-[800px] items-center justify-center pt-12">
-              <div className={`relative w-full max-w-[540px] aspect-square group ${ANIMATIONS.hover}`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/[0.06] dark:from-[#8ab4f8]/[0.06] to-transparent rounded-[40px] transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:translate-y-[-5px]">
+              <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
+                <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
+                <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
                   <Image
                     src="/expertise-illustration.svg"
                     alt="Expertise Illustration"
                     width={540}
                     height={540}
-                    className="relative z-10 w-[85%] h-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
+                    className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
                     priority
                   />
                 </div>
@@ -436,7 +442,7 @@ export default function Home() {
                     }
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-4 group">
-                      <div className={COMMON_CLASSES.iconContainer}>
+                      <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                         {item.icon}
                       </div>
                       <div>
@@ -455,7 +461,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative group">
+              <div className={`relative group ${ANIMATIONS.cardHover}`}>
                 <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[32px]`} />
                 <div className="relative p-8 md:p-10">
                   <ContactForm />
@@ -521,9 +527,9 @@ export default function Home() {
               }
             ].map((step, index) => (
               <div key={index} className="group relative">
-                <div className={`p-10 ${COMMON_CLASSES.cardWrapper} group-hover:bg-gray-50/50 dark:group-hover:bg-white/[0.03]`}>
+                <div className={`p-10 ${COMMON_CLASSES.cardWrapper} ${ANIMATIONS.cardHover}`}>
                   <div className="flex items-center gap-4 mb-8">
-                    <div className={COMMON_CLASSES.iconContainer}>
+                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                       <span className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-xl font-bold`}>
                         {step.step}
                       </span>
@@ -574,7 +580,7 @@ export default function Home() {
             ].map((tool, index) => (
               <div key={index} className="group">
                 <div className="p-6 rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1 transition-all duration-500 h-full flex flex-col items-center justify-center gap-4">
-                  <div className={COMMON_CLASSES.iconContainer}>
+                  <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                     <Image
                       src={tool.icon}
                       alt={tool.name}
@@ -628,7 +634,7 @@ export default function Home() {
                   }
                 ].map((feature, index) => (
                   <div key={index} className="flex gap-6 group">
-                    <div className={COMMON_CLASSES.iconContainer}>
+                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                       <span className={`text-2xl ${ANIMATIONS.rotate}`}>
                         {feature.icon}
                       </span>
@@ -647,21 +653,21 @@ export default function Home() {
 
               <a href="/apps" className={COMMON_CLASSES.primaryButton}>
                 Explorer nos applications
-                <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                <span className={ANIMATIONS.linkHover}>→</span>
               </a>
             </div>
 
             <div className="relative">
               <div className="sticky top-32 pt-12">
                 <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
-                  <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px]`} />
-                  <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:translate-y-[-5px]">
+                  <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
+                  <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
                     <Image
                       src="/open-source-illustration.svg"
                       alt="Open Source Illustration"
                       width={540}
                       height={540}
-                      className="relative z-10 w-[85%] h-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
+                      className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
                       priority
                     />
                   </div>
@@ -703,9 +709,9 @@ export default function Home() {
               }
             ].map((article, index) => (
               <div key={index} className="group">
-                <div className={COMMON_CLASSES.cardWrapper}>
+                <div className={`${COMMON_CLASSES.cardWrapper} ${ANIMATIONS.cardHover}`}>
                   <div className={`h-48 bg-gradient-to-br ${article.gradient} p-8 flex items-center justify-center`}>
-                    <div className={COMMON_CLASSES.iconContainer}>
+                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
                       {article.tag === "Intelligence Artificielle" && (
                         <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M12 2a9 9 0 0 1 9 9c0 3.18-2.45 6.92-7.34 11.23a.75.75 0 0 1-.99.07l-.13-.07C7.65 17.92 5.2 14.18 5.2 11a9 9 0 0 1 9-9z"/>
@@ -748,7 +754,7 @@ export default function Home() {
                       className={`inline-flex items-center text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] font-medium group/link`}
                     >
                       Lire la suite
-                      <span className="inline-block ml-2 transform group-hover/link:translate-x-1 transition-transform">→</span>
+                      <span className={ANIMATIONS.linkHover}>→</span>
                     </a>
                   </div>
                 </div>

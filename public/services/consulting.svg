@@ -2,22 +2,18 @@
   <!-- Fond subtil -->
   <circle cx="80" cy="80" r="76" fill="url(#gradient)" fill-opacity="0.1"/>
   
-  <!-- Nuage principal -->
-  <path d="M55 85C55 71.7452 65.7452 61 79 61H81C94.2548 61 105 71.7452 105 85C105 98.2548 94.2548 109 81 109H79C65.7452 109 55 98.2548 55 85Z" 
+  <!-- Icône principale -->
+  <path d="M50 65C50 51.7452 60.7452 41 74 41H86C99.2548 41 110 51.7452 110 65V65C110 78.2548 99.2548 89 86 89H74C60.7452 89 50 78.2548 50 65V65Z" 
     stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
-    
-  <!-- Petit nuage supérieur -->
-  <path d="M75 51C75 45.4772 79.4772 41 85 41C90.5228 41 95 45.4772 95 51C95 56.5228 90.5228 61 85 61H75V51Z"
-    stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
-    
-  <!-- Connexions descendantes -->
-  <path d="M70 109L70 119M80 109L80 124M90 109L90 119" 
+  
+  <!-- Éléments graphiques -->
+  <path d="M80 89V119M65 119H95" 
     stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
   
   <!-- Points de connexion -->
-  <circle cx="70" cy="85" r="4" fill="#1a73e8"/>
-  <circle cx="80" cy="85" r="4" fill="#1a73e8"/>
-  <circle cx="90" cy="85" r="4" fill="#1a73e8"/>
+  <circle cx="70" cy="65" r="4" fill="#1a73e8"/>
+  <circle cx="80" cy="65" r="4" fill="#1a73e8"/>
+  <circle cx="90" cy="65" r="4" fill="#1a73e8"/>
   
   <!-- Gradient définition -->
   <defs>
