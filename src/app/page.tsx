@@ -217,31 +217,34 @@ export default function Home() {
 
         {/* Contact Section */}
         <FadeIn delay={300}>
-          <section className="py-20 px-4" id="contact">
+          <section className="py-32 px-4" id="contact">
             <div className="max-w-[1200px] mx-auto">
-              <div className="bg-white dark:bg-white/[0.02] rounded-[40px] border border-gray-100 dark:border-white/[0.1] p-8 md:p-16">
+              <div className="bg-gradient-to-b from-white to-gray-50/50 dark:from-white/[0.02] dark:to-white/[0.01] rounded-[48px] border border-gray-100 dark:border-white/[0.1] p-8 md:p-16 shadow-[0_0_80px_-15px_rgba(26,115,232,0.03)] transition-all duration-500 hover:shadow-[0_0_100px_-15px_rgba(26,115,232,0.05)]">
                 <div className="grid md:grid-cols-2 gap-16">
                   <div>
-                    <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+                    <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
                       CONTACT
                     </span>
-                    <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                      Démarrons votre projet
+                    <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                      Démarrons votre
+                      <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                        transformation digitale
+                      </span>
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 mb-16 leading-relaxed max-w-[540px]">
                       Transformez vos idées en solutions concrètes avec notre expertise
                     </p>
                     
-                    <div className="space-y-6 mb-12">
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-full bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10">
+                    <div className="space-y-8 mb-12">
+                      <div className="flex items-start gap-4 group">
+                        <div className="p-3 rounded-2xl bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] group-hover:scale-110 group-hover:bg-[#1a73e8]/[0.08] dark:group-hover:bg-[#8ab4f8]/[0.08] transition-all duration-300">
                           <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                             <path d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" 
                               stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
                         <div>
-                          <h3 className="font-medium mb-1">Email</h3>
+                          <h3 className="font-medium mb-2">Email</h3>
                           <a href="mailto:contact@wilmoredynamics.com" 
                              className="text-[#1a73e8] dark:text-[#8ab4f8] hover:opacity-80 transition-opacity">
                             contact@wilmoredynamics.com
@@ -249,15 +252,15 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-full bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10">
+                      <div className="flex items-start gap-4 group">
+                        <div className="p-3 rounded-2xl bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] group-hover:scale-110 group-hover:bg-[#1a73e8]/[0.08] dark:group-hover:bg-[#8ab4f8]/[0.08] transition-all duration-300">
                           <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                             <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" 
                               stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
                         <div>
-                          <h3 className="font-medium mb-1">Délai de réponse</h3>
+                          <h3 className="font-medium mb-2">Délai de réponse</h3>
                           <p className="text-gray-600 dark:text-gray-400">
                             Sous 24h ouvrées
                           </p>
@@ -266,9 +269,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/5 dark:from-[#8ab4f8]/5 to-transparent rounded-[28px]" />
-                    <div className="relative">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/[0.03] dark:from-[#8ab4f8]/[0.03] to-transparent rounded-[32px] transition-all duration-500 group-hover:from-[#1a73e8]/[0.05] dark:group-hover:from-[#8ab4f8]/[0.05]" />
+                    <div className="relative p-8 md:p-10">
                       <ContactForm />
                     </div>
                   </div>
@@ -280,17 +283,22 @@ export default function Home() {
 
         {/* Process Section */}
         <FadeIn delay={100}>
-          <section className="py-20 px-4 bg-gray-50/50 dark:bg-black/[0.2]">
+          <section className="py-32 px-4 bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0">
             <div className="max-w-[1200px] mx-auto">
-              <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block text-center">
-                NOTRE APPROCHE
-              </span>
-              <h2 className="text-[44px] leading-[1.2] font-bold mb-6 text-center">
-                Comment nous travaillons
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[540px] mx-auto text-center mb-16">
-                Une méthodologie éprouvée pour garantir le succès de vos projets
-              </p>
+              <div className="text-center mb-32">
+                <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
+                  NOTRE APPROCHE
+                </span>
+                <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                  Comment nous
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                    transformons vos idées
+                  </span>
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed">
+                  Une méthodologie éprouvée pour garantir le succès de vos projets
+                </p>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {[
@@ -300,7 +308,7 @@ export default function Home() {
                     description: "Étude approfondie de vos besoins et objectifs",
                     features: ["Audit technique", "Analyse des besoins", "Définition des objectifs"],
                     icon: (
-                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                      <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )
@@ -311,7 +319,7 @@ export default function Home() {
                     description: "Architecture et solutions sur mesure",
                     features: ["Architecture", "Choix technologiques", "Planning détaillé"],
                     icon: (
-                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                      <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M8 8H16M8 12H16M8 16H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
@@ -323,7 +331,7 @@ export default function Home() {
                     description: "Réalisation itérative et tests continus",
                     features: ["Cycles courts", "Tests automatisés", "Revue de code"],
                     icon: (
-                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                      <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M8 9L4 12L8 15M16 9L20 12L16 15M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )
@@ -334,25 +342,25 @@ export default function Home() {
                     description: "Mise en production et accompagnement",
                     features: ["CI/CD", "Monitoring", "Support"],
                     icon: (
-                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                      <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M12 15V3M12 15L8 11M12 15L16 11M2 17L2.621 19.485C2.72915 19.9177 2.97882 20.3018 3.33033 20.5763C3.68184 20.8508 4.11501 20.9999 4.561 21H19.439C19.885 20.9999 20.3182 20.8508 20.6697 20.5763C21.0212 20.3018 21.2708 19.9177 21.379 19.485L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )
                   }
                 ].map((step, index) => (
                   <div key={index} className="group relative">
-                    <div className="p-8 rounded-[28px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] hover:shadow-lg transition-all duration-300 h-full">
-                      <div className="mb-6">
-                        <div className="w-16 h-16 rounded-full bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <div className="p-10 rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1 transition-all duration-500 h-full group-hover:bg-gray-50/50 dark:group-hover:bg-white/[0.03]">
+                      <div className="flex items-center gap-4 mb-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                           <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-xl font-bold">
                             {step.step}
                           </span>
                         </div>
-                        <div className="text-[#1a73e8] dark:text-[#8ab4f8] group-hover:scale-110 transition-transform">
+                        <div className="text-[#1a73e8] dark:text-[#8ab4f8] group-hover:scale-110 transition-transform duration-300">
                           {step.icon}
                         </div>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                      <h3 className="text-xl font-medium mb-3 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
                         {step.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-6">
