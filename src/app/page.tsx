@@ -3,10 +3,124 @@ import Navbar from "@/components/Navbar";
 import ScrollToTop from '@/components/ScrollToTop';
 import FadeIn from '@/components/FadeIn';
 import ContactForm from '@/components/ContactForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://wilmoredynamics.com'),
+  title: {
+    default: 'Wilmore Dynamics - Solutions technologiques innovantes',
+    template: '%s | Wilmore Dynamics'
+  },
+  description: 'Expertise en développement cloud native, DevOps et solutions open source. Applications modernes et évolutives pour transformer votre entreprise.',
+  applicationName: 'Wilmore Dynamics',
+  authors: [{ name: 'Wilmore Dynamics' }],
+  generator: 'Next.js',
+  keywords: [
+    'développement web',
+    'cloud native',
+    'devops',
+    'open source',
+    'kubernetes',
+    'automatisation',
+    'microservices',
+    'infrastructure',
+    'solutions technologiques',
+    'transformation digitale'
+  ],
+  referrer: 'origin-when-cross-origin',
+  creator: 'Wilmore Dynamics',
+  publisher: 'Wilmore Dynamics',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://wilmoredynamics.com',
+    title: 'Wilmore Dynamics - Solutions technologiques innovantes',
+    description: 'Expertise en développement cloud native, DevOps et solutions open source',
+    siteName: 'Wilmore Dynamics',
+    images: [{
+      url: '/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Wilmore Dynamics - Solutions technologiques innovantes'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wilmore Dynamics',
+    description: 'Solutions technologiques innovantes',
+    creator: '@wilmoredynamics',
+    images: ['/og-image.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://wilmoredynamics.com',
+    languages: {
+      'fr-FR': 'https://wilmoredynamics.com',
+      'en-US': 'https://wilmoredynamics.com/en'
+    }
+  },
+  verification: {
+    google: 'votre-vrai-code-google',
+    yandex: 'votre-vrai-code-yandex',
+    yahoo: 'votre-vrai-code-yahoo',
+  },
+  category: 'technology',
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
+  },
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Wilmore Dynamics",
+            "url": "https://wilmoredynamics.com",
+            "logo": "https://wilmoredynamics.com/logo.svg",
+            "description": "Expertise en développement cloud native, DevOps et solutions open source",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            },
+            "sameAs": [
+              "https://linkedin.com/company/wilmore-dynamics",
+              "https://github.com/wilmore-dynamics"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "name": "Services de développement et cloud",
+              "description": "Solutions technologiques innovantes pour votre entreprise"
+            }
+          })
+        }}
+      />
       <Navbar />
       <main className="min-h-screen">
         {/* Hero Section avec style Google/Apple */}
@@ -629,30 +743,6 @@ export default function Home() {
             </div>
           </section>
         </FadeIn>
-
-        {/* Footer */}
-        <footer className="py-16 px-4 border-t border-gray-200 dark:border-white/[0.1]">
-          <div className="max-w-[1200px] mx-auto flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/category_24dp_E8EAED_FILL1_wght200_GRAD0_opsz24.svg"
-                alt="Wilmore Dynamics"
-                width={24}
-                height={24}
-                className="invert-0 dark:invert"
-              />
-              <span className="text-sm">© 2024 Wilmore Dynamics</span>
-            </div>
-            <nav className="flex gap-6">
-              <a href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                Politique de confidentialité
-              </a>
-              <a href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                Mentions légales
-              </a>
-            </nav>
-          </div>
-        </footer>
 
         <ScrollToTop />
       </main>

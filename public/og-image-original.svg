@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Fond blanc -->
+  <rect width="1200" height="630" fill="#ffffff"/>
+  
+  <!-- Logo centré -->
+  <g transform="translate(360, 235)">
+    <!-- Groupe de formes avec espacement égal -->
+    <g>
+      <!-- Carré -->
+      <rect 
+        width="120" 
+        height="120" 
+        rx="20" 
+        fill="#1a73e8"
+      />
+      
+      <!-- Cercle -->
+      <circle 
+        cx="240" 
+        cy="60" 
+        r="60" 
+        fill="#1a73e8"
+      />
+      
+      <!-- Triangle -->
+      <path 
+        d="M360 120 L480 120 L420 0 Z" 
+        fill="#1a73e8"
+        stroke="#1a73e8"
+        stroke-width="1"
+        stroke-linejoin="round"
+      />
+    </g>
+  </g>
+</svg> 
