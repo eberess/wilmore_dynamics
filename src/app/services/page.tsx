@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import ServicesContent from "@/components/ServicesContent";
+import type { Metadata } from 'next';
 
 export type ServiceProps = {
   title: string;
@@ -69,6 +70,23 @@ Notre accompagnement inclut également la montée en compétences de vos équipe
     image: "/services/consulting.svg"
   }
 ];
+
+export const metadata: Metadata = {
+  title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
+  description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT. Solutions modernes et évolutives pour transformer votre infrastructure.',
+  openGraph: {
+    title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
+    description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT. Solutions modernes et évolutives pour transformer votre infrastructure.',
+    images: [
+      {
+        url: '/og/services.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Services Cloud Native & DevOps Wilmore Dynamics'
+      }
+    ]
+  }
+};
 
 export default function Services() {
   return (

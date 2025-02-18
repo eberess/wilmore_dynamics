@@ -26,7 +26,6 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
         aria-labelledby="hero-title"
         className="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex flex-col items-center justify-center px-4 pb-8 sm:pb-16 pt-20 sm:pt-0"
       >
-        <h1 id="hero-title" className="sr-only">Solutions Cloud Natives - Architecture nouvelle génération</h1>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
             <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
@@ -41,7 +40,10 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
             <span className={`${COMMON_CLASSES.badge} !mb-4 sm:!mb-8`}>
               EXPERTISE CLOUD
             </span>
-            <h1 className={`${COMMON_CLASSES.sectionTitle} !text-5xl sm:!text-6xl md:!text-7xl lg:!text-8xl mb-6 sm:mb-8`}>
+            <h1 
+              id="hero-title" 
+              className={`${COMMON_CLASSES.sectionTitle} !text-5xl sm:!text-6xl md:!text-7xl lg:!text-8xl mb-6 sm:mb-8 text-center`}
+            >
               Solutions
               <span className={`${COMMON_CLASSES.gradientText} block mt-1 sm:mt-2`}>
                 nouvelle génération
@@ -99,7 +101,7 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
                   <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-3xl blur-2xl opacity-40`} />
                   <Image
                     src={servicesData[0].image}
-                    alt={servicesData[0].title}
+                    alt="Illustration du développement cloud native montrant une architecture microservices moderne"
                     width={192}
                     height={192}
                     className={`relative z-10 w-full h-full object-contain ${ANIMATIONS.hover}`}
@@ -164,7 +166,11 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
                     <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-2xl blur-xl opacity-50`} />
                     <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={`Illustration ${service.title.toLowerCase()} représentant ${
+                        service.title === "Infrastructure & DevOps" 
+                          ? "une infrastructure cloud moderne et des pipelines CI/CD"
+                          : "des services de conseil et d'audit technique"
+                      }`}
                       width={96}
                       height={96}
                       className={`relative z-10 w-full h-full object-contain ${ANIMATIONS.hover}`}
