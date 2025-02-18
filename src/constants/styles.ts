@@ -11,7 +11,7 @@ export const GRADIENTS = {
   TEXT: `bg-clip-text text-transparent bg-gradient-to-r from-[${COLORS.primary.light}] via-[${COLORS.primary.DEFAULT}] to-[${COLORS.primary.dark}] dark:from-[${COLORS.primary.dark}] dark:via-[${COLORS.primary.DEFAULT}] dark:to-[${COLORS.primary.light}] animate-gradient bg-[length:200%_200%]`,
   BG_SECTION: "bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0",
   BG_CARD: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.06] dark:from-[${COLORS.primary.dark}]/[0.06] to-transparent`,
-  BADGE_BG: `bg-[${COLORS.primary.light}]/[0.05] dark:bg-[${COLORS.primary.dark}]/[0.05]`,
+  BADGE_BG: "bg-blue-50 dark:bg-blue-900/20",
   BG_DECORATIVE: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.03] via-[${COLORS.primary.DEFAULT}]/[0.02] to-transparent`,
   HOVER_EFFECT: `hover:bg-[${COLORS.primary.light}]/[0.08] dark:hover:bg-[${COLORS.primary.dark}]/[0.08]`,
   BLOG_AI: "from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10",
@@ -38,7 +38,7 @@ export const ANIMATIONS = {
 } as const;
 
 export const COMMON_CLASSES = {
-  badge: `inline-block text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium px-4 py-2 rounded-full ${GRADIENTS.BADGE_BG} mb-6 animate-fade-in`,
+  badge: `inline-block text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium px-4 py-2 rounded-full bg-[${COLORS.primary.light}]/10 dark:bg-[${COLORS.primary.dark}]/10 mb-6 animate-fade-in`,
   gradientText: `block py-2 ${GRADIENTS.TEXT}`,
   sectionBg: `py-24 md:py-32 px-4 ${GRADIENTS.BG_SECTION}`,
   cardHover: `group-hover:text-[${COLORS.primary.light}] dark:group-hover:text-[${COLORS.primary.dark}] transition-colors`,
