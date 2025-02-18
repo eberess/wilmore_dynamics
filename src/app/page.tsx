@@ -382,96 +382,57 @@ export default function Home() {
           </section>
         </FadeIn>
 
-        {/* Tech Stack Section */}
+        {/* Stack Section */}
         <FadeIn delay={200}>
-          <section className="py-20 px-4">
+          <section className="py-32 px-4 bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0">
             <div className="max-w-[1200px] mx-auto">
-              <div className="text-center mb-16">
-                <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+              <div className="text-center mb-32">
+                <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
                   TECHNOLOGIES
                 </span>
-                <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                  Notre stack technologique
+                <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                  Notre stack
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                    technologique
+                  </span>
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[540px] mx-auto">
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed">
                   Les meilleurs outils pour des solutions performantes et évolutives
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                 {[
-                  {
-                    name: "React",
-                    logo: "/tech/react.svg",
-                    category: "Frontend"
-                  },
-                  {
-                    name: "Next.js",
-                    logo: "/tech/nextjs.svg",
-                    category: "Framework"
-                  },
-                  {
-                    name: "TypeScript",
-                    logo: "/tech/typescript.svg",
-                    category: "Language"
-                  },
-                  {
-                    name: "Node.js",
-                    logo: "/tech/nodejs.svg",
-                    category: "Backend"
-                  },
-                  {
-                    name: "Python",
-                    logo: "/tech/python.svg",
-                    category: "Backend"
-                  },
-                  {
-                    name: "Kubernetes",
-                    logo: "/tech/kubernetes.svg",
-                    category: "Infrastructure"
-                  },
-                  {
-                    name: "Docker",
-                    logo: "/tech/docker.svg",
-                    category: "Infrastructure"
-                  },
-                  {
-                    name: "AWS",
-                    logo: "/tech/aws.svg",
-                    category: "Cloud"
-                  },
-                  {
-                    name: "MongoDB",
-                    logo: "/tech/mongodb.svg",
-                    category: "Database",
-                    size: 40
-                  },
-                  {
-                    name: "PostgreSQL",
-                    logo: "/tech/postgresql.svg",
-                    category: "Database"
-                  }
-                ].map((tech, index) => (
-                  <div
-                    key={index}
-                    className="group relative p-6 bg-white dark:bg-white/[0.02] rounded-[20px] border border-gray-200 dark:border-white/[0.1] hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="w-16 h-16 mb-4 relative flex items-center justify-center group-hover:scale-110 transition-transform">
+                  { name: "React", icon: "/tech/react.svg", type: "Frontend" },
+                  { name: "Next.js", icon: "/tech/nextjs.svg", type: "Framework" },
+                  { name: "TypeScript", icon: "/tech/typescript.svg", type: "Language" },
+                  { name: "Node.js", icon: "/tech/nodejs.svg", type: "Backend" },
+                  { name: "Python", icon: "/tech/python.svg", type: "Backend" },
+                  { name: "Kubernetes", icon: "/tech/kubernetes.svg", type: "Infrastructure" },
+                  { name: "Docker", icon: "/tech/docker.svg", type: "Infrastructure" },
+                  { name: "AWS", icon: "/tech/aws.svg", type: "Cloud" },
+                  { name: "PostgreSQL", icon: "/tech/postgresql.svg", type: "Database" },
+                  { name: "MongoDB", icon: "/tech/mongodb.svg", type: "Database" }
+                ].map((tool, index) => (
+                  <div key={index} className="group">
+                    <div className="p-6 rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1 transition-all duration-500 h-full flex flex-col items-center justify-center gap-4">
+                      <div className="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-white/[0.03] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <Image
-                          src={tech.logo}
-                          alt={tech.name}
-                          width={tech.size || 48}
-                          height={tech.size || 48}
-                          className="object-contain"
+                          src={tool.icon}
+                          alt={tool.name}
+                          width={40}
+                          height={40}
+                          className="w-10 h-10 object-contain"
                         />
                       </div>
-                      <h3 className="text-base font-medium mb-1 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
-                        {tech.name}
-                      </h3>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
-                        {tech.category}
-                      </span>
+                      <div className="text-center">
+                        <h3 className="font-medium mb-1 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                          {tool.name}
+                        </h3>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                          {tool.type}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -481,94 +442,109 @@ export default function Home() {
         </FadeIn>
 
         {/* Section Open Source & Self-Hosted */}
-        <section className="py-20 px-4 bg-gray-50/50 dark:bg-black/[0.2]">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
-                  SOLUTIONS OPEN SOURCE
-                </span>
-                <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                  Reprenez le contrôle <br/>de vos données
-                </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-                  Des solutions open source auto-hébergées pour une indépendance totale et une sécurité maximale
-                </p>
+        <FadeIn delay={300}>
+          <section className="py-32 px-4">
+            <div className="max-w-[1200px] mx-auto">
+              <div className="grid md:grid-cols-2 gap-20">
+                {/* Colonne de gauche */}
+                <div>
+                  <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
+                    OPEN SOURCE
+                  </span>
+                  <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                    Solutions
+                    <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                      open source
+                    </span>
+                  </h2>
+                  <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed max-w-[540px]">
+                    Des solutions transparentes et personnalisables pour garder le contrôle de vos données
+                  </p>
 
-                <div className="space-y-6 mb-8">
-                  {[
-                    {
-                      title: "Alternatives open source",
-                      description: "Découvrez des alternatives aux outils propriétaires"
-                    },
-                    {
-                      title: "Auto-hébergement simplifié",
-                      description: "Déployez facilement vos applications avec Docker"
-                    },
-                    {
-                      title: "Catalogue complet",
-                      description: "Une sélection d'applications testées et approuvées"
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="flex gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#1a73e8]/10 dark:bg-[#8ab4f8]/10 flex items-center justify-center">
-                        <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
-                          <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
-                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                  <div className="space-y-8">
+                    {[
+                      {
+                        title: "Transparence totale",
+                        description: "Code source accessible et auditable",
+                        icon: "🔍"
+                      },
+                      {
+                        title: "Personnalisation complète",
+                        description: "Adaptez les solutions à vos besoins spécifiques",
+                        icon: "⚙️"
+                      },
+                      {
+                        title: "Indépendance",
+                        description: "Aucune dépendance à des services propriétaires",
+                        icon: "🔒"
+                      }
+                    ].map((feature, index) => (
+                      <div key={index} className="flex gap-6 group">
+                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#1a73e8]/[0.08] dark:group-hover:bg-[#8ab4f8]/[0.08] transition-all duration-300">
+                          <span className="text-2xl transition-transform duration-300 group-hover:-rotate-3">
+                            {feature.icon}
+                          </span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-medium mb-2 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
+                    ))}
+                  </div>
+
+                  {/* Ajout du CTA */}
+                  <a
+                    href="/apps"
+                    className="group inline-flex items-center px-8 py-4 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03] mt-8"
+                  >
+                    Explorer nos applications
+                    <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                </div>
+
+                {/* Colonne de droite */}
+                <div className="relative">
+                  <div className="sticky top-32 pt-12">
+                    <div className="relative w-full aspect-square group">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/[0.06] dark:from-[#8ab4f8]/[0.06] to-transparent rounded-[40px] transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:translate-y-[-5px]">
+                        <Image
+                          src="/open-source-illustration.svg"
+                          alt="Open Source Illustration"
+                          width={540}
+                          height={540}
+                          className="relative z-10 w-[85%] h-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
+                          priority
+                        />
                       </div>
                     </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="/open-source/apps"
-                    className="px-8 py-3 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors text-[15px] font-medium inline-flex items-center justify-center"
-                  >
-                    Explorer le Store →
-                  </a>
-                  <a
-                    href="#contact"
-                    className="px-8 py-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/[0.15] text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-white/[0.1] transition-colors text-[15px] font-medium inline-flex items-center justify-center"
-                  >
-                    Nous contacter
-                  </a>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a73e8]/5 dark:from-[#8ab4f8]/5 to-transparent rounded-[40px]" />
-                <div className="relative">
-                  <Image
-                    src="/open-source-illustration.svg"
-                    alt="Open Source Illustration"
-                    width={600}
-                    height={600}
-                    className="w-full"
-                  />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeIn>
 
         {/* Section Tech News */}
         <FadeIn delay={200}>
-          <section className="py-20 px-4">
+          <section className="py-32 px-4 bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0">
             <div className="max-w-[1200px] mx-auto">
-              <div className="text-center mb-16">
-                <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+              <div className="text-center mb-32">
+                <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
                   VEILLE TECHNOLOGIQUE
                 </span>
-                <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                  Dernières tendances
+                <h2 className="text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                  Dernières
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                    tendances
+                  </span>
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[540px] mx-auto">
+                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed">
                   Notre analyse des innovations qui façonnent l'avenir du numérique
                 </p>
               </div>
@@ -576,63 +552,76 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   {
-                    title: "L'impact de l'IA générative sur le développement",
-                    date: "Mars 2024",
-                    description: "Comment les LLMs transforment les pratiques de développement et l'automatisation",
-                    category: "Intelligence Artificielle",
-                    image: "/news/ai-dev.webp"
+                    title: "L'essor de l'IA générative",
+                    description: "Comment l'IA transforme le développement logiciel et ouvre de nouvelles possibilités",
+                    date: "28 Mars 2024",
+                    tag: "Intelligence Artificielle",
+                    gradient: "from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10"
                   },
                   {
-                    title: "Web Assembly : le futur du web",
-                    date: "Février 2024",
-                    description: "Performance native dans le navigateur : cas d'usage et perspectives",
-                    category: "Web Technologies",
-                    image: "/news/webassembly.webp"
+                    title: "Cloud Native en 2024",
+                    description: "Les meilleures pratiques et tendances pour des applications cloud natives modernes",
+                    date: "21 Mars 2024",
+                    tag: "Cloud Computing",
+                    gradient: "from-emerald-500/20 to-cyan-500/20 dark:from-emerald-500/10 dark:to-cyan-500/10"
                   },
                   {
-                    title: "DevSecOps : sécurité by design",
-                    date: "Janvier 2024",
-                    description: "Intégrer la sécurité dès la conception de vos applications cloud natives",
-                    category: "Sécurité",
-                    image: "/news/devsecops.webp"
+                    title: "Sécurité & DevSecOps",
+                    description: "Intégrer la sécurité au cœur du cycle de développement logiciel",
+                    date: "14 Mars 2024",
+                    tag: "Sécurité",
+                    gradient: "from-orange-500/20 to-red-500/20 dark:from-orange-500/10 dark:to-red-500/10"
                   }
-                ].map((news, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white dark:bg-white/[0.02] rounded-[28px] border border-gray-200 dark:border-white/[0.1] overflow-hidden hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="aspect-[16/9] relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
-                      <Image
-                        src={news.image}
-                        alt={news.title}
-                        width={600}
-                        height={338}
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <span className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full text-sm bg-white/90 dark:bg-black/90 text-[#1a73e8] dark:text-[#8ab4f8] font-medium">
-                        {news.category}
-                      </span>
-                    </div>
-                    <div className="p-8">
-                      <span className="text-sm text-gray-600 dark:text-gray-400 mb-2 block">
-                        {news.date}
-                      </span>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
-                        {news.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-6">
-                        {news.description}
-                      </p>
-                      <a
-                        href="#"
-                        className="inline-flex items-center text-[#1a73e8] dark:text-[#8ab4f8] hover:opacity-80 transition-opacity text-sm font-medium"
-                      >
-                        Lire la suite
-                        <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </a>
+                ].map((article, index) => (
+                  <div key={index} className="group">
+                    <div className="rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] overflow-hidden hover:shadow-xl transition-all duration-500 h-full hover:-translate-y-1">
+                      <div className={`h-48 bg-gradient-to-br ${article.gradient} p-8 flex items-center justify-center`}>
+                        <div className="w-16 h-16 rounded-2xl bg-white/[0.9] dark:bg-white/[0.05] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          {article.tag === "Intelligence Artificielle" && (
+                            <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M12 2a9 9 0 0 1 9 9c0 3.18-2.45 6.92-7.34 11.23a.75.75 0 0 1-.99.07l-.13-.07C7.65 17.92 5.2 14.18 5.2 11a9 9 0 0 1 9-9z"/>
+                              <circle cx="12" cy="11" r="3"/>
+                            </svg>
+                          )}
+                          {article.tag === "Cloud Computing" && (
+                            <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M4 16.242A7 7 0 1 1 15.758 4.242"/>
+                              <path d="M20 20H7.5a2.5 2.5 0 1 1 0-5H18a4 4 0 0 0 2-7.5"/>
+                            </svg>
+                          )}
+                          {article.tag === "Sécurité" && (
+                            <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M12 2s8 4 8 10v4c0 2-2 4-4 4H8c-2 0-4-2-4-4v-4c0-6 8-10 8-10z"/>
+                              <path d="M9 16v-5"/>
+                              <path d="M15 16v-5"/>
+                              <path d="M12 16v-2"/>
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                      <div className="p-8">
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className="px-3 py-1 rounded-full text-sm bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] text-[#1a73e8] dark:text-[#8ab4f8] font-medium">
+                            {article.tag}
+                          </span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                            {article.date}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-medium mb-3 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
+                          {article.description}
+                        </p>
+                        <a 
+                          href={`/blog/${article.title.toLowerCase().replace(/ /g, '-')}`}
+                          className="inline-flex items-center text-[#1a73e8] dark:text-[#8ab4f8] font-medium group/link"
+                        >
+                          Lire la suite
+                          <span className="inline-block ml-2 transform group-hover/link:translate-x-1 transition-transform">→</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 ))}
