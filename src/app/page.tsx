@@ -56,35 +56,40 @@ export default function Home() {
 
         {/* Solutions Section */}
         <FadeIn>
-          <section className="py-20 px-4" id="solutions">
+          <section className="py-32 px-4" id="solutions">
             <div className="max-w-[1200px] mx-auto">
-              <div className="text-center mb-24">
-                <span className="text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium mb-4 block">
+              {/* Header */}
+              <div className="text-center mb-32">
+                <span className="inline-block text-[#1a73e8] dark:text-[#8ab4f8] text-sm font-medium px-4 py-2 rounded-full bg-[#1a73e8]/[0.05] dark:bg-[#8ab4f8]/[0.05] mb-6 animate-fade-in">
                   NOS SOLUTIONS
                 </span>
-                <h2 className="text-[44px] leading-[1.2] font-bold mb-6">
-                  Technologies de pointe
+                <h2 className="text-4xl md:text-6xl leading-[1.2] font-medium tracking-[-0.02em] mb-6">
+                  Technologies de pointe pour
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#8ab4f8] dark:from-[#8ab4f8] dark:via-[#4285f4] dark:to-[#1a73e8] animate-gradient bg-[length:200%_200%]">
+                    votre transformation digitale
+                  </span>
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-[540px] mx-auto">
-                  Des solutions innovantes pour répondre aux défis de demain
+                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed">
+                  Des solutions innovantes et évolutives pour répondre aux défis de demain
                 </p>
               </div>
 
+              {/* Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   {
                     title: "Architecture Cloud Native",
-                    description: "Applications modernes, scalables et résilientes",
+                    description: "Applications modernes et scalables conçues pour le cloud",
                     icon: (
                       <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M3 15C3 17.2091 4.79086 19 7 19H16C18.7614 19 21 16.7614 21 14C21 11.2386 18.7614 9 16 9C15.9666 9 15.9334 9.00033 15.9002 9.001C15.4373 6.71476 13.4193 5 11 5C8.23858 5 6 7.23858 6 10C6 10.3768 6.04169 10.7439 6.12071 11.097C4.33457 11.4976 3 13.0929 3 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     ),
-                    features: ["Microservices", "Conteneurs", "Auto-scaling", "Haute disponibilité"]
+                    features: ["Microservices", "Conteneurisation", "Auto-scaling", "Haute disponibilité"]
                   },
                   {
                     title: "DevOps & Automatisation",
-                    description: "Déploiement continu et monitoring avancé",
+                    description: "Optimisez vos processus de développement et de déploiement",
                     icon: (
                       <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M8 9L4 12L8 15M16 9L20 12L16 15M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -94,7 +99,7 @@ export default function Home() {
                   },
                   {
                     title: "Sécurité & Conformité",
-                    description: "Protection des données et respect des normes",
+                    description: "Protégez vos données et respectez les normes en vigueur",
                     icon: (
                       <svg className="w-8 h-8 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
                         <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -105,22 +110,22 @@ export default function Home() {
                 ].map((solution, index) => (
                   <div
                     key={index}
-                    className="group p-8 rounded-[28px] bg-white dark:bg-white/[0.02] hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-300 border border-gray-200 dark:border-white/[0.1] hover:shadow-lg"
+                    className="group relative p-8 rounded-[32px] bg-white dark:bg-white/[0.02] hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-500 border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1"
                   >
-                    <div className="mb-6 transition-transform duration-300 group-hover:scale-110">
+                    <div className="mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                       {solution.icon}
                     </div>
-                    <h3 className="text-[22px] font-semibold mb-3 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
+                    <h3 className="text-2xl font-medium mb-4 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors duration-300">
                       {solution.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                       {solution.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {solution.features.map((feature, featureIndex) => (
                         <span
                           key={featureIndex}
-                          className="px-3 py-1 rounded-full text-sm bg-[#1a73e8]/[0.08] dark:bg-white/[0.05] text-[#1a73e8] dark:text-[#8ab4f8] font-medium border border-[#1a73e8]/10 dark:border-white/[0.1]"
+                          className="px-3 py-1 rounded-full text-sm bg-[#1a73e8]/[0.05] dark:bg-white/[0.05] text-[#1a73e8] dark:text-[#8ab4f8] font-medium"
                         >
                           {feature}
                         </span>
