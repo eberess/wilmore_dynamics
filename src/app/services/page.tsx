@@ -88,8 +88,12 @@ export default function Services() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
-        <section aria-labelledby="hero-heading" className="relative min-h-[90vh] flex flex-col items-center justify-center px-4">
+      <main className="min-h-screen" role="main">
+        <section 
+          aria-labelledby="hero-title"
+          className="relative min-h-[85vh] flex flex-col items-center justify-center px-4 pb-16"
+        >
+          <h1 id="hero-title" className="sr-only">Solutions Cloud Natives - Architecture nouvelle génération</h1>
           {/* Background Pattern */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
@@ -102,46 +106,62 @@ export default function Services() {
 
           <FadeIn>
             <div className="max-w-[800px] mx-auto text-center relative z-10">
-              <span className={COMMON_CLASSES.badge}>
-                NOS SERVICES
+              <span className={`${COMMON_CLASSES.badge} !mb-8`}>
+                SOLUTIONS CLOUD NATIVES
               </span>
-              <h1 className={`${COMMON_CLASSES.sectionTitle} !text-[80px]`}>
+              <h1 className={`${COMMON_CLASSES.sectionTitle} !text-7xl md:!text-8xl mb-8`}>
                 Solutions
-                <span className={COMMON_CLASSES.gradientText}>
+                <span className={`${COMMON_CLASSES.gradientText} block mt-2`}>
                   cloud natives
                 </span>
               </h1>
-              <p className={COMMON_CLASSES.sectionDescription}>
-                Des applications modernes et évolutives pour transformer votre entreprise
+              <p className={`${COMMON_CLASSES.sectionDescription} max-w-2xl mx-auto mb-12`}>
+                Des solutions modernes et évolutives pour transformer votre infrastructure et accélérer votre innovation
               </p>
-              <div className="flex items-center justify-center gap-4 mt-12">
-                <a href="#contact" className={COMMON_CLASSES.primaryButton}>
-                  Démarrer un projet
-                  <span className={ANIMATIONS.linkHover}>→</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a 
+                  href="#contact" 
+                  className={`${COMMON_CLASSES.primaryButton} !px-12 !py-6 text-lg group relative overflow-hidden ${ANIMATIONS.shine}`}
+                  aria-label="Démarrer votre projet de transformation digitale"
+                >
+                  <span className="relative z-10">Démarrer votre projet</span>
+                  <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2 relative z-10`}>→</span>
                 </a>
-                <a href="#services" className={COMMON_CLASSES.secondaryButton}>
-                  Découvrir nos services
-                  <span className={ANIMATIONS.linkHover}>→</span>
+                <a 
+                  href="#services" 
+                  className={`${COMMON_CLASSES.secondaryButton} !px-12 !py-6 text-lg group w-full sm:w-auto`}
+                >
+                  Explorer nos services
+                  <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2`}>→</span>
                 </a>
               </div>
             </div>
           </FadeIn>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 rounded-full border-2 border-gray-400 dark:border-white/20 flex items-start justify-center p-2">
+              <div className="w-1 h-2 bg-gray-400 dark:bg-white/20 rounded-full" />
+            </div>
+          </div>
         </section>
 
         <Section
           id="services"
-          badge="NOS SOLUTIONS"
-          title="Architecture"
-          subtitle="nouvelle génération"
+          badge="NOS EXPERTISES"
+          title="Des solutions"
+          subtitle="sur mesure"
           hasGradientBg
-          className="py-24"
+          className="py-20"
+          role="region"
+          aria-label="Nos services"
         >
-          {/* Carte principale - Développement */}
-          <div className="mb-24">
-            <div className={`${COMMON_CLASSES.cardWrapper} p-16`}>
+          {/* Carte principale */}
+          <div className={`mb-20 group ${ANIMATIONS.scaleHover}`}>
+            <div className={`${COMMON_CLASSES.cardWrapper} p-12 lg:p-16 relative overflow-hidden ${ANIMATIONS.shine}`}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                {/* Côté gauche - Image et titre */}
-                <div className="text-center lg:text-left space-y-8">
+                {/* Image avec animation subtile */}
+                <div className={`text-center lg:text-left space-y-8 ${ANIMATIONS.fadeUp}`}>
                   <div className="relative w-48 h-48 mx-auto lg:mx-0">
                     <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-3xl blur-2xl opacity-40`} />
                     <Image
@@ -164,13 +184,13 @@ export default function Services() {
                     </p>
                   </div>
                 </div>
-
-                {/* Côté droit - Features */}
+                
+                {/* Features avec hover effect */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {SERVICES_DATA[0].features.map((feature, index) => (
                     <div 
                       key={index}
-                      className="flex items-start gap-4 p-6 rounded-xl bg-gray-50/50 dark:bg-white/[0.02]"
+                      className="flex items-start gap-4 p-6 rounded-xl bg-gray-50/50 dark:bg-white/[0.02] transition-all duration-300 hover:bg-gray-100/50 dark:hover:bg-white/[0.04]"
                     >
                       <div className={`${COMMON_CLASSES.iconContainer} !w-8 !h-8 !rounded-lg shrink-0`}>
                         <span className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium`}>
@@ -184,17 +204,27 @@ export default function Services() {
                   ))}
                 </div>
               </div>
+              <div className="flex items-center justify-start mt-8">
+                <a 
+                  href={`#contact?service=${SERVICES_DATA[0].title.toLowerCase()}`}
+                  className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium group inline-flex items-center gap-2 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[${COLORS.primary.light}]`}
+                  aria-label={`En savoir plus sur ${SERVICES_DATA[0].title}`}
+                >
+                  En savoir plus
+                  <span className={ANIMATIONS.linkHover}>→</span>
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Cartes secondaires */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {SERVICES_DATA.slice(1).map((service, index) => (
-              <div key={index} className="group">
-                <div className={`${COMMON_CLASSES.cardWrapper} p-12`}>
+              <div key={index} className={`group ${ANIMATIONS.scaleHover}`}>
+                <div className={`${COMMON_CLASSES.cardWrapper} p-12 relative overflow-hidden ${ANIMATIONS.shine}`}>
                   <div className="flex items-start gap-8">
-                    {/* Icône */}
-                    <div className="relative w-24 h-24 shrink-0">
+                    {/* Icône avec animation de fade */}
+                    <div className={`relative w-24 h-24 shrink-0 ${ANIMATIONS.fadeUp}`}>
                       <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-2xl blur-xl opacity-50`} />
                       <Image
                         src={service.image}
@@ -205,8 +235,8 @@ export default function Services() {
                       />
                     </div>
 
-                    {/* Contenu */}
-                    <div className="flex-grow space-y-6">
+                    {/* Contenu avec animation progressive */}
+                    <div className={`flex-grow space-y-6 ${ANIMATIONS.fadeUp}`}>
                       <div className="space-y-4">
                         <span className={`${COMMON_CLASSES.badge} !text-xs`}>
                           {service.subtitle}
@@ -230,6 +260,15 @@ export default function Services() {
                       </div>
                     </div>
                   </div>
+                  <div className="mt-6 pt-4 border-t border-gray-100 dark:border-white/[0.1]">
+                    <a 
+                      href={`#contact?service=${service.title.toLowerCase()}`}
+                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-[${COLORS.primary.light}] dark:hover:text-[${COLORS.primary.dark}] transition-colors"
+                      aria-label={`En savoir plus sur ${service.title}`}
+                    >
+                      Découvrir →
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -238,57 +277,48 @@ export default function Services() {
 
         <Section
           id="cta"
-          badge="COMMENCER"
-          title="Transformez"
-          subtitle="votre infrastructure"
+          title="Prêt à démarrer"
+          subtitle="votre projet ?"
+          hasGradientBg
+          className="py-24 lg:py-32"
         >
-          <div className="relative">
-            {/* Background Patterns */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute right-[-5%] top-1/2 w-[600px] h-[600px] transform -translate-y-1/2">
-                <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[40px] blur-2xl opacity-40`} />
-              </div>
-              <div className="absolute left-[-5%] bottom-[-20%] w-[400px] h-[400px]">
-                <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[40px] blur-2xl opacity-30`} />
+          <div className="max-w-[800px] mx-auto text-center">
+            <div className="mb-12 space-y-6">
+              <p className={`${COMMON_CLASSES.sectionDescription} text-xl`}>
+                Nos experts vous accompagnent à chaque étape
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <span className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-medium">Démarrage en 24h</span>
+                </span>
+                <span className="hidden sm:inline text-2xl">•</span>
+                <span className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-medium">Support dédié</span>
+                </span>
               </div>
             </div>
-
-            {/* Content */}
-            <div className="relative">
-              {/* Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                {CTA_CARDS.map((item, index) => (
-                  <div key={index} className={`${COMMON_CLASSES.card} text-center group hover:scale-105`}>
-                    <span className="text-3xl mb-4 block">{item.icon}</span>
-                    <h3 className="text-xl font-medium mb-2">{item.title}</h3>
-                    <p className={COMMON_CLASSES.textContainer}>{item.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA Content */}
-              <div className="max-w-[600px] mx-auto text-center">
-                <p className={`${COMMON_CLASSES.sectionDescription} mb-12`}>
-                  Nos experts vous accompagnent dans votre transformation digitale
-                </p>
-                
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                  <a 
-                    href="#contact" 
-                    className={`${COMMON_CLASSES.primaryButton} !px-12 !py-6 text-lg`}
-                  >
-                    Démarrer votre projet
-                    <span className={ANIMATIONS.linkHover}>→</span>
-                  </a>
-                  <a 
-                    href="tel:+33100000000" 
-                    className={`${COMMON_CLASSES.secondaryButton} !px-12 !py-6 text-lg`}
-                  >
-                    Nous appeler
-                    <span className={ANIMATIONS.linkHover}>→</span>
-                  </a>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a 
+                href="#contact" 
+                className={`${COMMON_CLASSES.primaryButton} !px-12 !py-6 text-lg group relative overflow-hidden ${ANIMATIONS.shine}`}
+                aria-label="Démarrer votre projet de transformation digitale"
+              >
+                <span className="relative z-10">Démarrer votre projet</span>
+                <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2 relative z-10`}>→</span>
+              </a>
+              <a 
+                href="mailto:contact@example.com" 
+                className={`${COMMON_CLASSES.secondaryButton} !px-12 !py-6 text-lg group`}
+              >
+                Nous contacter
+                <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2`}>→</span>
+              </a>
             </div>
           </div>
         </Section>
