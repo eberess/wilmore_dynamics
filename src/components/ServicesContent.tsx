@@ -7,6 +7,7 @@ import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/style
 import Section from './Section';
 import ServiceModal from './ServiceModal';
 import type { ServiceProps } from '@/app/services/page';
+import Badge from './Badge';
 
 type ServicesContentProps = {
   servicesData: ServiceProps[];
@@ -37,9 +38,9 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
 
         <FadeIn>
           <div className="max-w-[800px] mx-auto text-center relative z-10 mt-8 sm:mt-0">
-            <span className={`${COMMON_CLASSES.badge} !mb-4 sm:!mb-8`}>
+            <Badge>
               EXPERTISE CLOUD
-            </span>
+            </Badge>
             <h1 
               id="hero-title" 
               className={`${COMMON_CLASSES.sectionTitle} !text-5xl sm:!text-6xl md:!text-7xl lg:!text-8xl mb-6 sm:mb-8 text-center`}

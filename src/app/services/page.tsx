@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import ServicesContent from "@/components/ServicesContent";
 import type { Metadata } from 'next';
+import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
 
 export type ServiceProps = {
   title: string;
@@ -54,11 +55,11 @@ Nos ingénieurs certifiés AWS, GCP et Azure vous accompagnent dans l'optimisati
     title: "Conseil & Audit",
     subtitle: "Expertise stratégique",
     description: "Nous vous accompagnons dans votre transformation digitale avec une approche pragmatique et des solutions sur mesure.",
-    modalContent: `Fort de notre expérience auprès de grands comptes et scale-ups, nous vous guidons dans vos choix technologiques et organisationnels.
+    modalContent: `Forts de notre expérience auprès de grands comptes et de scale-ups, nous vous guidons dans vos choix technologiques et organisationnels.
 
-Nos consultants seniors réalisent des audits approfondis de votre infrastructure et de vos applications. Nous identifions les points d'amélioration et établissons une roadmap claire alignée avec vos objectifs business.
-
-Notre accompagnement inclut également la montée en compétences de vos équipes, avec des formations personnalisées et un transfert de connaissances continu.`,
+    Nos consultants expérimentés réalisent des audits approfondis de votre infrastructure et de vos applications. Nous identifions les axes d'amélioration et établissons une feuille de route claire et alignée avec vos objectifs commerciaux.
+    
+    Notre accompagnement inclut également le développement des compétences de vos équipes grâce à des formations personnalisées et un transfert de connaissances continu.`,
     features: [
       "Audit d'architecture technique",
       "Optimisation des performances",
@@ -71,9 +72,14 @@ Notre accompagnement inclut également la montée en compétences de vos équipe
   }
 ];
 
+const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://wilmore-dynamics.com'
+  : 'http://localhost:3000';
+
 export const metadata: Metadata = {
   title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
   description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT. Solutions modernes et évolutives pour transformer votre infrastructure.',
+  metadataBase: new URL(baseUrl),
   openGraph: {
     title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
     description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT. Solutions modernes et évolutives pour transformer votre infrastructure.',
@@ -95,4 +101,4 @@ export default function Services() {
       <ServicesContent servicesData={SERVICES_DATA} />
     </>
   );
-} 
+}

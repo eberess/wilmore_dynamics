@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import ScrollToTop from '@/components/ScrollToTop';
 import FadeIn from '@/components/FadeIn';
 import ContactForm from '@/components/ContactForm';
+import Badge from '@/components/Badge';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -144,7 +145,6 @@ const ANIMATIONS = {
 
 // Classes communes
 const COMMON_CLASSES = {
-  badge: `inline-block text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium px-4 py-2 rounded-full ${GRADIENTS.BADGE_BG} mb-6 animate-fade-in`,
   gradientText: `block py-2 ${GRADIENTS.TEXT}`,
   sectionBg: `py-24 md:py-32 px-4 ${GRADIENTS.BG_SECTION}`,
   cardHover: `group-hover:text-[${COLORS.primary.light}] dark:group-hover:text-[${COLORS.primary.dark}] transition-colors`,
@@ -200,9 +200,9 @@ const Section = ({
       <div className={COMMON_CLASSES.sectionContainer}>
         <div className={COMMON_CLASSES.sectionHeader}>
           {badge && (
-            <span className={COMMON_CLASSES.badge}>
-              {badge}
-            </span>
+            <div className="relative">
+              <Badge>{badge}</Badge>
+            </div>
           )}
           <h2 className={COMMON_CLASSES.sectionTitle}>
             {title}

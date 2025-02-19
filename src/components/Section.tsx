@@ -1,4 +1,5 @@
 import { GRADIENTS, COMMON_CLASSES } from '@/constants/styles';
+import Badge from './Badge';
 
 type SectionProps = {
   id: string;
@@ -40,9 +41,9 @@ const Section = ({
       <div className={`${COMMON_CLASSES.sectionContainer} relative z-10`}>
         <div className={`${COMMON_CLASSES.sectionHeader} mb-16 md:mb-24`}>
           {badge && (
-            <span className={COMMON_CLASSES.badge}>
-              {badge}
-            </span>
+            <div className="relative">
+              <Badge>{badge}</Badge>
+            </div>
           )}
           <h2 className={COMMON_CLASSES.sectionTitle}>
             {title}
