@@ -1,46 +1,72 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
   useEffect(() => {
-    // Initialiser le thème au chargement
-    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setTheme('dark');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
+    setTheme(initialTheme);
+    
+    if (initialTheme === 'dark') {
       document.documentElement.classList.add('dark');
-    } else {
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
     }
+    
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
+    if (!theme) return;
+    
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     
-    // Mettre à jour le DOM et localStorage
+    const root = document.documentElement;
     if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
+      root.classList.remove('dark');
     }
+    
+    localStorage.setItem('theme', newTheme);
   };
+
+  if (!mounted || theme === null) {
+    return (
+      <div className="w-8 h-8 flex items-center justify-center">
+        <div className="w-5 h-5 bg-gray-200 rounded-full animate-pulse" />
+      </div>
+    );
+  }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg hover:bg-black/[.05] dark:hover:bg-white/[.06] transition-colors"
-      aria-label="Toggle theme"
+      className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      aria-label={theme === 'light' ? 'Activer le mode sombre' : 'Activer le mode clair'}
     >
       {theme === 'light' ? (
-        <Moon className="w-5 h-5" />
+        <Image
+          src="/icons/dark_mode.svg"
+          alt="Passer en mode sombre"
+          width={20}
+          height={20}
+          className="brightness-0"
+        />
       ) : (
-        <Sun className="w-5 h-5" />
+        <Image
+          src="/icons/light_mode.svg"
+          alt="Passer en mode clair"
+          width={20}
+          height={20}
+          className="brightness-0 invert dark:brightness-100 dark:invert-0"
+        />
       )}
     </button>
   );

@@ -5,7 +5,7 @@ export default async function sitemap() {
       lastModified: new Date(),
     },
     {
-      url: 'https://wilmoredynamics.com/open-source/apps',
+      url: 'https://wilmoredynamics.com/apps',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,

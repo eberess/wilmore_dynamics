@@ -61,7 +61,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-black/[.05] dark:hover:bg-white/[.06] transition-colors">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-black/[.05] dark:hover:bg-white/[.06] transition-colors"
