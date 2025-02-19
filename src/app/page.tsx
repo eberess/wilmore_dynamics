@@ -167,7 +167,7 @@ export default function Home() {
           subtitle="votre transformation digitale"
           hasGradientBg
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 px-4 sm:px-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 px-4 sm:px-0 h-full">
             {[
               {
                 title: "Architecture Cloud Native",
@@ -201,25 +201,27 @@ export default function Home() {
                 features: ["Chiffrement", "RGPD", "Audit", "Veille sécurité"]
               }
             ].map((solution, index) => (
-              <div key={index} className="group relative p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  {solution.icon}
-                </div>
-                <h3 className="text-2xl font-medium mt-6 mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  {solution.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {solution.features.map((feature, featureIndex) => (
-                    <span
-                      key={featureIndex}
-                      className="px-3 py-1 rounded-full text-sm bg-blue-50 dark:bg-blue-500/[0.08] text-blue-600 dark:text-blue-400 font-medium"
-                    >
-                      {feature}
-                    </span>
-                  ))}
+              <div key={index} className="group relative h-full p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                <div className="flex flex-col h-full">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    {solution.icon}
+                  </div>
+                  <h3 className="text-2xl font-medium mt-6 mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {solution.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 flex-grow">
+                    {solution.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {solution.features.map((feature, featureIndex) => (
+                      <span
+                        key={featureIndex}
+                        className="px-3 py-1 rounded-full text-sm bg-blue-50 dark:bg-blue-500/[0.08] text-blue-600 dark:text-blue-400 font-medium"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -506,83 +508,68 @@ export default function Home() {
         <Section
           id={SECTION_IDS.process}
           badge="NOTRE APPROCHE"
-          title="Comment nous"
-          subtitle="transformons vos idées"
-          hasGradientBg
+          title={
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
+                Une méthodologie
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  éprouvée
+                </span>
+              </h2>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Un processus simple et efficace pour transformer vos idées en solutions
+              </p>
+            </div>
+          }
+          className="py-24"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {[
               {
-                step: "01",
+                number: "01",
                 title: "Analyse",
-                description: "Étude approfondie de vos besoins et objectifs",
-                features: ["Audit technique", "Analyse des besoins", "Définition des objectifs"],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )
+                description: "Compréhension approfondie de vos besoins",
+                features: ["Audit technique", "Analyse des besoins", "Définition des objectifs"]
               },
               {
-                step: "02",
+                number: "02",
                 title: "Conception",
-                description: "Architecture et solutions sur mesure",
-                features: ["Architecture", "Choix technologiques", "Planning détaillé"],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M8 8H16M8 12H16M8 16H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )
+                description: "Élaboration d'une architecture moderne et évolutive",
+                features: ["Architecture Cloud Native", "Choix technologiques", "Planning détaillé"]
               },
               {
-                step: "03",
-                title: "Développement",
-                description: "Réalisation itérative et tests continus",
-                features: ["Cycles courts", "Tests automatisés", "Revue de code"],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 9L4 12L8 15M16 9L20 12L16 15M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )
+                number: "03",
+                title: "Réalisation",
+                description: "Développement itératif avec des cycles courts",
+                features: ["Développement Agile", "Tests continus", "Revue de code"]
               },
               {
-                step: "04",
+                number: "04",
                 title: "Déploiement",
-                description: "Mise en production et accompagnement",
-                features: ["CI/CD", "Monitoring", "Support"],
-                icon: (
-                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 15V3M12 15L8 11M12 15L16 11M2 17L2.621 19.485C2.72915 19.9177 2.97882 20.3018 3.33033 20.5763C3.68184 20.8508 4.11501 20.9999 4.561 21H19.439C19.885 20.9999 20.3182 20.8508 20.6697 20.5763C21.0212 20.3018 21.2708 19.9177 21.379 19.485L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )
+                description: "Mise en production sécurisée et monitoring",
+                features: ["CI/CD", "Monitoring", "Support continu"]
               }
             ].map((step, index) => (
               <div key={index} className="group relative">
-                <div className={`p-10 ${COMMON_CLASSES.cardWrapper} ${ANIMATIONS.cardHover}`}>
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
-                      <span className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-xl font-bold`}>
-                        {step.step}
-                      </span>
-                    </div>
-                    <div className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] ${ANIMATIONS.groupHover}`}>
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className={COMMON_CLASSES.cardHover}>
-                    {step.title}
-                  </h3>
-                  <p className={COMMON_CLASSES.textContainer}>
-                    {step.description}
-                  </p>
-                  <div className="space-y-2">
-                    {step.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className={`flex items-center gap-2 text-sm ${COMMON_CLASSES.textContainer}`}>
-                        <div className={`w-1.5 h-1.5 rounded-full bg-[${COLORS.primary.light}] dark:bg-[${COLORS.primary.dark}] opacity-75`} />
-                        {feature}
-                      </div>
-                    ))}
+                <div className="flex gap-8 items-start p-8 rounded-3xl bg-white dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-colors duration-500">
+                  <span className="text-[2.5rem] font-medium text-blue-600/20 dark:text-blue-500/20">
+                    {step.number}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-medium text-gray-900 dark:text-white mb-4">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6">
+                      {step.description}
+                    </p>
+                    <ul className="space-y-3">
+                      {step.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600/40 dark:bg-blue-500/40" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
