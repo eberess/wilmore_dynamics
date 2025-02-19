@@ -5,6 +5,8 @@ import FadeIn from '@/components/FadeIn';
 import ContactForm from '@/components/ContactForm';
 import Badge from '@/components/Badge';
 import { Metadata } from 'next';
+import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wilmoredynamics.com'),
@@ -107,61 +109,6 @@ const jsonLd = {
   ]
 };
 
-// Définition des constantes pour les gradients et les couleurs
-const COLORS = {
-  primary: {
-    light: '#1a73e8',
-    DEFAULT: '#4285f4',
-    dark: '#8ab4f8'
-  }
-} as const;
-
-const GRADIENTS = {
-  TEXT: `bg-clip-text text-transparent bg-gradient-to-r from-[${COLORS.primary.light}] via-[${COLORS.primary.DEFAULT}] to-[${COLORS.primary.dark}] dark:from-[${COLORS.primary.dark}] dark:via-[${COLORS.primary.DEFAULT}] dark:to-[${COLORS.primary.light}] animate-gradient bg-[length:200%_200%]`,
-  BG_SECTION: "bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0",
-  BG_CARD: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.06] dark:from-[${COLORS.primary.dark}]/[0.06] to-transparent`,
-  BADGE_BG: `bg-[${COLORS.primary.light}]/[0.05] dark:bg-[${COLORS.primary.dark}]/[0.05]`,
-  BG_DECORATIVE: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.03] via-[${COLORS.primary.DEFAULT}]/[0.02] to-transparent`,
-  HOVER_EFFECT: `hover:bg-[${COLORS.primary.light}]/[0.08] dark:hover:bg-[${COLORS.primary.dark}]/[0.08]`,
-  BLOG_AI: "from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10",
-  BLOG_CLOUD: "from-emerald-500/20 to-cyan-500/20 dark:from-emerald-500/10 dark:to-cyan-500/10",
-  BLOG_SECURITY: "from-orange-500/20 to-red-500/20 dark:from-orange-500/10 dark:to-red-500/10"
-} as const;
-
-const ANIMATIONS = {
-  hover: "transition-all duration-300 hover:scale-[1.03]",
-  rotate: "transition-transform duration-300 group-hover:-rotate-3",
-  fadeIn: "animate-fade-in",
-  gradient: "animate-gradient bg-[length:200%_200%]",
-  slideUp: "transition-all duration-500 hover:-translate-y-1",
-  groupHover: "transition-transform duration-300 group-hover:scale-110",
-  cardHover: "transition-all duration-500 hover:shadow-xl hover:-translate-y-1",
-  iconHover: "transition-all duration-300 group-hover:scale-110 group-hover:rotate-3",
-  linkHover: "transition-transform duration-300 group-hover:translate-x-1",
-  imageHover: "transition-transform duration-500 group-hover:scale-105",
-  contentHover: "transition-transform duration-500 group-hover:translate-y-[-5px]",
-  backgroundHover: "transition-all duration-500 group-hover:from-[#1a73e8]/[0.05] dark:group-hover:from-[#8ab4f8]/[0.05]"
-} as const;
-
-// Classes communes
-const COMMON_CLASSES = {
-  gradientText: `block py-2 ${GRADIENTS.TEXT}`,
-  sectionBg: `py-24 md:py-32 px-4 ${GRADIENTS.BG_SECTION}`,
-  cardHover: `group-hover:text-[${COLORS.primary.light}] dark:group-hover:text-[${COLORS.primary.dark}] transition-colors`,
-  primaryButton: `group px-8 py-4 rounded-full bg-[${COLORS.primary.light}] hover:bg-[#1557b0] text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]`,
-  secondaryButton: "group px-8 py-4 rounded-full bg-gray-100 dark:bg-white/[0.08] hover:bg-gray-200 dark:hover:bg-white/[0.12] text-gray-700 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]",
-  card: "group relative p-8 rounded-[32px] bg-white dark:bg-white/[0.02] hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-500 border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1",
-  cardContainer: "grid grid-cols-1 md:grid-cols-3 gap-8",
-  iconContainer: `flex-shrink-0 w-14 h-14 rounded-2xl bg-[${COLORS.primary.light}]/[0.05] dark:bg-[${COLORS.primary.dark}]/[0.05] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[${COLORS.primary.light}]/[0.08] dark:group-hover:bg-[${COLORS.primary.dark}]/[0.08] transition-all duration-300`,
-  sectionContainer: "max-w-[1200px] mx-auto",
-  sectionHeader: "text-center mb-32",
-  sectionTitle: "text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6",
-  sectionDescription: "text-xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed",
-  textContainer: "text-gray-600 dark:text-gray-400 leading-relaxed",
-  cardWrapper: "rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] overflow-hidden hover:shadow-xl transition-all duration-500 h-full hover:-translate-y-1",
-  contactCard: "bg-gradient-to-b from-white to-gray-50/50 dark:from-white/[0.02] dark:to-white/[0.01] rounded-[48px] border border-gray-100 dark:border-white/[0.1] p-8 md:p-16 shadow-[0_0_80px_-15px_rgba(26,115,232,0.03)] transition-all duration-500 hover:shadow-[0_0_100px_-15px_rgba(26,115,232,0.05)]"
-} as const;
-
 // Ajout d'IDs cohérents pour toutes les sections
 const SECTION_IDS = {
   hero: 'hero',
@@ -173,51 +120,6 @@ const SECTION_IDS = {
   openSource: 'open-source',
   news: 'news'
 } as const;
-
-type SectionProps = {
-  id: typeof SECTION_IDS[keyof typeof SECTION_IDS];
-  title: string;
-  subtitle?: string;
-  badge?: string;
-  hasGradientBg?: boolean;
-  children: React.ReactNode;
-};
-
-// Composant de section réutilisable
-const Section = ({ 
-  id, 
-  title, 
-  subtitle, 
-  badge, 
-  hasGradientBg = false, 
-  children 
-}: SectionProps) => {
-  return (
-    <section 
-      id={id}
-      className={`py-24 md:py-32 px-4 ${hasGradientBg ? GRADIENTS.BG_SECTION : ''}`}
-    >
-      <div className={COMMON_CLASSES.sectionContainer}>
-        <div className={COMMON_CLASSES.sectionHeader}>
-          {badge && (
-            <div className="relative">
-              <Badge>{badge}</Badge>
-            </div>
-          )}
-          <h2 className={COMMON_CLASSES.sectionTitle}>
-            {title}
-            {subtitle && (
-              <span className={COMMON_CLASSES.gradientText}>
-                {subtitle}
-              </span>
-            )}
-          </h2>
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-};
 
 export default function Home() {
   return (
@@ -336,16 +238,40 @@ export default function Home() {
         <Section
           id={SECTION_IDS.about}
           badge="POURQUOI NOUS CHOISIR"
-          title="Une expertise"
-          subtitle="qui fait la différence"
+          title={
+            <div className="
+              text-[2.75rem] sm:text-[3.5rem]
+              leading-[1.1]
+              font-medium
+              tracking-[-0.02em]
+              text-gray-900 dark:text-white
+              mb-4
+            ">
+              Une expertise
+              <span className="
+                text-[2rem] sm:text-[2.75rem]
+                block
+                bg-gradient-to-r from-blue-600 to-blue-500
+                bg-clip-text text-transparent
+              ">
+                qui fait la différence
+              </span>
+            </div>
+          }
           hasGradientBg
         >
-          <div className="grid md:grid-cols-2 gap-20 items-start">
-            <div className="md:sticky md:top-32 pt-12">
-              <p className={COMMON_CLASSES.sectionDescription}>
+          <div className="grid md:grid-cols-2 gap-20">
+            <div className="flex flex-col">
+              <p className="
+                text-[1.125rem]
+                leading-[1.6]
+                text-gray-600/90 dark:text-gray-300/90
+                mb-12
+              ">
                 Notre approche combine excellence technique et vision stratégique pour des résultats exceptionnels
               </p>
-              <div className="space-y-12">
+
+              <div className="space-y-12 flex-grow">
                 {[
                   {
                     title: "Excellence technique",
@@ -368,17 +294,35 @@ export default function Home() {
                     icon: "⚙️"
                   }
                 ].map((item, index) => (
-                  <div key={index} className="flex gap-6 group">
-                    <div className={COMMON_CLASSES.iconContainer}>
-                      <span className={`text-2xl ${ANIMATIONS.rotate}`}>
+                  <div key={index} className="flex gap-5 group">
+                    <div className="
+                      flex-shrink-0 
+                      w-10 h-10 
+                      rounded-xl
+                      bg-blue-50/80 dark:bg-blue-500/[0.08]
+                      flex items-center justify-center
+                      transition-all duration-300
+                      group-hover:scale-105
+                      group-hover:bg-blue-50 dark:group-hover:bg-blue-500/[0.12]
+                    ">
+                      <span className="text-xl">
                         {item.icon}
                       </span>
                     </div>
                     <div>
-                      <h3 className={COMMON_CLASSES.cardHover}>
+                      <h3 className="
+                        text-[1rem]
+                        font-medium
+                        text-gray-900 dark:text-white
+                        mb-1
+                      ">
                         {item.title}
                       </h3>
-                      <p className={COMMON_CLASSES.textContainer}>
+                      <p className="
+                        text-[0.9375rem]
+                        leading-[1.5]
+                        text-gray-600/80 dark:text-gray-300/80
+                      ">
                         {item.description}
                       </p>
                     </div>
@@ -386,7 +330,8 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="hidden md:flex md:h-[800px] items-center justify-center pt-12">
+
+            <div className="relative flex items-center">
               <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
                 <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
                 <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
@@ -606,16 +551,39 @@ export default function Home() {
         <Section
           id={SECTION_IDS.openSource}
           badge="OPEN SOURCE"
-          title="Solutions"
-          subtitle="open source"
+          title={
+            <div className="
+              text-[2.75rem] sm:text-[3.5rem]
+              leading-[1.1]
+              font-medium
+              tracking-[-0.02em]
+              text-gray-900 dark:text-white
+              mb-4
+            ">
+              Solutions
+              <span className="
+                text-[2rem] sm:text-[2.75rem]
+                block
+                bg-gradient-to-r from-blue-600 to-blue-500
+                bg-clip-text text-transparent
+              ">
+                open source
+              </span>
+            </div>
+          }
         >
           <div className="grid md:grid-cols-2 gap-20">
-            <div>
-              <p className={COMMON_CLASSES.sectionDescription}>
+            <div className="flex flex-col">
+              <p className="
+                text-[1.125rem]
+                leading-[1.6]
+                text-gray-600/90 dark:text-gray-300/90
+                mb-12
+              ">
                 Des solutions transparentes et personnalisables pour garder le contrôle de vos données
               </p>
 
-              <div className="space-y-8">
+              <div className="space-y-12 flex-grow">
                 {[
                   {
                     title: "Transparence totale",
@@ -633,17 +601,35 @@ export default function Home() {
                     icon: "🔒"
                   }
                 ].map((feature, index) => (
-                  <div key={index} className="flex gap-6 group">
-                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
-                      <span className={`text-2xl ${ANIMATIONS.rotate}`}>
+                  <div key={index} className="flex gap-5 group">
+                    <div className="
+                      flex-shrink-0 
+                      w-10 h-10 
+                      rounded-xl
+                      bg-blue-50/80 dark:bg-blue-500/[0.08]
+                      flex items-center justify-center
+                      transition-all duration-300
+                      group-hover:scale-105
+                      group-hover:bg-blue-50 dark:group-hover:bg-blue-500/[0.12]
+                    ">
+                      <span className="text-xl">
                         {feature.icon}
                       </span>
                     </div>
                     <div>
-                      <h3 className={COMMON_CLASSES.cardHover}>
+                      <h3 className="
+                        text-[1rem]
+                        font-medium
+                        text-gray-900 dark:text-white
+                        mb-1
+                      ">
                         {feature.title}
                       </h3>
-                      <p className={COMMON_CLASSES.textContainer}>
+                      <p className="
+                        text-[0.9375rem]
+                        leading-[1.5]
+                        text-gray-600/80 dark:text-gray-300/80
+                      ">
                         {feature.description}
                       </p>
                     </div>
@@ -651,119 +637,69 @@ export default function Home() {
                 ))}
               </div>
 
-              <a href="/apps" className={COMMON_CLASSES.primaryButton}>
+              <a 
+                href="/apps" 
+                className={`
+                  group
+                  inline-flex
+                  items-center
+                  gap-2.5
+                  px-6
+                  py-2.5
+                  mt-8
+                  w-fit
+                  text-[13px]
+                  font-medium
+                  text-white
+                  bg-blue-600/95 hover:bg-blue-600
+                  dark:bg-blue-500/95 dark:hover:bg-blue-500
+                  rounded-[20px]
+                  transition-all
+                  duration-200
+                  shadow-sm
+                  hover:shadow-md
+                  hover:translate-y-[-1px]
+                  focus:outline-none 
+                  focus:ring-2 
+                  focus:ring-blue-500/50
+                  focus:ring-offset-1
+                  leading-relaxed
+                `}
+              >
                 Explorer nos applications
-                <span className={ANIMATIONS.linkHover}>→</span>
+                <svg 
+                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M13 7l5 5m0 0l-5 5m5-5H6" 
+                  />
+                </svg>
               </a>
             </div>
 
-            <div className="relative">
-              <div className="sticky top-32 pt-12">
-                <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
-                  <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
-                  <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
-                    <Image
-                      src="/open-source-illustration.svg"
-                      alt="Open Source Illustration"
-                      width={540}
-                      height={540}
-                      className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
-                      priority
-                    />
-                  </div>
+            <div className="relative flex items-center">
+              <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
+                <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
+                <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
+                  <Image
+                    src="/expertise-illustration.svg"
+                    alt="Expertise Illustration"
+                    width={540}
+                    height={540}
+                    className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
+                    priority
+                  />
                 </div>
               </div>
             </div>
           </div>
         </Section>
-
-        <Section
-          id={SECTION_IDS.news}
-          badge="VEILLE TECHNOLOGIQUE"
-          title="Dernières"
-          subtitle="tendances"
-          hasGradientBg
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "L'essor de l'IA générative",
-                description: "Comment l'IA transforme le développement logiciel et ouvre de nouvelles possibilités",
-                date: "28 Mars 2024",
-                tag: "Intelligence Artificielle",
-                gradient: GRADIENTS.BLOG_AI
-              },
-              {
-                title: "Cloud Native en 2024",
-                description: "Les meilleures pratiques et tendances pour des applications cloud natives modernes",
-                date: "21 Mars 2024",
-                tag: "Cloud Computing",
-                gradient: GRADIENTS.BLOG_CLOUD
-              },
-              {
-                title: "Sécurité & DevSecOps",
-                description: "Intégrer la sécurité au cœur du cycle de développement logiciel",
-                date: "14 Mars 2024",
-                tag: "Sécurité",
-                gradient: GRADIENTS.BLOG_SECURITY
-              }
-            ].map((article, index) => (
-              <div key={index} className="group">
-                <div className={`${COMMON_CLASSES.cardWrapper} ${ANIMATIONS.cardHover}`}>
-                  <div className={`h-48 bg-gradient-to-br ${article.gradient} p-8 flex items-center justify-center`}>
-                    <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
-                      {article.tag === "Intelligence Artificielle" && (
-                        <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 2a9 9 0 0 1 9 9c0 3.18-2.45 6.92-7.34 11.23a.75.75 0 0 1-.99.07l-.13-.07C7.65 17.92 5.2 14.18 5.2 11a9 9 0 0 1 9-9z"/>
-                          <circle cx="12" cy="11" r="3"/>
-                        </svg>
-                      )}
-                      {article.tag === "Cloud Computing" && (
-                        <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M4 16.242A7 7 0 1 1 15.758 4.242"/>
-                          <path d="M20 20H7.5a2.5 2.5 0 1 1 0-5H18a4 4 0 0 0 2-7.5"/>
-                        </svg>
-                      )}
-                      {article.tag === "Sécurité" && (
-                        <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 2s8 4 8 10v4c0 2-2 4-4 4H8c-2 0-4-2-4-4v-4c0-6 8-10 8-10z"/>
-                          <path d="M9 16v-5"/>
-                          <path d="M15 16v-5"/>
-                          <path d="M12 16v-2"/>
-                        </svg>
-                      )}
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className={`px-3 py-1 rounded-full text-sm ${GRADIENTS.TEXT} font-medium`}>
-                        {article.tag}
-                      </span>
-                      <span className={COMMON_CLASSES.textContainer}>
-                        {article.date}
-                      </span>
-                    </div>
-                    <h3 className={COMMON_CLASSES.cardHover}>
-                      {article.title}
-                    </h3>
-                    <p className={`${COMMON_CLASSES.textContainer} mb-6 line-clamp-2`}>
-                      {article.description}
-                    </p>
-                    <a 
-                      href={`/blog/${article.title.toLowerCase().replace(/ /g, '-')}`}
-                      className={`inline-flex items-center text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] font-medium group/link`}
-                    >
-                      Lire la suite
-                      <span className={ANIMATIONS.linkHover}>→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <ScrollToTop />
       </main>
     </>
   );

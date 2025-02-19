@@ -27,7 +27,7 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
         aria-labelledby="hero-title"
         className="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex flex-col items-center justify-center px-4 pb-8 sm:pb-16 pt-20 sm:pt-0"
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none motion-safe:animate-subtle-float">
           <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
             <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
           </div>
@@ -43,15 +43,35 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
             </Badge>
             <h1 
               id="hero-title" 
-              className={`${COMMON_CLASSES.sectionTitle} !text-5xl sm:!text-6xl md:!text-7xl lg:!text-8xl mb-6 sm:mb-8 text-center`}
+              className={`
+                text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5rem]
+                leading-[1.1]
+                font-medium
+                tracking-[-0.02em]
+                mb-6 sm:mb-8
+                text-center
+                text-gray-900 dark:text-white
+              `}
             >
               Solutions
-              <span className={`${COMMON_CLASSES.gradientText} block mt-1 sm:mt-2`}>
+              <span className={`
+                ${COMMON_CLASSES.gradientText}
+                block 
+                mt-2 sm:mt-3
+                text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem]
+              `}>
                 nouvelle génération
               </span>
             </h1>
-            <p className={`${COMMON_CLASSES.sectionDescription} text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12`}>
-              Des solutions modernes et évolutives pour transformer votre infrastructure et accélérer votre innovation
+            <p className={`
+              text-[1.125rem] sm:text-[1.25rem] md:text-[1.5rem]
+              leading-[1.6]
+              text-gray-600/90 dark:text-gray-300/90
+              max-w-2xl 
+              mx-auto 
+              mb-8 sm:mb-12
+            `}>
+              Des solutions modernes et évolutives pour transformer votre infrastructure
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 sm:mb-0">
               <a 
@@ -86,7 +106,7 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
         title="Développement"
         subtitle="& Infrastructure"
         hasGradientBg
-        className="py-20"
+        className="py-20 scroll-mt-20 motion-safe:transition-all motion-safe:duration-1000"
         role="region"
         aria-label="Nos services"
       >
@@ -109,10 +129,17 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
                   />
                 </div>
                 <div className="space-y-4">
-                  <span className={COMMON_CLASSES.badge}>
+                  <Badge>
                     {servicesData[0].subtitle}
-                  </span>
-                  <h3 className={`text-3xl font-medium ${COMMON_CLASSES.cardHover}`}>
+                  </Badge>
+                  <h3 className={`
+                    text-[1.5rem] sm:text-[1.75rem]
+                    leading-[1.3]
+                    font-medium
+                    tracking-[-0.01em]
+                    text-gray-900 dark:text-white
+                    ${COMMON_CLASSES.cardHover}
+                  `}>
                     {servicesData[0].title}
                   </h3>
                   <p className={`${COMMON_CLASSES.textContainer} lg:max-w-md`}>
@@ -128,11 +155,19 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
                     className="flex items-start gap-4 p-6 rounded-xl bg-gray-50/50 dark:bg-white/[0.02] transition-all duration-300 hover:bg-gray-100/50 dark:hover:bg-white/[0.04]"
                   >
                     <div className={`${COMMON_CLASSES.iconContainer} !w-8 !h-8 !rounded-lg shrink-0`}>
-                      <span className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium`}>
+                      <span className={`
+                        text-[0.9375rem]
+                        leading-[1.5]
+                        text-gray-600/80 dark:text-gray-300/80
+                      `}>
                         {(index + 1).toString().padStart(2, '0')}
                       </span>
                     </div>
-                    <span className={COMMON_CLASSES.textContainer}>
+                    <span className={`
+                      text-[0.9375rem]
+                      leading-[1.5]
+                      text-gray-600/80 dark:text-gray-300/80
+                    `}>
                       {feature}
                     </span>
                   </div>
@@ -161,7 +196,20 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
               ref={setCardRef(index + 1)}
               className={`group ${ANIMATIONS.scaleHover}`}
             >
-              <div className={`${COMMON_CLASSES.cardWrapper} p-8 sm:p-12 relative overflow-hidden ${ANIMATIONS.shine}`}>
+              <div 
+                className={`
+                  ${COMMON_CLASSES.cardWrapper} 
+                  p-8 sm:p-12 
+                  relative 
+                  overflow-hidden 
+                  ${ANIMATIONS.shine}
+                  hover:scale-[1.02]
+                  transition-all
+                  duration-500
+                  will-change-transform
+                  motion-safe:hover:translate-y-[-2px]
+                `}
+              >
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
                   <div className={`relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 ${ANIMATIONS.fadeUp}`}>
                     <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-2xl blur-xl opacity-50`} />
@@ -180,13 +228,24 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
 
                   <div className={`flex-grow space-y-6 text-center sm:text-left ${ANIMATIONS.fadeUp}`}>
                     <div className="space-y-4">
-                      <span className={`${COMMON_CLASSES.badge} !text-xs inline-block`}>
+                      <Badge>
                         {service.subtitle}
-                      </span>
-                      <h3 className={`text-xl font-medium ${COMMON_CLASSES.cardHover}`}>
+                      </Badge>
+                      <h3 className={`
+                        text-[1.5rem] sm:text-[1.75rem]
+                        leading-[1.3]
+                        font-medium
+                        tracking-[-0.01em]
+                        text-gray-900 dark:text-white
+                        ${COMMON_CLASSES.cardHover}
+                      `}>
                         {service.title}
                       </h3>
-                      <p className={`${COMMON_CLASSES.textContainer}`}>
+                      <p className={`
+                        text-[1rem] sm:text-[1.125rem]
+                        leading-[1.6]
+                        text-gray-600/85 dark:text-gray-300/85
+                      `}>
                         {service.description}
                       </p>
                     </div>
@@ -194,7 +253,11 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
                       {service.features.slice(0, 4).map((feature, index) => (
                         <div key={index} className="flex items-center gap-4 justify-center sm:justify-start">
                           <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                          <span className={`${COMMON_CLASSES.textContainer} text-sm`}>
+                          <span className={`
+                            text-[0.9375rem]
+                            leading-[1.5]
+                            text-gray-600/80 dark:text-gray-300/80
+                          `}>
                             {feature}
                           </span>
                         </div>

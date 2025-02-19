@@ -18,13 +18,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
-    { name: 'Accueil', href: '/' },
-    { name: 'Open Source Store', href: '/open-source/apps' },
+  const NAVIGATION_ITEMS = [
     { name: 'Services', href: '/services' },
-    { name: 'À propos', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ];
+    { name: 'Applications', href: '/apps' },
+    { name: 'À propos', href: '#about' },
+    { name: 'Contact', href: '#contact' }
+  ] as const;
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -48,7 +47,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             {[
               { name: 'Services', href: '/services' },
-              { name: 'Open Source', href: '/open-source' },
+              { name: 'Applications', href: '/apps' },
               { name: 'Contact', href: '/#contact' },
             ].map((item) => (
               <Link
@@ -87,7 +86,7 @@ export default function Navbar() {
         <div className="px-4 py-4 space-y-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-white/[0.1]">
           {[
             { name: 'Services', href: '/services' },
-            { name: 'Open Source', href: '/open-source' },
+            { name: 'Applications', href: '/apps' },
             { name: 'Contact', href: '/#contact' },
           ].map((item) => (
             <Link

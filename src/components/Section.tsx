@@ -3,9 +3,9 @@ import Badge from './Badge';
 
 type SectionProps = {
   id: string;
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
-  badge?: string;
+  badge?: React.ReactNode;
   hasGradientBg?: boolean;
   children: React.ReactNode;
   className?: string;

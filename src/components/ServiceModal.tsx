@@ -1,106 +1,110 @@
 "use client";
 
-import { Dialog } from '@headlessui/react';
-import { COMMON_CLASSES, ANIMATIONS } from '@/constants/styles';
+import { useRef, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 import type { ServiceProps } from '@/app/services/page';
-import { useEffect } from 'react';
 
 type ServiceModalProps = {
   isOpen: boolean;
   onClose: () => void;
   service: ServiceProps | null;
-  cardRef: React.RefObject<(HTMLDivElement | null)[]>;
+  cardRef: React.MutableRefObject<(HTMLDivElement | null)[]>;
   cardIndex: number;
 };
 
-const ServiceModal = ({ isOpen, onClose, service, cardRef, cardIndex }: ServiceModalProps) => {
-  // Gérer le retour haptique sur mobile
-  const handleClose = () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(10); // Légère vibration de 10ms
-    }
-    onClose();
-  };
+export default function ServiceModal({ isOpen, onClose, service, cardRef, cardIndex }: ServiceModalProps) {
+  if (!service) return null;
 
-  // Gérer la fermeture avec Escape
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        handleClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen]);
-
-  if (!service || !cardRef.current || cardIndex === -1) return null;
-
-  const currentCard = cardRef.current[cardIndex];
-  if (!currentCard) return null;
-
-  const rect = currentCard.getBoundingClientRect();
-  const isMainCard = cardIndex === 0;
+  const card = cardRef.current[cardIndex];
+  const cardRect = card?.getBoundingClientRect();
 
   return (
-    <Dialog 
-      open={isOpen} 
-      onClose={handleClose}
-      className="relative z-50"
-      aria-labelledby={`modal-title-${service.title}`}
-    >
-      <div 
-        className={`
-          fixed bg-[#1d1d1f]/[0.98] overflow-y-auto max-h-[80vh]
-          transition-all duration-300 ease-out
-          ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
-        `}
-        role="dialog"
-        aria-modal="true"
-        style={{
-          top: `${Math.max(rect.top, window.innerHeight * 0.1)}px`,
-          left: `${rect.left}px`,
-          width: `${rect.width}px`,
-          minHeight: `${rect.height}px`,
-          borderRadius: isMainCard ? '24px' : '32px',
-        }}
-      >
-        <div className={`
-          p-8 text-white h-full flex flex-col
-          transition-transform duration-200 ease-out
-          ${isOpen ? 'translate-y-0' : 'translate-y-4'}
-        `}>
-          <div className="space-y-6">
-            <span className={`${COMMON_CLASSES.badge} ${ANIMATIONS.fadeUp}`} role="text">
-              {service.subtitle}
-            </span>
-            <h3 
-              id={`modal-title-${service.title}`}
-              className={`text-2xl font-medium ${ANIMATIONS.fadeUp}`}
+    <Transition show={isOpen} as={Fragment}>
+      <Dialog onClose={onClose} className="relative z-50">
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-200"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-150"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/30" />
+        </Transition.Child>
+
+        <div className="fixed inset-0">
+          <div className="flex min-h-full items-start justify-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom={`opacity-0 translate-x-[${cardRect?.left}px] translate-y-[${cardRect?.top}px] scale-[0.95]`}
+              enterTo="opacity-100 translate-x-0 translate-y-0 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 translate-x-0 translate-y-0 scale-100"
+              leaveTo={`opacity-0 translate-x-[${cardRect?.left}px] translate-y-[${cardRect?.top}px] scale-[0.95]`}
             >
-              {service.title}
-            </h3>
-            <div className={`space-y-4 text-gray-300 ${ANIMATIONS.fadeUp}`} role="article">
-              {service.modalContent.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="transition-all duration-200 delay-100">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-          <div className={`mt-auto pt-8 ${ANIMATIONS.fadeUp}`}>
-            <button
-              onClick={handleClose}
-              className="text-white/80 hover:text-white transition-colors duration-200"
-              aria-label={`Fermer les détails de ${service.title}`}
-            >
-              Fermer
-            </button>
+              <Dialog.Panel 
+                style={{
+                  position: 'absolute',
+                  top: cardRect?.top,
+                  left: cardRect?.left,
+                  width: cardRect?.width,
+                  height: cardRect?.height
+                }}
+                className="
+                  transform
+                  overflow-hidden
+                  rounded-[32px]
+                  bg-white/[0.98] 
+                  dark:bg-gray-900/[0.98]
+                  p-8 md:p-12
+                  text-left
+                  shadow-2xl
+                  transition-all
+                  duration-300
+                "
+              >
+                <button 
+                  onClick={onClose}
+                  className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  <span className="sr-only">Fermer</span>
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div className="space-y-6">
+                  <Dialog.Title className="
+                    text-[1.75rem]
+                    leading-[1.3]
+                    font-medium
+                    tracking-[-0.01em]
+                    text-gray-900 dark:text-white
+                  ">
+                    {service.title}
+                  </Dialog.Title>
+                  <div className="
+                    prose 
+                    dark:prose-invert 
+                    max-w-none
+                    prose-p:text-gray-600/85 
+                    dark:prose-p:text-gray-300/85
+                    prose-p:leading-[1.6]
+                    prose-p:text-[1.0625rem]
+                  ">
+                    {service.modalContent.split('\n\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </div>
-      </div>
-    </Dialog>
+      </Dialog>
+    </Transition>
   );
-};
-
-export default ServiceModal; 
+} 

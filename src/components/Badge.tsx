@@ -7,22 +7,29 @@ export default function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span 
       className={`
-        inline-block 
-        text-blue-600 dark:text-blue-400 
-        text-xs
-        font-medium 
-        tracking-wider
+        inline-flex
+        items-center
+        text-blue-600/90 dark:text-blue-400/90
+        text-[11px]
+        font-semibold
+        tracking-[0.06em]
         uppercase
-        px-3 
-        py-1.5
-        rounded-full 
-        bg-blue-50/80 backdrop-blur-sm
-        dark:bg-blue-500/10
-        border border-blue-100/80
-        dark:border-blue-400/20
-        mb-6 
+        px-2.5
+        py-1
+        rounded-[20px]
+        bg-blue-50/60 backdrop-blur-sm
+        dark:bg-blue-500/[0.08]
+        border border-blue-100/40
+        dark:border-blue-400/[0.06]
+        mb-6
         animate-fade-in
         z-10
+        shadow-sm
+        transition-all
+        duration-300
+        hover:bg-blue-50/80
+        dark:hover:bg-blue-500/[0.12]
+        hover:scale-[1.02]
         ${className}
       `}
     >

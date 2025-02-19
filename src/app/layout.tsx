@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { defaultMetadata } from './metadata';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <Navbar />
         <div className="flex flex-col min-h-screen">
           <main className="flex-grow">
             {children}
