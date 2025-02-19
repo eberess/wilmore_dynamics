@@ -1,63 +1,43 @@
 import { GRADIENTS, COMMON_CLASSES } from '@/constants/styles';
 import Badge from './Badge';
 
-type SectionProps = {
+interface SectionProps {
   id: string;
-  title: React.ReactNode;
+  badge?: string;
+  title: string | React.ReactNode;
   subtitle?: string;
-  badge?: React.ReactNode;
   hasGradientBg?: boolean;
   children: React.ReactNode;
-  className?: string;
-  role?: string;
-  'aria-label'?: string;
-};
+}
 
-const Section = ({ 
-  id, 
-  title, 
-  subtitle, 
-  badge, 
-  hasGradientBg = false,
-  className = '',
-  children 
-}: SectionProps) => {
+export default function Section({ id, badge, title, subtitle, hasGradientBg, children }: SectionProps) {
   return (
-    <section 
+    <section
       id={id}
-      className={`relative py-24 md:py-32 px-4 ${hasGradientBg ? GRADIENTS.BG_SECTION : ''} ${className}`}
+      className={`py-24 md:py-32 px-4 ${hasGradientBg ? GRADIENTS.BG_SECTION : ''}`}
     >
-      {hasGradientBg && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute right-[-5%] top-1/3 w-[600px] h-[600px] transform rotate-12">
-            <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[40px] blur-2xl opacity-20`} />
-          </div>
-          <div className="absolute left-[-5%] bottom-1/3 w-[600px] h-[600px] transform -rotate-12">
-            <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[40px] blur-2xl opacity-20`} />
-          </div>
-        </div>
-      )}
-
-      <div className={`${COMMON_CLASSES.sectionContainer} relative z-10`}>
-        <div className={`${COMMON_CLASSES.sectionHeader} mb-16 md:mb-24`}>
-          {badge && (
-            <div className="relative">
-              <Badge>{badge}</Badge>
-            </div>
-          )}
-          <h2 className={COMMON_CLASSES.sectionTitle}>
-            {title}
-            {subtitle && (
-              <span className={`${COMMON_CLASSES.gradientText} ml-2`}>
-                {subtitle}
-              </span>
+      <div className="max-w-[1200px] mx-auto">
+        {(badge || title || subtitle) && (
+          <div className="text-center mb-32">
+            {badge && <Badge>{badge}</Badge>}
+            
+            {typeof title === 'string' ? (
+              <div className={COMMON_CLASSES.sectionTitle}>
+                {title}
+                {subtitle && (
+                  <span className={COMMON_CLASSES.sectionSubtitle}>
+                    {subtitle}
+                  </span>
+                )}
+              </div>
+            ) : (
+              title
             )}
-          </h2>
-        </div>
+          </div>
+        )}
+        
         {children}
       </div>
     </section>
   );
-};
-
-export default Section; 
+} 

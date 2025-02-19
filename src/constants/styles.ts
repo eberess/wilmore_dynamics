@@ -1,18 +1,17 @@
 // Copier toutes les constantes de page.tsx
 export const COLORS = {
   primary: {
-    light: '#1a73e8',
-    DEFAULT: '#4285f4',
-    dark: '#8ab4f8'
+    light: "text-blue-600",
+    dark: "dark:text-blue-400"
   }
 } as const;
 
 export const GRADIENTS = {
-  TEXT: `bg-clip-text text-transparent bg-gradient-to-r from-[${COLORS.primary.light}] via-[${COLORS.primary.DEFAULT}] to-[${COLORS.primary.dark}] dark:from-[${COLORS.primary.dark}] dark:via-[${COLORS.primary.DEFAULT}] dark:to-[${COLORS.primary.light}] animate-gradient bg-[length:200%_200%]`,
+  TEXT: "bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600 animate-gradient bg-[length:200%_200%]",
   BG_SECTION: "bg-gradient-to-b from-gray-50/50 via-white/0 to-white/0 dark:from-black/[0.2] dark:via-black/0 dark:to-black/0",
-  BG_CARD: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.06] dark:from-[${COLORS.primary.dark}]/[0.06] to-transparent`,
+  BG_CARD: "bg-gradient-to-br from-blue-600/5 to-blue-500/5",
   BADGE_BG: "bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-800 dark:to-blue-900",
-  BG_DECORATIVE: `bg-gradient-to-br from-[${COLORS.primary.light}]/[0.03] via-[${COLORS.primary.DEFAULT}]/[0.02] to-transparent`,
+  BG_DECORATIVE: "bg-gradient-to-r from-blue-600/30 to-blue-500/30",
   HOVER_EFFECT: `hover:bg-[${COLORS.primary.light}]/[0.08] dark:hover:bg-[${COLORS.primary.dark}]/[0.08]`,
   BLOG_AI: "from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10",
   BLOG_CLOUD: "from-emerald-500/20 to-cyan-500/20 dark:from-emerald-500/10 dark:to-cyan-500/10",
@@ -38,7 +37,7 @@ export const ANIMATIONS = {
 } as const;
 
 export const COMMON_CLASSES = {
-  gradientText: `block py-2 ${GRADIENTS.TEXT}`,
+  gradientText: "bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent",
   sectionBg: `py-24 md:py-32 px-4 ${GRADIENTS.BG_SECTION}`,
   cardHover: `group-hover:text-[${COLORS.primary.light}] dark:group-hover:text-[${COLORS.primary.dark}] transition-colors`,
   primaryButton: `group px-8 py-4 rounded-full bg-[${COLORS.primary.light}] hover:bg-[#1557b0] text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[${COLORS.primary.light}]`,
@@ -48,7 +47,20 @@ export const COMMON_CLASSES = {
   iconContainer: `flex-shrink-0 w-14 h-14 rounded-2xl bg-[${COLORS.primary.light}]/[0.05] dark:bg-[${COLORS.primary.dark}]/[0.05] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[${COLORS.primary.light}]/[0.08] dark:group-hover:bg-[${COLORS.primary.dark}]/[0.08] transition-all duration-300`,
   sectionContainer: "max-w-[1200px] mx-auto",
   sectionHeader: "text-center mb-32",
-  sectionTitle: "text-4xl md:text-5xl leading-[1.2] font-medium tracking-[-0.02em] mb-6",
+  sectionTitle: `
+    text-[2.75rem] sm:text-[3.5rem]
+    leading-[1.1]
+    font-medium
+    tracking-[-0.02em]
+    text-gray-900 dark:text-white
+    mb-4
+  `,
+  sectionSubtitle: `
+    text-[2rem] sm:text-[2.75rem]
+    block
+    bg-gradient-to-r from-blue-600 to-blue-500
+    bg-clip-text text-transparent
+  `,
   sectionDescription: "text-xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto leading-relaxed",
   textContainer: "text-gray-600 dark:text-gray-400 leading-relaxed",
   cardWrapper: `

@@ -137,10 +137,10 @@ export default function Home() {
           {/* Background Pattern */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
-              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl ${ANIMATIONS.backgroundHover}`} />
+              <div className="w-full h-full bg-gradient-to-r from-blue-600/30 to-blue-500/30 rounded-[60px] blur-3xl" />
             </div>
             <div className="absolute left-[-10%] bottom-1/3 w-[800px] h-[800px] transform -rotate-12">
-              <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl ${ANIMATIONS.backgroundHover}`} />
+              <div className="w-full h-full bg-gradient-to-r from-blue-600/30 to-blue-500/30 rounded-[60px] blur-3xl" />
             </div>
           </div>
 
@@ -148,7 +148,7 @@ export default function Home() {
           <div className="max-w-[800px] mx-auto text-center relative z-10">
             <h2 id="hero-heading" className="text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8">
               Des solutions
-              <span className={COMMON_CLASSES.gradientText}>
+              <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 qui transforment
               </span>
               <span className="block text-[40px] md:text-[64px] mt-4 font-normal text-gray-600 dark:text-gray-300">
@@ -159,13 +159,13 @@ export default function Home() {
               Nous concevons des expériences technologiques innovantes pour propulser votre croissance
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a href="#contact" className={COMMON_CLASSES.primaryButton}>
+              <a href="#contact" className="group px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
                 Démarrer un projet
-                <span className={ANIMATIONS.linkHover}>→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
-              <a href="#solutions" className={COMMON_CLASSES.secondaryButton}>
+              <a href="#solutions" className="group px-8 py-4 rounded-full bg-gray-100 dark:bg-white/[0.08] hover:bg-gray-200 dark:hover:bg-white/[0.12] text-gray-700 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
                 En savoir plus
-                <span className={ANIMATIONS.linkHover}>→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </div>
           </div>
@@ -178,14 +178,15 @@ export default function Home() {
           subtitle="votre transformation digitale"
           hasGradientBg
         >
-          <div className={COMMON_CLASSES.cardContainer}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Architecture Cloud Native",
                 description: "Applications modernes et scalables conçues pour le cloud",
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
-                    <path d="M3 15C3 17.2091 4.79086 19 7 19H16C18.7614 19 21 16.7614 21 14C21 11.2386 18.7614 9 16 9C15.9666 9 15.9334 9.00033 15.9002 9.001C15.4373 6.71476 13.4193 5 11 5C8.23858 5 6 7.23858 6 10C6 10.3768 6.04169 10.7439 6.12071 11.097C4.33457 11.4976 3 13.0929 3 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 15C3 17.2091 4.79086 19 7 19H16C18.7614 19 21 16.7614 21 14C21 11.2386 18.7614 9 16 9C15.9666 9 15.9334 9.00033 15.9002 9.001C15.4373 6.71476 13.4193 5 11 5C8.23858 5 6 7.23858 6 10C6 10.3768 6.04169 10.7439 6.12071 11.097C4.33457 11.4976 3 13.0929 3 15Z" 
+                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ),
                 features: ["Microservices", "Conteneurisation", "Auto-scaling", "Haute disponibilité"]
@@ -194,7 +195,7 @@ export default function Home() {
                 title: "DevOps & Automatisation",
                 description: "Optimisez vos processus de développement et de déploiement",
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M8 9L4 12L8 15M16 9L20 12L16 15M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ),
@@ -204,18 +205,18 @@ export default function Home() {
                 title: "Sécurité & Conformité",
                 description: "Protégez vos données et respectez les normes en vigueur",
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ),
                 features: ["Chiffrement", "RGPD", "Audit", "Veille sécurité"]
               }
             ].map((solution, index) => (
-              <div key={index} className={`${COMMON_CLASSES.card} ${ANIMATIONS.cardHover}`}>
-                <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
+              <div key={index} className="group relative p-8 rounded-[32px] bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   {solution.icon}
                 </div>
-                <h3 className="text-2xl font-medium mb-4 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors duration-300">
+                <h3 className="text-2xl font-medium mt-6 mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {solution.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
@@ -225,10 +226,11 @@ export default function Home() {
                   {solution.features.map((feature, featureIndex) => (
                     <span
                       key={featureIndex}
-                      className={`px-3 py-1 rounded-full text-sm bg-[${COLORS.primary.light}]/[0.05] dark:bg-white/[0.05] text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] font-medium`}>
-                        {feature}
-                      </span>
-                    ))}
+                      className="px-3 py-1 rounded-full text-sm bg-blue-50 dark:bg-blue-500/[0.08] text-blue-600 dark:text-blue-400 font-medium"
+                    >
+                      {feature}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -369,7 +371,7 @@ export default function Home() {
                       title: "Email",
                       value: "contact@wilmoredynamics.com",
                       icon: (
-                        <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
+                        <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                           <path d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" 
                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -379,7 +381,7 @@ export default function Home() {
                       title: "Délai de réponse",
                       value: "Sous 24h ouvrées",
                       icon: (
-                        <svg className="w-6 h-6 text-[#1a73e8] dark:text-[#8ab4f8]" viewBox="0 0 24 24" fill="none">
+                        <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                           <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" 
                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -431,7 +433,7 @@ export default function Home() {
                 description: "Étude approfondie de vos besoins et objectifs",
                 features: ["Audit technique", "Analyse des besoins", "Définition des objectifs"],
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )
@@ -442,7 +444,7 @@ export default function Home() {
                 description: "Architecture et solutions sur mesure",
                 features: ["Architecture", "Choix technologiques", "Planning détaillé"],
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M8 8H16M8 12H16M8 16H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -454,7 +456,7 @@ export default function Home() {
                 description: "Réalisation itérative et tests continus",
                 features: ["Cycles courts", "Tests automatisés", "Revue de code"],
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M8 9L4 12L8 15M16 9L20 12L16 15M14 4L10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )
@@ -465,7 +467,7 @@ export default function Home() {
                 description: "Mise en production et accompagnement",
                 features: ["CI/CD", "Monitoring", "Support"],
                 icon: (
-                  <svg className={`w-8 h-8 text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}]`} viewBox="0 0 24 24" fill="none">
+                  <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
                     <path d="M12 15V3M12 15L8 11M12 15L16 11M2 17L2.621 19.485C2.72915 19.9177 2.97882 20.3018 3.33033 20.5763C3.68184 20.8508 4.11501 20.9999 4.561 21H19.439C19.885 20.9999 20.3182 20.8508 20.6697 20.5763C21.0212 20.3018 21.2708 19.9177 21.379 19.485L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )
@@ -552,21 +554,9 @@ export default function Home() {
           id={SECTION_IDS.openSource}
           badge="OPEN SOURCE"
           title={
-            <div className="
-              text-[2.75rem] sm:text-[3.5rem]
-              leading-[1.1]
-              font-medium
-              tracking-[-0.02em]
-              text-gray-900 dark:text-white
-              mb-4
-            ">
+            <div className={COMMON_CLASSES.sectionTitle}>
               Solutions
-              <span className="
-                text-[2rem] sm:text-[2.75rem]
-                block
-                bg-gradient-to-r from-blue-600 to-blue-500
-                bg-clip-text text-transparent
-              ">
+              <span className={COMMON_CLASSES.sectionSubtitle}>
                 open source
               </span>
             </div>
