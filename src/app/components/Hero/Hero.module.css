@@ -1,0 +1,9 @@
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #000000, #1a1f3c);
+  }
+  
+  /* Nous n'avons plus besoin de .heroServices car nous utiliserons .hero partout */
+  

@@ -27,15 +27,6 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
         aria-labelledby="hero-title"
         className="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex flex-col items-center justify-center px-4 pb-8 sm:pb-16 pt-20 sm:pt-0"
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none motion-safe:animate-subtle-float">
-          <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
-            <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
-          </div>
-          <div className="absolute left-[-10%] bottom-1/3 w-[800px] h-[800px] transform -rotate-12">
-            <div className={`w-full h-full ${GRADIENTS.BG_DECORATIVE} rounded-[60px] blur-3xl`} />
-          </div>
-        </div>
-
         <FadeIn>
           <div className="max-w-[800px] mx-auto text-center relative z-10 mt-8 sm:mt-0">
             <Badge>
@@ -111,169 +102,71 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
         aria-label="Nos services"
       >
         {/* Carte principale */}
-        <div 
-          ref={setCardRef(0)}
-          className={`mb-20 group ${ANIMATIONS.scaleHover}`}
-        >
-          <div className={`${COMMON_CLASSES.cardWrapper} p-12 lg:p-16 relative overflow-hidden ${ANIMATIONS.shine}`}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              <div className={`text-center lg:text-left space-y-8 ${ANIMATIONS.fadeUp}`}>
-                <div className="relative w-48 h-48 mx-auto lg:mx-0">
-                  <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-3xl blur-2xl opacity-40`} />
-                  <Image
-                    src={servicesData[0].image}
-                    alt="Illustration du développement cloud native montrant une architecture microservices moderne"
-                    width={192}
-                    height={192}
-                    className={`relative z-10 w-full h-full object-contain ${ANIMATIONS.hover}`}
-                  />
-                </div>
-                <div className="space-y-4">
-                  <Badge>
-                    {servicesData[0].subtitle}
-                  </Badge>
-                  <h3 className={`
-                    text-[1.5rem] sm:text-[1.75rem]
-                    leading-[1.3]
-                    font-medium
-                    tracking-[-0.01em]
-                    text-gray-900 dark:text-white
-                    ${COMMON_CLASSES.cardHover}
-                  `}>
+        <div className="mb-16">
+          <div className="bg-white dark:bg-black/20 rounded-2xl p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="text-center lg:text-left space-y-6">
+                <Image
+                  src={servicesData[0].image}
+                  alt="Illustration du développement cloud native"
+                  width={120}
+                  height={120}
+                  className="mx-auto lg:mx-0"
+                />
+                <div>
+                  <h3 className="text-2xl font-medium mb-4">
                     {servicesData[0].title}
                   </h3>
-                  <p className={`${COMMON_CLASSES.textContainer} lg:max-w-md`}>
+                  <p className="text-gray-600 dark:text-gray-300">
                     {servicesData[0].description}
                   </p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {servicesData[0].features.map((feature, index) => (
                   <div 
                     key={index}
-                    className="flex items-start gap-4 p-6 rounded-xl bg-gray-50/50 dark:bg-white/[0.02] transition-all duration-300 hover:bg-gray-100/50 dark:hover:bg-white/[0.04]"
+                    className="p-4 rounded-xl bg-gray-50 dark:bg-white/[0.02]"
                   >
-                    <div className={`${COMMON_CLASSES.iconContainer} !w-8 !h-8 !rounded-lg shrink-0`}>
-                      <span className={`
-                        text-[0.9375rem]
-                        leading-[1.5]
-                        text-gray-600/80 dark:text-gray-300/80
-                      `}>
-                        {(index + 1).toString().padStart(2, '0')}
-                      </span>
-                    </div>
-                    <span className={`
-                      text-[0.9375rem]
-                      leading-[1.5]
-                      text-gray-600/80 dark:text-gray-300/80
-                    `}>
+                    <span className="text-gray-600 dark:text-gray-300">
                       {feature}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="flex items-center justify-start mt-8">
-              <button 
-                onClick={() => setSelectedService(servicesData[0])}
-                className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] text-sm font-medium group inline-flex items-center gap-2 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[${COLORS.primary.light}]`}
-                aria-label={`En savoir plus sur ${servicesData[0].title}`}
-                aria-expanded={selectedService?.title === servicesData[0].title}
-              >
-                En savoir plus
-                <span className={ANIMATIONS.linkHover} aria-hidden="true">→</span>
-              </button>
-            </div>
           </div>
         </div>
 
         {/* Cartes secondaires */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {servicesData.slice(1).map((service, index) => (
-            <div 
-              key={index}
-              ref={setCardRef(index + 1)}
-              className={`group ${ANIMATIONS.scaleHover}`}
-            >
-              <div 
-                className={`
-                  ${COMMON_CLASSES.cardWrapper} 
-                  p-8 sm:p-12 
-                  relative 
-                  overflow-hidden 
-                  ${ANIMATIONS.shine}
-                  hover:scale-[1.02]
-                  transition-all
-                  duration-500
-                  will-change-transform
-                  motion-safe:hover:translate-y-[-2px]
-                `}
-              >
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
-                  <div className={`relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 ${ANIMATIONS.fadeUp}`}>
-                    <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-2xl blur-xl opacity-50`} />
-                    <Image
-                      src={service.image}
-                      alt={`Illustration ${service.title.toLowerCase()} représentant ${
-                        service.title === "Infrastructure & DevOps" 
-                          ? "une infrastructure cloud moderne et des pipelines CI/CD"
-                          : "des services de conseil et d'audit technique"
-                      }`}
-                      width={96}
-                      height={96}
-                      className={`relative z-10 w-full h-full object-contain ${ANIMATIONS.hover}`}
-                    />
+            <div key={index} className="bg-white dark:bg-black/20 rounded-2xl p-8">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Image
+                  src={service.image}
+                  alt={`Illustration ${service.title}`}
+                  width={80}
+                  height={80}
+                />
+                <div>
+                  <h3 className="text-xl font-medium mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {service.description}
+                  </p>
+                  <div className="space-y-2">
+                    {service.features.slice(0, 4).map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-1 h-1 rounded-full bg-blue-500" />
+                        <span className="text-gray-600 dark:text-gray-300 text-sm">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-
-                  <div className={`flex-grow space-y-6 text-center sm:text-left ${ANIMATIONS.fadeUp}`}>
-                    <div className="space-y-4">
-                      <Badge>
-                        {service.subtitle}
-                      </Badge>
-                      <h3 className={`
-                        text-[1.5rem] sm:text-[1.75rem]
-                        leading-[1.3]
-                        font-medium
-                        tracking-[-0.01em]
-                        text-gray-900 dark:text-white
-                        ${COMMON_CLASSES.cardHover}
-                      `}>
-                        {service.title}
-                      </h3>
-                      <p className={`
-                        text-[1rem] sm:text-[1.125rem]
-                        leading-[1.6]
-                        text-gray-600/85 dark:text-gray-300/85
-                      `}>
-                        {service.description}
-                      </p>
-                    </div>
-                    <div className="space-y-4">
-                      {service.features.slice(0, 4).map((feature, index) => (
-                        <div key={index} className="flex items-center gap-4 justify-center sm:justify-start">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                          <span className={`
-                            text-[0.9375rem]
-                            leading-[1.5]
-                            text-gray-600/80 dark:text-gray-300/80
-                          `}>
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-6 pt-4 border-t border-gray-100 dark:border-white/[0.1] text-center sm:text-left">
-                  <button 
-                    onClick={() => setSelectedService(service)}
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-[${COLORS.primary.light}] dark:hover:text-[${COLORS.primary.dark}] transition-colors"
-                    aria-label={`Découvrir les détails de ${service.title}`}
-                    aria-expanded={selectedService?.title === service.title}
-                  >
-                    Découvrir <span aria-hidden="true">→</span>
-                  </button>
                 </div>
               </div>
             </div>

@@ -72,7 +72,6 @@ export const metadata: Metadata = {
     canonical: 'https://wilmoredynamics.com',
     languages: {
       'fr-FR': 'https://wilmoredynamics.com',
-      'en-US': 'https://wilmoredynamics.com/en'
     }
   },
   verification: {
@@ -129,33 +128,23 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen overflow-x-hidden">
         <h1 className="sr-only">Wilmore Dynamics - Solutions Cloud Native et DevOps en France</h1>
         
         {/* Hero Section */}
         <section aria-labelledby="hero-heading" className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute right-[-10%] top-1/3 w-[800px] h-[800px] transform rotate-12">
-              <div className="w-full h-full bg-gradient-to-r from-blue-600/30 to-blue-500/30 rounded-[60px] blur-3xl" />
-            </div>
-            <div className="absolute left-[-10%] bottom-1/3 w-[800px] h-[800px] transform -rotate-12">
-              <div className="w-full h-full bg-gradient-to-r from-blue-600/30 to-blue-500/30 rounded-[60px] blur-3xl" />
-            </div>
-          </div>
-
           {/* Content */}
           <div className="max-w-[800px] mx-auto text-center relative z-10">
-            <h2 id="hero-heading" className="text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8">
+            <h2 id="hero-heading" className="text-[36px] sm:text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8">
               Des solutions
               <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 qui transforment
               </span>
-              <span className="block text-[40px] md:text-[64px] mt-4 font-normal text-gray-600 dark:text-gray-300">
+              <span className="block text-[28px] sm:text-[40px] md:text-[64px] mt-2 sm:mt-4 font-normal text-gray-600 dark:text-gray-300">
                 votre entreprise
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto mb-16 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto mb-12 sm:mb-16 leading-relaxed">
               Nous concevons des expériences technologiques innovantes pour propulser votre croissance
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -178,7 +167,7 @@ export default function Home() {
           subtitle="votre transformation digitale"
           hasGradientBg
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 px-4 sm:px-0">
             {[
               {
                 title: "Architecture Cloud Native",
@@ -212,7 +201,7 @@ export default function Home() {
                 features: ["Chiffrement", "RGPD", "Audit", "Veille sécurité"]
               }
             ].map((solution, index) => (
-              <div key={index} className="group relative p-8 rounded-[32px] bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+              <div key={index} className="group relative p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] bg-white/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.1] hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
                 <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   {solution.icon}
                 </div>
@@ -241,112 +230,163 @@ export default function Home() {
           id={SECTION_IDS.about}
           badge="POURQUOI NOUS CHOISIR"
           title={
-            <div className="
-              text-[2.75rem] sm:text-[3.5rem]
-              leading-[1.1]
-              font-medium
-              tracking-[-0.02em]
-              text-gray-900 dark:text-white
-              mb-4
-            ">
-              Une expertise
-              <span className="
-                text-[2rem] sm:text-[2.75rem]
-                block
-                bg-gradient-to-r from-blue-600 to-blue-500
-                bg-clip-text text-transparent
-              ">
-                qui fait la différence
-              </span>
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
+                Une expertise qui fait
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mt-2">
+                  la différence
+                </span>
+              </h2>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Nous combinons innovation technologique et excellence opérationnelle pour créer des solutions qui transforment votre entreprise
+              </p>
             </div>
           }
-          hasGradientBg
+          className="py-24"
         >
-          <div className="grid md:grid-cols-2 gap-20">
-            <div className="flex flex-col">
-              <p className="
-                text-[1.125rem]
-                leading-[1.6]
-                text-gray-600/90 dark:text-gray-300/90
-                mb-12
-              ">
-                Notre approche combine excellence technique et vision stratégique pour des résultats exceptionnels
-              </p>
-
-              <div className="space-y-12 flex-grow">
-                {[
-                  {
-                    title: "Excellence technique",
-                    description: "Solutions robustes conçues selon les standards les plus exigeants",
-                    icon: "⚡️"
-                  },
-                  {
-                    title: "Innovation continue",
-                    description: "Veille technologique et adoption des meilleures pratiques",
-                    icon: "💡"
-                  },
-                  {
-                    title: "Support réactif",
-                    description: "Accompagnement personnalisé et support technique expert",
-                    icon: "🎯"
-                  },
-                  {
-                    title: "Méthodologie éprouvée",
-                    description: "Processus itératif et collaboratif pour des projets réussis",
-                    icon: "⚙️"
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="flex gap-5 group">
-                    <div className="
-                      flex-shrink-0 
-                      w-10 h-10 
-                      rounded-xl
-                      bg-blue-50/80 dark:bg-blue-500/[0.08]
-                      flex items-center justify-center
-                      transition-all duration-300
-                      group-hover:scale-105
-                      group-hover:bg-blue-50 dark:group-hover:bg-blue-500/[0.12]
-                    ">
-                      <span className="text-xl">
-                        {item.icon}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="
-                        text-[1rem]
-                        font-medium
-                        text-gray-900 dark:text-white
-                        mb-1
-                      ">
-                        {item.title}
-                      </h3>
-                      <p className="
-                        text-[0.9375rem]
-                        leading-[1.5]
-                        text-gray-600/80 dark:text-gray-300/80
-                      ">
-                        {item.description}
-                      </p>
-                    </div>
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="space-y-16">
+              {[
+                {
+                  title: "Excellence technique",
+                  description: "Notre équipe d'experts conçoit des solutions robustes selon les plus hauts standards de l'industrie",
+                  icon: (
+                    <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: "Innovation continue",
+                  description: "Nous restons à la pointe de la technologie pour vous offrir les solutions les plus performantes",
+                  icon: (
+                    <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: "Support personnalisé",
+                  description: "Un accompagnement sur mesure et un support réactif pour garantir votre succès",
+                  icon: (
+                    <svg className="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                    </svg>
+                  )
+                }
+              ].map((item, index) => (
+                <div key={index} className="group flex gap-6">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="relative flex items-center">
-              <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
-                <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
-                <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
-                  <Image
-                    src="/expertise-illustration.svg"
-                    alt="Expertise Illustration"
-                    width={540}
-                    height={540}
-                    className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
-                    priority
-                  />
-                </div>
+            <div className="relative">
+              <div className="relative aspect-square rounded-[40px] overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10 group-hover:scale-105 transition-transform duration-500" />
+                <svg
+                  width="600"
+                  height="600"
+                  viewBox="0 0 600 600"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                >
+                  {/* Fond avec motif hexagonal subtil */}
+                  <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse">
+                    <path
+                      d="M25 0L50 14.4v28.8L25 43.4L0 28.8V14.4L25 0z"
+                      fill="none"
+                      stroke="#1a73e8"
+                      strokeWidth="0.5"
+                      strokeOpacity="0.1"
+                    />
+                  </pattern>
+                  <rect width="600" height="600" fill="url(#hexagons)" />
+
+                  {/* Symboles Cloud Native */}
+                  <g className="dark:opacity-80">
+                    {/* Container/Pod central */}
+                    <path
+                      d="M300 250 L350 280 L350 340 L300 370 L250 340 L250 280 Z"
+                      fill="none"
+                      stroke="#1a73e8"
+                      strokeWidth="2"
+                    />
+                    
+                    {/* Microservices connectés */}
+                    {[0, 120, 240].map((angle) => (
+                      <g key={angle} transform={`rotate(${angle} 300 300)`}>
+                        <path
+                          d="M380 300 L420 300"
+                          stroke="#1a73e8"
+                          strokeWidth="2"
+                          strokeDasharray="4 4"
+                        />
+                        <rect
+                          x="420"
+                          y="280"
+                          width="40"
+                          height="40"
+                          rx="8"
+                          fill="none"
+                          stroke="#1a73e8"
+                          strokeWidth="2"
+                        />
+                      </g>
+                    ))}
+                  </g>
+
+                  {/* Symboles DevOps (CI/CD) */}
+                  <g transform="translate(0, 100)">
+                    <path
+                      d="M250 400 Q300 350 350 400"
+                      fill="none"
+                      stroke="#1a73e8"
+                      strokeWidth="2"
+                      strokeDasharray="6 4"
+                    />
+                    <circle cx="250" cy="400" r="15" fill="#1a73e8" fillOpacity="0.1" stroke="#1a73e8" strokeWidth="2" />
+                    <circle cx="350" cy="400" r="15" fill="#1a73e8" fillOpacity="0.1" stroke="#1a73e8" strokeWidth="2" />
+                  </g>
+
+                  {/* Texte minimaliste */}
+                  <g className="dark:opacity-60">
+                    <text x="260" y="180" fill="#1a73e8" fontSize="14" fontFamily="monospace">
+                      {'cloud.native()'}
+                    </text>
+                    <text x="260" y="450" fill="#1a73e8" fontSize="14" fontFamily="monospace">
+                      {'devops.transform()'}
+                    </text>
+                  </g>
+
+                  {/* Définitions des dégradés */}
+                  <defs>
+                    <linearGradient
+                      id="grid-gradient"
+                      x1="0"
+                      y1="0"
+                      x2="600"
+                      y2="600"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0%" stopColor="#1a73e8" stopOpacity="0.03" />
+                      <stop offset="100%" stopColor="#8ab4f8" stopOpacity="0.03" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
+              <div className="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 w-20 sm:w-40 h-20 sm:h-40 bg-blue-500/10 dark:bg-blue-400/5 rounded-full blur-3xl" />
             </div>
           </div>
         </Section>
@@ -354,63 +394,108 @@ export default function Home() {
         <Section
           id={SECTION_IDS.contact}
           badge="CONTACT"
-          title="Démarrons votre"
-          subtitle="transformation digitale"
+          title={
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
+                Démarrons votre
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  transformation
+                </span>
+              </h2>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Experts en solutions Cloud Native et DevOps
+              </p>
+            </div>
+          }
+          className="py-24"
         >
-          <div className={COMMON_CLASSES.contactCard}>
-            <div className="grid md:grid-cols-2 gap-16">
-              <div>
-                <p className={COMMON_CLASSES.sectionDescription}>
-                  Transformez vos idées en solutions concrètes avec notre expertise
-                </p>
-                
-                <div className="space-y-8 mb-12">
-                  {/* Contact Info Items */}
-                  {[
-                    {
-                      title: "Email",
-                      value: "contact@wilmoredynamics.com",
-                      icon: (
-                        <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                          <path d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" 
-                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      )
-                    },
-                    {
-                      title: "Délai de réponse",
-                      value: "Sous 24h ouvrées",
-                      icon: (
-                        <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" 
-                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      )
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 group">
-                      <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-medium mb-2">{item.title}</h3>
-                        {item.title === "Email" ? (
-                          <a href={`mailto:${item.value}`} 
-                             className={`text-[${COLORS.primary.light}] dark:text-[${COLORS.primary.dark}] hover:opacity-80 transition-opacity`}>
-                            {item.value}
-                          </a>
-                        ) : (
-                          <p className={COMMON_CLASSES.textContainer}>{item.value}</p>
-                        )}
-                      </div>
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            {/* Informations de contact - 2 colonnes */}
+            <div className="lg:col-span-2 space-y-12">
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    ),
+                    title: "Email",
+                    value: "contact@wilmoredynamics.com",
+                    link: "mailto:contact@wilmoredynamics.com"
+                  },
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    ),
+                    title: "Nouveau projet",
+                    value: "Réponse sous 24h",
+                    description: "Du lundi au vendredi, 9h-18h"
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="group flex items-start gap-6">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                      {item.icon}
                     </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                        {item.title}
+                      </h3>
+                      {item.link ? (
+                        <a href={item.link} className="text-blue-600 dark:text-blue-400 hover:underline">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {item.value}
+                          {item.description && (
+                            <span className="block text-sm text-gray-500 dark:text-gray-500 mt-1">
+                              {item.description}
+                            </span>
+                          )}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-8 border-t border-gray-200 dark:border-white/[0.1]">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+                  Suivez-nous
+                </h3>
+                <div className="flex gap-4">
+                  {[
+                    { name: 'GitHub', href: 'https://github.com/wilmore-dynamics', icon: 'github.svg' },
+                    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: 'linkedin.svg' }
+                  ].map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      className="group p-2 rounded-xl bg-gray-50 dark:bg-white/[0.05] hover:bg-gray-100 dark:hover:bg-white/[0.1] transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={`/social/${social.icon}`}
+                        alt={social.name}
+                        width={24}
+                        height={24}
+                        className="opacity-60 group-hover:opacity-100 transition-opacity"
+                      />
+                    </a>
                   ))}
                 </div>
               </div>
+            </div>
 
-              <div className={`relative group ${ANIMATIONS.cardHover}`}>
-                <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[32px]`} />
-                <div className="relative p-8 md:p-10">
+            {/* Formulaire de contact - 3 colonnes */}
+            <div className="lg:col-span-3">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-400/5 dark:from-blue-500/[0.02] dark:to-blue-400/[0.02] rounded-[32px]" />
+                <div className="relative p-8 sm:p-12 bg-white dark:bg-gray-900 rounded-[32px] border border-gray-200/50 dark:border-white/[0.1] shadow-sm hover:shadow-md transition-shadow duration-500">
                   <ContactForm />
                 </div>
               </div>
