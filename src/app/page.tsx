@@ -580,45 +580,60 @@ export default function Home() {
         <Section
           id={SECTION_IDS.stack}
           badge="TECHNOLOGIES"
-          title="Notre stack"
-          subtitle="technologique"
-          hasGradientBg
+          title={
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
+                Notre stack
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  technologique
+                </span>
+              </h2>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Des technologies modernes pour des solutions innovantes
+              </p>
+            </div>
+          }
+          className="py-24"
         >
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {[
-              { name: "React", icon: "/tech/react.svg", type: "Frontend" },
-              { name: "Next.js", icon: "/tech/nextjs.svg", type: "Framework" },
-              { name: "TypeScript", icon: "/tech/typescript.svg", type: "Language" },
-              { name: "Node.js", icon: "/tech/nodejs.svg", type: "Backend" },
-              { name: "Python", icon: "/tech/python.svg", type: "Backend" },
-              { name: "Kubernetes", icon: "/tech/kubernetes.svg", type: "Infrastructure" },
-              { name: "Docker", icon: "/tech/docker.svg", type: "Infrastructure" },
-              { name: "AWS", icon: "/tech/aws.svg", type: "Cloud" },
-              { name: "PostgreSQL", icon: "/tech/postgresql.svg", type: "Database" },
-              { name: "MongoDB", icon: "/tech/mongodb.svg", type: "Database" }
-            ].map((tool, index) => (
-              <div key={index} className="group">
-                <div className="p-6 rounded-[32px] bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.1] hover:shadow-xl hover:-translate-y-1 transition-all duration-500 h-full flex flex-col items-center justify-center gap-4">
-                  <div className={`${COMMON_CLASSES.iconContainer} ${ANIMATIONS.iconHover}`}>
+          <div className="max-w-[1200px] mx-auto">
+            <div 
+              className="grid grid-cols-2 sm:grid-cols-4 gap-16 sm:gap-24 py-16"
+              role="list"
+              aria-label="Liste des technologies"
+            >
+              {[
+                { name: "React", icon: "/tech/react.svg" },
+                { name: "Next.js", icon: "/tech/nextjs.svg" },
+                { name: "Kubernetes", icon: "/tech/kubernetes.svg" },
+                { name: "Docker", icon: "/tech/docker.svg" },
+                { name: "Node.js", icon: "/tech/nodejs.svg" },
+                { name: "TypeScript", icon: "/tech/typescript.svg" },
+                { name: "AWS", icon: "/tech/aws.svg" },
+                { name: "PostgreSQL", icon: "/tech/postgresql.svg" }
+              ].map((tool, index) => (
+                <div 
+                  key={index} 
+                  className="group flex flex-col items-center"
+                  role="listitem"
+                  aria-label={`Technologie ${tool.name}`}
+                >
+                  <div className="relative w-24 h-24 mb-8 transition-transform duration-500 group-hover:scale-105">
+                    <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <Image
                       src={tool.icon}
-                      alt={tool.name}
-                      width={40}
-                      height={40}
-                      className="w-10 h-10 object-contain"
+                      alt={`Logo ${tool.name}`}
+                      width={96}
+                      height={96}
+                      priority={index < 4}
+                      className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-all duration-500"
                     />
                   </div>
-                  <div className="text-center">
-                    <h3 className="font-medium mb-1 group-hover:text-[#1a73e8] dark:group-hover:text-[#8ab4f8] transition-colors">
-                      {tool.name}
-                    </h3>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
-                      {tool.type}
-                    </span>
-                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">
+                    {tool.name}
+                  </span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </Section>
 
@@ -626,137 +641,90 @@ export default function Home() {
           id={SECTION_IDS.openSource}
           badge="OPEN SOURCE"
           title={
-            <div className={COMMON_CLASSES.sectionTitle}>
-              Solutions
-              <span className={COMMON_CLASSES.sectionSubtitle}>
-                open source
-              </span>
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
+                Solutions
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  open source
+                </span>
+              </h2>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Des solutions transparentes et personnalisables pour votre indépendance
+              </p>
             </div>
           }
+          className="py-24"
         >
-          <div className="grid md:grid-cols-2 gap-20">
-            <div className="flex flex-col">
-              <p className="
-                text-[1.125rem]
-                leading-[1.6]
-                text-gray-600/90 dark:text-gray-300/90
-                mb-12
-              ">
-                Des solutions transparentes et personnalisables pour garder le contrôle de vos données
-              </p>
-
-              <div className="space-y-12 flex-grow">
-                {[
-                  {
-                    title: "Transparence totale",
-                    description: "Code source accessible et auditable",
-                    icon: "🔍"
-                  },
-                  {
-                    title: "Personnalisation complète",
-                    description: "Adaptez les solutions à vos besoins spécifiques",
-                    icon: "⚙️"
-                  },
-                  {
-                    title: "Indépendance",
-                    description: "Aucune dépendance à des services propriétaires",
-                    icon: "🔒"
-                  }
-                ].map((feature, index) => (
-                  <div key={index} className="flex gap-5 group">
-                    <div className="
-                      flex-shrink-0 
-                      w-10 h-10 
-                      rounded-xl
-                      bg-blue-50/80 dark:bg-blue-500/[0.08]
-                      flex items-center justify-center
-                      transition-all duration-300
-                      group-hover:scale-105
-                      group-hover:bg-blue-50 dark:group-hover:bg-blue-500/[0.12]
-                    ">
-                      <span className="text-xl">
-                        {feature.icon}
-                      </span>
+          <div className="max-w-[1200px] mx-auto">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] to-blue-400/[0.02] dark:from-blue-500/[0.01] dark:to-blue-400/[0.01] rounded-[32px]" />
+              <div className="relative p-8 sm:p-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                  <div className="flex flex-col justify-center">
+                    <div className="space-y-12" role="list" aria-label="Caractéristiques open source">
+                      {[
+                        {
+                          title: "Transparence totale",
+                          description: "Code source accessible et auditable",
+                          icon: "🔍"
+                        },
+                        {
+                          title: "Contrôle absolu",
+                          description: "Maîtrisez vos données et votre infrastructure",
+                          icon: "🛡️"
+                        },
+                        {
+                          title: "Sur mesure",
+                          description: "Adaptez les solutions à vos besoins",
+                          icon: "⚡"
+                        }
+                      ].map((feature, index) => (
+                        <div 
+                          key={index} 
+                          className="flex items-start gap-6 group"
+                          role="listitem"
+                          aria-label={`Caractéristique ${feature.title}`}
+                        >
+                          <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110">
+                            {feature.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">
+                              {feature.title}
+                            </h3>
+                            <p className="text-gray-600/90 dark:text-gray-400/90">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div>
-                      <h3 className="
-                        text-[1rem]
-                        font-medium
-                        text-gray-900 dark:text-white
-                        mb-1
-                      ">
-                        {feature.title}
-                      </h3>
-                      <p className="
-                        text-[0.9375rem]
-                        leading-[1.5]
-                        text-gray-600/80 dark:text-gray-300/80
-                      ">
-                        {feature.description}
-                      </p>
+
+                    <div className="mt-12">
+                      <a 
+                        href="/apps" 
+                        className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
+                        aria-label="Explorer notre catalogue d'applications open source"
+                      >
+                        <span className="text-lg">Explorer nos applications</span>
+                        <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
-                ))}
-              </div>
 
-              <a 
-                href="/apps" 
-                className={`
-                  group
-                  inline-flex
-                  items-center
-                  gap-2.5
-                  px-6
-                  py-2.5
-                  mt-8
-                  w-fit
-                  text-[13px]
-                  font-medium
-                  text-white
-                  bg-blue-600/95 hover:bg-blue-600
-                  dark:bg-blue-500/95 dark:hover:bg-blue-500
-                  rounded-[20px]
-                  transition-all
-                  duration-200
-                  shadow-sm
-                  hover:shadow-md
-                  hover:translate-y-[-1px]
-                  focus:outline-none 
-                  focus:ring-2 
-                  focus:ring-blue-500/50
-                  focus:ring-offset-1
-                  leading-relaxed
-                `}
-              >
-                Explorer nos applications
-                <svg 
-                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M13 7l5 5m0 0l-5 5m5-5H6" 
-                  />
-                </svg>
-              </a>
-            </div>
-
-            <div className="relative flex items-center">
-              <div className={`relative w-full aspect-square group ${ANIMATIONS.hover}`}>
-                <div className={`absolute inset-0 ${GRADIENTS.BG_CARD} rounded-[40px] ${ANIMATIONS.backgroundHover}`} />
-                <div className={`absolute inset-0 flex items-center justify-center ${ANIMATIONS.contentHover}`}>
-                  <Image
-                    src="/expertise-illustration.svg"
-                    alt="Expertise Illustration"
-                    width={540}
-                    height={540}
-                    className={`relative z-10 w-[85%] h-[85%] object-contain ${ANIMATIONS.imageHover}`}
-                    priority
-                  />
+                  <div className="relative aspect-square group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-[32px] transition-opacity duration-500 group-hover:opacity-75" />
+                    <Image
+                      src="/open-source-illustration.svg"
+                      alt="Open Source Illustration"
+                      width={600}
+                      height={600}
+                      className="relative z-10 w-full h-full object-contain p-8 transition-transform duration-500 group-hover:scale-105"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
             </div>
