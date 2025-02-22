@@ -1,0 +1,43 @@
+Answer
+Appsmith
+Authentik
+Coder
+Coolify
+Discourse
+Docassemble
+Docmost
+Documenso
+Docusaurus
+Draw.io
+Element
+Excalidraw
+Gitea
+Forjeo
+GLPI
+HeyForm
+Huginn
+Invoice Ninja
+Listmonk
+Matomo
+Synapse Matrix
+Mattermost
+n8n
+NetBird
+Nextcloud
+Openchangelog
+Opensign
+Paperless-ngx
+Papermark
+Penpot
+Peppermint
+Pingvin
+Plane
+Proxmox
+Rocket.chat
+Rustdesk
+Serpbear
+Kitsu by cgwire
+Syncthing
+Umami
+Wiki.Js
+Wireguard

@@ -92,7 +92,16 @@ export const metadata: Metadata = {
         height: 630,
         alt: 'Services Cloud Native & DevOps Wilmore Dynamics'
       }
-    ]
+    ],
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: 'Wilmore Dynamics'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
+    description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT.',
+    images: ['/og/services.jpg'],
   }
 };
 
@@ -175,7 +184,7 @@ export default function Services() {
 
         {/* Cloud Native Section */}
         <Section
-          id="cloud-native"
+          id="services-cloud-native"
           badge="CLOUD NATIVE"
           title={
             <div className="text-center max-w-[800px] mx-auto mb-16">
@@ -243,6 +252,8 @@ export default function Services() {
                   height={600}
                   className="relative z-10 w-full h-full object-contain p-8 transition-transform duration-500 group-hover:scale-105"
                   priority
+                  quality={90}
+                  loading="eager"
                 />
               </div>
             </div>
@@ -251,7 +262,7 @@ export default function Services() {
 
         {/* Infrastructure & DevOps Section */}
         <Section
-          id="infrastructure"
+          id="services-infrastructure"
           badge="INFRASTRUCTURE"
           title={
             <div className="text-center max-w-[800px] mx-auto mb-16">
@@ -328,7 +339,7 @@ export default function Services() {
 
         {/* Conseil & Audit Section */}
         <Section
-          id="conseil"
+          id="services-conseil"
           badge="CONSEIL"
           title={
             <div className="text-center max-w-[800px] mx-auto mb-16">

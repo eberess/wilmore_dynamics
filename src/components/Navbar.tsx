@@ -18,11 +18,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const NAVIGATION_ITEMS = [
+  const navigation = [
+    { name: 'Accueil', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Applications', href: '/apps' },
-    { name: 'À propos', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Applications', href: '/applications' },
+    { name: 'Contact', href: '/contact' },
   ] as const;
 
   return (
@@ -45,11 +45,7 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            {[
-              { name: 'Services', href: '/services' },
-              { name: 'Applications', href: '/apps' },
-              { name: 'Contact', href: '/#contact' },
-            ].map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -86,11 +82,7 @@ export default function Navbar() {
         isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
       } overflow-hidden`}>
         <div className="px-4 py-4 space-y-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-white/[0.1]">
-          {[
-            { name: 'Services', href: '/services' },
-            { name: 'Applications', href: '/apps' },
-            { name: 'Contact', href: '/#contact' },
-          ].map((item) => (
+          {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
