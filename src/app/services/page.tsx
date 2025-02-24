@@ -1,9 +1,18 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Section from "@/components/Section";
+import Section from '@/components/Section';
 import type { Metadata } from 'next';
 import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
-import Image from "next/image";
 import FadeIn from '@/components/FadeIn';
+import ScrollIcon from '@/components/ScrollIcon';
+
+const SECTION_IDS = {
+  hero: 'hero',
+  cloud: 'services-cloud-native',
+  devops: 'services-devops',
+  security: 'services-security',
+  contact: 'contact'
+} as const;
 
 export type ServiceProps = {
   title: string;
@@ -111,49 +120,27 @@ export default function Services() {
       <Navbar />
       <main className="min-h-screen overflow-x-hidden">
         {/* Hero Section */}
-        <section aria-labelledby="hero-heading" className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden">
+        <Section
+          id={SECTION_IDS.hero}
+          badge="SERVICES"
+          title={
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h1 className="text-[44px] sm:text-[64px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em]">
+                Solutions
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mt-2">
+                  cloud native
+                </span>
+              </h1>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Des solutions modernes et évolutives pour votre transformation digitale
+              </p>
+            </div>
+          }
+          className="min-h-[90vh] flex flex-col items-center justify-center relative"
+        >
           <div className="max-w-[1200px] mx-auto text-center relative z-10 px-4 sm:px-6 lg:px-8">
             <div role="presentation" className="relative z-10">
               <FadeIn>
-                <span className="
-                  inline-flex
-                  items-center
-                  text-blue-600/90 dark:text-blue-400/90
-                  text-[11px]
-                  font-semibold
-                  tracking-[0.06em]
-                  uppercase
-                  px-2.5
-                  py-1
-                  rounded-[20px]
-                  bg-blue-50/60 backdrop-blur-sm
-                  dark:bg-blue-500/[0.08]
-                  border border-blue-100/40
-                  dark:border-blue-400/[0.06]
-                  mb-8
-                  animate-fade-in
-                  z-10
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:bg-blue-50/80
-                  dark:hover:bg-blue-500/[0.12]
-                  hover:scale-[1.02]
-                ">
-                  Nos Services
-                </span>
-                
-                <h1 id="hero-heading" className="text-[44px] sm:text-[64px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8">
-                  Solutions
-                  <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mt-2">
-                    cloud native
-                  </span>
-                </h1>
-
-                <p className="text-xl sm:text-2xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto mb-12 leading-relaxed">
-                  Des solutions modernes et évolutives pour votre transformation digitale
-                </p>
-
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <a 
                     href="#contact" 
@@ -180,7 +167,9 @@ export default function Services() {
               </FadeIn>
             </div>
           </div>
-        </section>
+          
+          <ScrollIcon targetId={SECTION_IDS.cloud} />
+        </Section>
 
         {/* Cloud Native Section */}
         <Section

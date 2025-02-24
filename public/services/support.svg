@@ -1,0 +1,31 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond subtil -->
+  <circle cx="80" cy="80" r="76" fill="url(#gradient)" fill-opacity="0.1"/>
+  
+  <!-- Cercle externe rotatif -->
+  <path d="M120 80C120 102.091 102.091 120 80 120C57.9086 120 40 102.091 40 80C40 57.9086 57.9086 40 80 40C102.091 40 120 57.9086 120 80Z" 
+    stroke="#1a73e8" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4"/>
+    
+  <!-- Flèches circulaires -->
+  <path d="M105 65C105 65 95 55 80 55C65 55 55 65 55 65" 
+    stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M55 95C55 95 65 105 80 105C95 105 105 95 105 95" 
+    stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
+    
+  <!-- Points de progression -->
+  <circle cx="55" cy="80" r="4" fill="#1a73e8"/>
+  <circle cx="80" cy="80" r="4" fill="#1a73e8"/>
+  <circle cx="105" cy="80" r="4" fill="#1a73e8"/>
+  
+  <!-- Lignes de connexion -->
+  <path d="M60 80H75M85 80H100" 
+    stroke="#1a73e8" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Gradient définition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a73e8"/>
+      <stop offset="100%" stop-color="#8ab4f8"/>
+    </linearGradient>
+  </defs>
+</svg> 

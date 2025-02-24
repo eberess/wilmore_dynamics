@@ -2,7 +2,6 @@
 
 import Section from "@/components/Section";
 import Image from "next/image";
-import FadeIn from '@/components/FadeIn';
 import { useState } from 'react';
 import { ApplicationModal } from "./application-modal";
 import type { Application } from "../types";
@@ -124,7 +123,7 @@ const applications = [
     tagline: "Gestion documentaire intelligente",
     description: "Solution de gestion documentaire moderne et efficace. Paperless-ngx numérise, classe et indexe automatiquement vos documents papier pour une recherche instantanée et une organisation optimale.",
     category: "Productivité",
-    image: "/apps/paperless-ngx.webp",
+    image: "/apps/paperless.webp",
     bgColor: "from-cyan-500/5 to-teal-500/5",
     highlights: [
       { title: "OCR multilingue" },
@@ -479,11 +478,11 @@ const applications = [
     alternatives: ["Typeform", "Google Forms", "JotForm"]
   },
   {
-    name: "Forjeo",
+    name: "Forgejo",
     tagline: "Forge logicielle complète",
-    description: "Plateforme de développement logiciel tout-en-un. Forjeo combine gestion de code, CI/CD, gestion de projet et documentation dans une interface unifiée et moderne.",
+    description: "Plateforme de développement logiciel tout-en-un. Forgejo combine gestion de code, CI/CD, gestion de projet et documentation dans une interface unifiée et moderne.",
     category: "Productivité",
-    image: "/apps/forjeo.webp",
+    image: "/apps/forgejo.svg",
     bgColor: "from-rose-500/5 to-pink-500/5",
     highlights: [
       { title: "Git intégré" },
@@ -543,7 +542,7 @@ const applications = [
     tagline: "Gestion de production créative",
     description: "Solution de gestion pour studios d'animation et créatifs. Kitsu (par CGWire) facilite la gestion de projets créatifs avec un suivi des tâches, des assets et une collaboration en temps réel.",
     category: "Gestion",
-    image: "/apps/kitsu.svg",
+    image: "/apps/kitsu.png",
     bgColor: "from-purple-500/5 to-indigo-500/5",
     highlights: [
       { title: "Suivi de production" },

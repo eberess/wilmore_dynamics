@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import ScrollToTop from '@/components/ScrollToTop';
-import FadeIn from '@/components/FadeIn';
 import ContactForm from '@/components/ContactForm';
-import Badge from '@/components/Badge';
 import { Metadata } from 'next';
 import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
 import Section from '@/components/Section';
+import ScrollIcon from '@/components/ScrollIcon';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wilmoredynamics.com'),
@@ -132,21 +130,29 @@ export default function Home() {
         <h1 className="sr-only">Wilmore Dynamics - Solutions Cloud Native et DevOps en France</h1>
         
         {/* Hero Section */}
-        <section aria-labelledby="hero-heading" className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden">
+        <Section
+          id={SECTION_IDS.hero}
+          badge="ACCUEIL"
+          title={
+            <div className="text-center max-w-[800px] mx-auto mb-16">
+              <h1 className="text-[36px] sm:text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em]">
+                Des solutions
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  qui transforment
+                </span>
+                <span className="block text-[28px] sm:text-[40px] md:text-[64px] mt-2 sm:mt-4 font-normal text-gray-600 dark:text-gray-300">
+                  votre entreprise
+                </span>
+              </h1>
+              <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
+                Nous concevons des expériences technologiques innovantes pour propulser votre croissance
+              </p>
+            </div>
+          }
+          className="min-h-[90vh] flex flex-col items-center justify-center relative"
+        >
           {/* Content */}
           <div className="max-w-[800px] mx-auto text-center relative z-10">
-            <h2 id="hero-heading" className="text-[36px] sm:text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em] mb-8">
-              Des solutions
-              <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                qui transforment
-              </span>
-              <span className="block text-[28px] sm:text-[40px] md:text-[64px] mt-2 sm:mt-4 font-normal text-gray-600 dark:text-gray-300">
-                votre entreprise
-              </span>
-            </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-[640px] mx-auto mb-12 sm:mb-16 leading-relaxed">
-              Nous concevons des expériences technologiques innovantes pour propulser votre croissance
-            </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a href="#contact" className="group px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
                 Démarrer un projet
@@ -158,7 +164,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </section>
+          
+          {/* Ajout de l'icône de scroll */}
+          <ScrollIcon targetId={SECTION_IDS.solutions} />
+        </Section>
 
         <Section
           id={SECTION_IDS.solutions}
@@ -411,10 +420,10 @@ export default function Home() {
           }
           className="py-24"
         >
-          <div className="grid lg:grid-cols-5 gap-8 items-start">
-            {/* Informations de contact - 2 colonnes */}
-            <div className="lg:col-span-2 space-y-12">
-              <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Informations de contact */}
+            <div className="space-y-8">
+              <div className="space-y-6">
                 {[
                   {
                     icon: (
@@ -437,55 +446,61 @@ export default function Home() {
                     description: "Du lundi au vendredi, 9h-18h"
                   }
                 ].map((item, index) => (
-                  <div key={index} className="group flex items-start gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/[0.08] flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                        {item.title}
-                      </h3>
-                      {item.link ? (
-                        <a href={item.link} className="text-blue-600 dark:text-blue-400 hover:underline">
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {item.value}
-                          {item.description && (
-                            <span className="block text-sm text-gray-500 dark:text-gray-500 mt-1">
-                              {item.description}
-                            </span>
-                          )}
-                        </p>
-                      )}
+                  <div
+                    key={index}
+                    className="group p-4 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-white/[0.02] transition-colors duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="p-2 rounded-xl bg-blue-50/50 dark:bg-blue-500/[0.08] text-blue-600 dark:text-blue-400">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-medium mb-1">{item.title}</h3>
+                        {item.link ? (
+                          <a
+                            href={item.link}
+                            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <div>
+                            <p className="text-gray-600 dark:text-gray-400">{item.value}</p>
+                            {item.description && (
+                              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-gray-200 dark:border-white/[0.1]">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+              <div className="pt-6 border-t border-gray-200/50 dark:border-white/[0.1]">
+                <h3 className="text-lg font-medium mb-4">
                   Suivez-nous
                 </h3>
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   {[
-                    { name: 'GitHub', href: 'https://github.com/wilmore-dynamics', icon: 'github.svg' },
-                    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: 'linkedin.svg' }
+                    { name: 'GitHub', href: 'https://github.com/wilmore-dynamics', icon: '/social/github.svg' },
+                    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' }
                   ].map((social) => (
                     <a
                       key={social.name}
                       href={social.href}
-                      className="group p-2 rounded-xl bg-gray-50 dark:bg-white/[0.05] hover:bg-gray-100 dark:hover:bg-white/[0.1] transition-colors"
+                      className="p-3 rounded-xl bg-gray-50/80 dark:bg-white/[0.02] hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Image
-                        src={`/social/${social.icon}`}
+                        src={social.icon}
                         alt={social.name}
-                        width={24}
-                        height={24}
-                        className="opacity-60 group-hover:opacity-100 transition-opacity"
+                        width={20}
+                        height={20}
+                        className="opacity-60 group-hover:opacity-100 transition-opacity dark:invert"
                       />
                     </a>
                   ))}
@@ -493,13 +508,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Formulaire de contact - 3 colonnes */}
-            <div className="lg:col-span-3">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-400/5 dark:from-blue-500/[0.02] dark:to-blue-400/[0.02] rounded-[32px]" />
-                <div className="relative p-8 sm:p-12 bg-white dark:bg-gray-900 rounded-[32px] border border-gray-200/50 dark:border-white/[0.1] shadow-sm hover:shadow-md transition-shadow duration-500">
-                  <ContactForm />
-                </div>
+            {/* Formulaire de contact */}
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/5 via-blue-400/5 to-blue-500/5 dark:from-blue-500/[0.02] dark:via-blue-400/[0.02] dark:to-blue-500/[0.02] rounded-[32px] blur-lg" />
+              <div className="relative p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-[24px] border border-gray-200/50 dark:border-white/[0.1] transition duration-300">
+                <ContactForm />
               </div>
             </div>
           </div>
