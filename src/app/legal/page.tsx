@@ -25,7 +25,7 @@ export default function Legal() {
             <div className="text-center max-w-[800px] mx-auto mb-16">
               <h1 className="text-[44px] sm:text-[64px] leading-[1.1] font-medium tracking-[-0.02em]">
                 Mentions
-                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent mt-2">
+                <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent py-2 mt-2">
                   légales
                 </span>
               </h1>
@@ -38,30 +38,28 @@ export default function Legal() {
               <h2>Éditeur du site</h2>
               <p>
                 <strong>Wilmore Dynamics</strong><br />
-                Société par actions simplifiée (SAS)<br />
-                Capital social : [Montant] euros<br />
-                RCS [Ville] : [Numéro]<br />
-                Siège social : [Adresse]<br />
-                N° TVA : [Numéro]
+                EI<br />
+                RCS Paris : 80245380300016 <br />
+                Siège social : 95 Bis Boulevard Richard Lenoir, 75011 Paris<br />
               </p>
 
               <h2>Directeur de la publication</h2>
-              <p>[Nom du directeur de publication]<br />
-              contact@wilmoredynamics.com</p>
+              <p>A.B<br />
+              ab@wilmoredynamics.com</p>
 
               <h2>Hébergement</h2>
               <p>
                 Ce site est hébergé par :<br />
-                [Nom de l'hébergeur]<br />
-                [Adresse de l'hébergeur]
+                Wilmore Dynamics<br />
+                Paris, 75011
               </p>
 
               <h2>Protection des données personnelles</h2>
               <p>
                 Conformément au Règlement Général sur la Protection des Données (RGPD), 
-                vous disposez d'un droit d'accès, de rectification et de suppression 
+                vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression 
                 des données vous concernant. Pour exercer ce droit, veuillez nous 
-                contacter à l'adresse : contact@wilmoredynamics.com
+                contacter à l&apos;adresse : contact@wilmoredynamics.com
               </p>
 
               <h2>Cookies</h2>
@@ -72,9 +70,9 @@ export default function Legal() {
 
               <h2>Propriété intellectuelle</h2>
               <p>
-                L'ensemble du contenu de ce site (structure, textes, images, logos) 
-                est la propriété exclusive de Wilmore Dynamics ou fait l'objet d'une 
-                autorisation d'utilisation. Toute reproduction, représentation, 
+                L&apos;ensemble du contenu de ce site (structure, textes, images, logos) 
+                est la propriété exclusive de Wilmore Dynamics ou fait l&apos;objet d&apos;une 
+                autorisation d&apos;utilisation. Toute reproduction, représentation, 
                 modification ou exploitation sans autorisation préalable est strictement 
                 interdite.
               </p>
@@ -82,7 +80,7 @@ export default function Legal() {
               <h2>Liens externes</h2>
               <p>
                 Ce site peut contenir des liens vers des sites externes. 
-                Wilmore Dynamics n'exerce aucun contrôle sur ces sites et décline 
+                Wilmore Dynamics n&apos;exerce aucun contrôle sur ces sites et décline 
                 toute responsabilité quant à leur contenu.
               </p>
 

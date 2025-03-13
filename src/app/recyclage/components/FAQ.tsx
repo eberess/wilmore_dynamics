@@ -21,47 +21,42 @@ const faqItems = [
   }
 ];
 
-export default function FAQ() {
+const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const toggleQuestion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <div className="not-prose space-y-4" role="region" aria-label="Questions fréquentes">
+    <div className="space-y-4">
       {faqItems.map((item, index) => (
         <div 
-          key={index}
-          className="rounded-lg bg-white/[0.05] border border-white/[0.1] overflow-hidden transition-all duration-300 hover:border-blue-500/30"
+          key={index} 
+          className="rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-300 dark:border-gray-600 overflow-hidden"
         >
           <button
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="w-full p-6 text-left flex justify-between items-center"
-            aria-expanded={openIndex === index}
-            aria-controls={`faq-answer-${index}`}
-            id={`faq-question-${index}`}
+            onClick={() => toggleQuestion(index)}
+            className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              {item.question}
-            </h3>
-            <span 
-              className={`transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
-              aria-hidden="true"
-            >
+            <h3 className="font-bold text-xl text-blue-600 dark:text-blue-400">{item.question}</h3>
+            <span className={`transform transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}>
               ▼
             </span>
           </button>
           <div 
-            id={`faq-answer-${index}`}
-            role="region"
-            aria-labelledby={`faq-question-${index}`}
-            className={`transition-all duration-300 overflow-hidden ${
-              openIndex === index ? 'max-h-48' : 'max-h-0'
-            }`}
+            className={`
+              transition-all duration-200 ease-in-out
+              ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
+              overflow-hidden
+            `}
           >
-            <p className="px-6 pb-6 text-gray-600 dark:text-gray-400">
-              {item.answer}
-            </p>
+            <p className="p-6 text-gray-700 dark:text-gray-300">{item.answer}</p>
           </div>
         </div>
       ))}
     </div>
   );
-} 
+};
+
+export default FAQ; 

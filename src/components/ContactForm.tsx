@@ -20,6 +20,7 @@ export default function ContactForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const {
     register,
@@ -31,9 +32,12 @@ export default function ContactForm() {
     resolver: yupResolver(schema)
   });
 
+  const selectedSubject = watch('subject');
+
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setErrorMessage('');
 
     try {
       const response = await fetch('/api/contact', {
@@ -44,13 +48,19 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error('Erreur lors de l\'envoi');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Erreur l&apos;envoi');
+      }
 
       setSubmitStatus('success');
       reset();
       router.push('/contact/success');
+
     } catch (error) {
       setSubmitStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Une erreur inattendue est survenue');
+      console.error('Erreur lors de l&apos;envoi du formulaire:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -239,7 +249,7 @@ export default function ContactForm() {
                 border border-gray-200/50 dark:border-white/[0.1]
                 hover:bg-gray-50/50 dark:hover:bg-white/[0.02]
                 transition-colors
-                ${watch('subject') === option.value ? 'border-blue-500 dark:border-blue-400' : ''}
+                ${selectedSubject === option.value ? 'border-blue-500 dark:border-blue-400' : ''}
               `}
             >
               <input
@@ -251,7 +261,7 @@ export default function ContactForm() {
               <div className="flex items-start gap-3">
                 <div className={`
                   shrink-0 mt-0.5
-                  ${watch('subject') === option.value 
+                  ${selectedSubject === option.value 
                     ? 'text-blue-500 dark:text-blue-400' 
                     : 'text-gray-400'}
                 `}>
@@ -325,7 +335,7 @@ export default function ContactForm() {
         `}>
           {submitStatus === 'success' 
             ? 'Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.'
-            : 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'}
+            : errorMessage || 'Une erreur est survenue lors de l&apos;envoi. Veuillez réessayer.'}
         </div>
       )}
 

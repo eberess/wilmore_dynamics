@@ -7,8 +7,8 @@ const Footer = () => {
   const isLegalPage = currentPath === '/legal';
 
   const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/wilmore-dynamics', icon: '/social/github.svg' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' }
+    { name: 'GitHub', href: 'https://git.wilmoredynamics.com', icon: '/social/github.svg' },
+    /*    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' } */
   ];
 
   return (
@@ -42,10 +42,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: 'Cloud Native', href: '/cloud-native' },
-                { name: 'DevOps', href: '/devops' },
-                { name: 'Open Source', href: '/open-source' },
-                { name: 'Sécurité', href: '/securite' },
+                { name: 'Applications', href: '/applications' },
                 { name: 'Recyclage', href: '/recyclage' },
                 { name: 'Choisir Linux', href: '/linux' }
               ].map((item) => (
@@ -66,10 +63,9 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: 'À propos', href: '/about' },
                 { name: 'Services', href: '/services' },
-                { name: 'Blog', href: '/blog' },
-                { name: 'Contact', href: '/contact' }
+                { name: 'Contact', href: '/contact' },
+                { name: 'Ressources', href: '/resources' }
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} 

@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+interface ContactFormData {
+  firstname: string;
+  lastname: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 const SUBMIT_DELAY = 60000; // 1 minute
 let lastSubmitTime = 0;
 
@@ -16,10 +24,9 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   },
   logger: true, // Active les logs détaillés
-  debug: true   // Active le mode debug
 });
 
-const getEmailTemplate = (data: any, isConfirmation = false) => {
+const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
   const { firstname, lastname, email, subject, message } = data;
   
   if (isConfirmation) {
@@ -189,4 +196,6 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-} 
+}
+
+console.log('SMTP_HOST:', process.env.SMTP_HOST); 

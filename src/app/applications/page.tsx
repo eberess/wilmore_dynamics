@@ -3,7 +3,7 @@ import ApplicationsClient from './components/applications-client';
 import Navbar from "@/components/Navbar";
 
 const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://wilmore-dynamics.com'
+  ? 'https://wilmoredynamics.com'
   : 'http://localhost:3000';
 
 export const metadata: Metadata = {

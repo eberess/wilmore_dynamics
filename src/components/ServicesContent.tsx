@@ -2,8 +2,9 @@
 
 import { useState, useRef } from 'react';
 import Image from "next/image";
+import Link from "next/link";
 import FadeIn from './FadeIn';
-import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
+import { ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
 import Section from './Section';
 import ServiceModal from './ServiceModal';
 import type { ServiceProps } from '@/app/services/page';
@@ -16,10 +17,6 @@ type ServicesContentProps = {
 export default function ServicesContent({ servicesData }: ServicesContentProps) {
   const [selectedService, setSelectedService] = useState<ServiceProps | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const setCardRef = (index: number) => (el: HTMLDivElement | null) => {
-    cardRefs.current[index] = el;
-  };
 
   return (
     <main className="min-h-screen" role="main">
@@ -65,21 +62,21 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
               Des solutions modernes et évolutives pour transformer votre infrastructure
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 sm:mb-0">
-              <a 
+              <Link 
                 href="/#contact" 
                 className={`${COMMON_CLASSES.primaryButton} !px-12 !py-6 text-lg group relative overflow-hidden ${ANIMATIONS.shine}`}
                 aria-label="Démarrer votre projet de transformation digitale"
               >
                 <span className="relative z-10">Démarrer votre projet</span>
                 <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2 relative z-10`}>→</span>
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="#services" 
                 className={`${COMMON_CLASSES.secondaryButton} !px-12 !py-6 text-lg group w-full sm:w-auto`}
               >
                 Explorer nos services
                 <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2`}>→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </FadeIn>
@@ -203,14 +200,14 @@ export default function ServicesContent({ servicesData }: ServicesContentProps) 
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a 
+            <Link 
               href="/#contact" 
               className={`${COMMON_CLASSES.primaryButton} !px-12 !py-6 text-lg group relative overflow-hidden ${ANIMATIONS.shine}`}
               aria-label="Démarrer votre projet de transformation digitale"
             >
               <span className="relative z-10">Démarrer votre projet</span>
               <span className={`${ANIMATIONS.linkHover} group-hover:translate-x-2 relative z-10`}>→</span>
-            </a>
+            </Link>
             <a 
               href="mailto:contact@example.com" 
               className={`${COMMON_CLASSES.secondaryButton} !px-12 !py-6 text-lg group`}

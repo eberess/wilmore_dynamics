@@ -13,7 +13,7 @@ export default function AboutPage() {
                   À propos de Wilmore Dynamics
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                  Découvrez l'équipe passionnée derrière Wilmore Dynamics et notre engagement 
+                  Découvrez l&apos;équipe passionnée derrière Wilmore Dynamics et notre engagement 
                   à créer des solutions technologiques innovantes qui transforment le monde numérique.
                 </p>
               </div>
@@ -26,7 +26,7 @@ export default function AboutPage() {
       <section aria-label="Contenu principal" className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="prose prose-lg dark:prose-invert">
           <p className="mb-6">
-            Bienvenue sur notre plateforme dédiée à l'innovation et à la créativité. 
+            Bienvenue sur notre plateforme dédiée à l&apos;innovation et à la créativité. 
             Notre mission est de créer des solutions numériques qui font la différence 
             dans le quotidien de nos utilisateurs.
           </p>
@@ -58,25 +58,25 @@ export default function AboutPage() {
           <p className="mb-6">
             Chez Wilmore Dynamics, nous sommes de fervents défenseurs du mouvement open source. 
             Nous croyons que le partage des connaissances et la collaboration ouverte sont les 
-            moteurs de l'innovation technologique. Notre engagement envers l'open source se 
+            moteurs de l&apos;innovation technologique. Notre engagement envers l&apos;open source se 
             manifeste à travers :
           </p>
           <ul className="list-disc pl-6 mb-6">
             <li className="mb-2">
-              La contribution active aux projets open source qui façonnent l'avenir du développement logiciel
+              La contribution active aux projets open source qui façonnent l&apos;avenir du développement logiciel
             </li>
             <li className="mb-2">
               Le partage de nos propres outils et bibliothèques avec la communauté
             </li>
             <li className="mb-2">
-              L'utilisation et la promotion de solutions open source dans nos projets
+              L&apos;utilisation et la promotion de solutions open source dans nos projets
             </li>
           </ul>
 
           <h2 className="text-2xl font-semibold mt-12 mb-4">Notre Engagement pour le Logiciel Libre</h2>
           <p className="mb-6">
-            Le logiciel libre représente plus qu'une simple approche technique - c'est un 
-            mouvement qui incarne nos valeurs fondamentales de transparence et d'autonomie. 
+            Le logiciel libre représente plus qu&apos;une simple approche technique - c&apos;est un 
+            mouvement qui incarne nos valeurs fondamentales de transparence et d&apos;autonomie. 
             Nous nous engageons à :
           </p>
           <ul className="list-disc pl-6 mb-6">
@@ -98,14 +98,14 @@ export default function AboutPage() {
           <p className="mb-6">
             Notre approche du développement logiciel va au-delà de la simple création de 
             solutions techniques. Nous nous efforçons de créer un impact positif sur 
-            l'écosystème technologique en :
+            l&apos;écosystème technologique en :
           </p>
           <ul className="list-disc pl-6 mb-6">
             <li className="mb-2">
               Promouvant des pratiques de développement durables et éthiques
             </li>
             <li className="mb-2">
-              Encourageant la diversité et l'inclusion dans la tech
+              Encourageant la diversité et l&apos;inclusion dans la tech
             </li>
             <li className="mb-2">
               Partageant nos connaissances à travers des articles, des conférences et des formations
@@ -147,8 +147,8 @@ export const metadata = {
         'text': 'Innovation constante, Qualité et excellence, Transparence et intégrité, Satisfaction client'
       },
       'sameAs': [
-        'https://github.com/wilmore-dynamics',
-        'https://linkedin.com/company/wilmore-dynamics'
+        'https://git.wilmoredynamics.com',
+        /*    'https://linkedin.com/company/wilmore-dynamics' */
       ]
     }
   }

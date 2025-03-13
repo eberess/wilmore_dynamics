@@ -72,7 +72,7 @@ export default function RecyclagePage() {
       >
         <FadeIn>
           <div className="max-w-[800px] mx-auto prose dark:prose-invert">
-            <h2>Notre engagement pour l'environnement</h2>
+            <h2>Notre engagement pour l&apos;environnement</h2>
             <p>
               Le recyclage du matériel informatique est un enjeu crucial pour notre avenir. 
               Chez Wilmore Dynamics, nous nous engageons à offrir des solutions responsables 
@@ -100,7 +100,7 @@ export default function RecyclagePage() {
                 {
                   step: 2,
                   title: "Collecte",
-                  description: "Nous organisons l'enlèvement"
+                  description: "Nous organisons l&apos;enlèvement"
                 },
                 {
                   step: 3,
@@ -171,7 +171,7 @@ export default function RecyclagePage() {
                   95%
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  des composants d'un ordinateur sont recyclables ou réutilisables
+                  des composants d&apos;un ordinateur sont recyclables ou réutilisables
                 </p>
               </div>
               <div className="p-4 text-center">

@@ -68,7 +68,7 @@ export default function LinuxPage() {
           title={
             <div className="relative z-10 text-center max-w-[1000px] mx-auto px-4 sm:px-0">
               <h1 className="text-[36px] sm:text-[80px] leading-[1.1] font-medium tracking-[-0.02em]">
-                Linux : Le système d'exploitation moderne
+                Linux : Le système d&apos;exploitation moderne
                 <span className="block text-[24px] sm:text-[44px] mt-4 sm:mt-8 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent font-normal">
                   Rapide, sécurisé et open source
                 </span>
@@ -132,7 +132,7 @@ export default function LinuxPage() {
                     Une expérience fluide et intuitive
                   </h2>
                   <p className="mt-4 sm:mt-6 text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Un système moderne qui s'adapte à vos besoins
+                    Un système moderne qui s&apos;adapte à vos besoins
                   </p>
                 </div>
 
@@ -301,7 +301,7 @@ export default function LinuxPage() {
                   </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-8">
-                  Une expérience console avec la puissance d'un PC. 
+                  Une expérience console avec la puissance d&apos;un PC. 
                   Optimisé pour votre salon et le Steam Deck.
                 </p>
                 <a 
@@ -605,7 +605,7 @@ export default function LinuxPage() {
 
             <div className="text-center mt-12">
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                Vous avez d'autres questions ?
+                Vous avez d&apos;autres questions ?
               </p>
               <a 
                 href="/contact"
@@ -630,7 +630,7 @@ export default function LinuxPage() {
               Prêt à découvrir Linux ?
             </h2>
             <p className="text-base sm:text-xl text-gray-700 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto">
-              Commencez votre transition vers un système plus performant, plus sécurisé et plus respectueux de l'environnement.
+              Commencez votre transition vers un système plus performant, plus sécurisé et plus respectueux de l&apos;environnement.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

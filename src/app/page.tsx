@@ -2,7 +2,6 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactForm from '@/components/ContactForm';
 import { Metadata } from 'next';
-import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
 import Section from '@/components/Section';
 import ScrollIcon from '@/components/ScrollIcon';
 
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
     description: 'Expert en solutions Cloud Native, DevOps et Open Source en France',
     siteName: 'Wilmore Dynamics',
     images: [{
-      url: '/og-image.jpg',
+      url: '/og-image.webp',
       width: 1200,
       height: 630,
       alt: 'Wilmore Dynamics - Solutions technologiques innovantes'
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
     title: 'Wilmore Dynamics',
     description: 'Solutions technologiques innovantes',
     creator: '@wilmoredynamics',
-    images: ['/og-image.jpg']
+    images: ['/og-image.webp']
   },
   robots: {
     index: true,
@@ -101,12 +100,12 @@ const jsonLd = {
     "addressCountry": "FR"
   },
   "sameAs": [
-    "https://github.com/wilmore-dynamics",
-    "https://linkedin.com/company/wilmore-dynamics"
+    "https://git.wilmoredynamics.com",
+/*    "https://linkedin.com/company/wilmore-dynamics" */
   ]
 };
 
-// Ajout d'IDs cohérents pour toutes les sections
+// IDs cohérents pour toutes les sections
 const SECTION_IDS = {
   hero: 'hero',
   solutions: 'solutions',
@@ -125,7 +124,9 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main className="min-h-screen overflow-x-hidden">
         <h1 className="sr-only">Wilmore Dynamics - Solutions Cloud Native et DevOps en France</h1>
         
@@ -135,12 +136,12 @@ export default function Home() {
           badge="ACCUEIL"
           title={
             <div className="text-center max-w-[800px] mx-auto mb-16">
-              <h1 className="text-[36px] sm:text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em]">
+              <h1 className="text-[40px] sm:text-[52px] md:text-[96px] leading-[1.1] font-medium tracking-[-0.02em]">
                 Des solutions
                 <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                   qui transforment
                 </span>
-                <span className="block text-[28px] sm:text-[40px] md:text-[64px] mt-2 sm:mt-4 font-normal text-gray-600 dark:text-gray-300">
+                <span className="block text-[32px] sm:text-[40px] md:text-[64px] mt-2 sm:mt-4 font-normal text-gray-600 dark:text-gray-300">
                   votre entreprise
                 </span>
               </h1>
@@ -154,19 +155,17 @@ export default function Home() {
           {/* Content */}
           <div className="max-w-[800px] mx-auto text-center relative z-10">
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a href="#contact" className="group px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
+              <a href="#contact" aria-label="Démarrer un projet" className="group px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
                 Démarrer un projet
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
-              <a href="#solutions" className="group px-8 py-4 rounded-full bg-gray-100 dark:bg-white/[0.08] hover:bg-gray-200 dark:hover:bg-white/[0.12] text-gray-700 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
+              <a href="#solutions" aria-label="En savoir plus sur nos solutions" className="group px-8 py-4 rounded-full bg-gray-100 dark:bg-white/[0.08] hover:bg-gray-200 dark:hover:bg-white/[0.12] text-gray-700 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium hover:scale-[1.03]">
                 En savoir plus
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </div>
           </div>
           
-          {/* Ajout de l'icône de scroll */}
-          <ScrollIcon targetId={SECTION_IDS.solutions} />
+          {/* Ajout de l'icône de scroll, supprime si pas besoin */}
+          <ScrollIcon targetId={SECTION_IDS.solutions} aria-label="Faites défiler vers les solutions" />
         </Section>
 
         <Section
@@ -485,8 +484,8 @@ export default function Home() {
                 </h3>
                 <div className="flex gap-3">
                   {[
-                    { name: 'GitHub', href: 'https://github.com/wilmore-dynamics', icon: '/social/github.svg' },
-                    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' }
+                    { name: 'GitHub', href: 'https://git.wilmoredynamics.com', icon: '/social/github.svg' },
+                /*    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' }" */
                   ].map((social) => (
                     <a
                       key={social.name}
@@ -715,7 +714,7 @@ export default function Home() {
 
                     <div className="mt-12">
                       <a 
-                        href="/apps" 
+                        href="/applications" 
                         className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                         aria-label="Explorer notre catalogue d'applications open source"
                       >

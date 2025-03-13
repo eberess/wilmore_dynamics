@@ -2,7 +2,6 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Section from '@/components/Section';
 import type { Metadata } from 'next';
-import { COLORS, GRADIENTS, ANIMATIONS, COMMON_CLASSES } from '@/constants/styles';
 import FadeIn from '@/components/FadeIn';
 import ScrollIcon from '@/components/ScrollIcon';
 
@@ -23,66 +22,6 @@ export type ServiceProps = {
   image: string;
 };
 
-const SERVICES_DATA = [
-  {
-    title: "Développement Cloud Native",
-    subtitle: "Applications nouvelle génération",
-    description: "Nous concevons et développons des applications modernes qui s'adaptent à votre croissance. De l'architecture à la mise en production, nous garantissons performance et évolutivité.",
-    modalContent: `En tant qu'experts du Cloud Native, nous accompagnons les entreprises dans leur transformation numérique avec une approche pragmatique et éprouvée.
-
-Notre équipe d'architectes et développeurs seniors conçoit des applications modernes qui s'adaptent naturellement à votre croissance. Nous utilisons les dernières technologies cloud (Kubernetes, Docker, microservices) tout en garantissant la stabilité et la sécurité de vos systèmes.
-
-Nos solutions sont pensées pour répondre aux enjeux business : réduction des coûts d'infrastructure, time-to-market accéléré, et scalabilité à la demande.`,
-    features: [
-      "Architecture microservices évolutive",
-      "Développement full-stack moderne (React, Node.js)",
-      "APIs RESTful & GraphQL optimisées",
-      "Tests automatisés et qualité code",
-      "Intégration continue (CI/CD)",
-      "Migration d'applications legacy"
-    ],
-    image: "/services/cloud-native.svg"
-  },
-  {
-    title: "Infrastructure & DevOps",
-    subtitle: "Plateforme robuste",
-    description: "Nous gérons et optimisons votre infrastructure cloud. Notre expertise garantit sécurité, performance et maîtrise des coûts.",
-    modalContent: `Notre expertise DevOps permet d'industrialiser et de sécuriser vos déploiements tout en optimisant vos coûts d'infrastructure.
-
-Nous mettons en place des pipelines CI/CD robustes et automatisés, permettant des déploiements fréquents et fiables. Notre approche Infrastructure as Code (IaC) avec Terraform garantit reproductibilité et traçabilité.
-
-Nos ingénieurs certifiés AWS, GCP et Azure vous accompagnent dans l'optimisation continue de votre infrastructure, avec un focus sur la sécurité, la performance et la maîtrise des coûts.`,
-    features: [
-      "Infrastructure as Code (Terraform)",
-      "Orchestration Kubernetes",
-      "Monitoring & Alerting 24/7",
-      "Sécurité et conformité (ISO 27001)",
-      "Optimisation des coûts cloud",
-      "Disaster Recovery & Backup"
-    ],
-    image: "/services/devops.svg"
-  },
-  {
-    title: "Conseil & Audit",
-    subtitle: "Expertise stratégique",
-    description: "Nous vous accompagnons dans votre transformation digitale avec une approche pragmatique et des solutions sur mesure.",
-    modalContent: `Forts de notre expérience auprès de grands comptes et de scale-ups, nous vous guidons dans vos choix technologiques et organisationnels.
-
-    Nos consultants expérimentés réalisent des audits approfondis de votre infrastructure et de vos applications. Nous identifions les axes d'amélioration et établissons une feuille de route claire et alignée avec vos objectifs commerciaux.
-    
-    Notre accompagnement inclut également le développement des compétences de vos équipes grâce à des formations personnalisées et un transfert de connaissances continu.`,
-    features: [
-      "Audit d'architecture technique",
-      "Optimisation des performances",
-      "Revue de sécurité approfondie",
-      "Formation des équipes",
-      "Accompagnement AGILE",
-      "Roadmap technologique"
-    ],
-    image: "/services/consulting.svg"
-  }
-];
-
 const baseUrl = process.env.NODE_ENV === 'production' 
   ? 'https://wilmore-dynamics.com'
   : 'http://localhost:3000';
@@ -96,7 +35,7 @@ export const metadata: Metadata = {
     description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT. Solutions modernes et évolutives pour transformer votre infrastructure.',
     images: [
       {
-        url: '/og/services.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Services Cloud Native & DevOps Wilmore Dynamics'
@@ -110,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Services Cloud Native & DevOps | Wilmore Dynamics',
     description: 'Expertise en développement cloud native, infrastructure DevOps et conseil IT.',
-    images: ['/og/services.jpg'],
+    images: ['/og-image.webp'],
   }
 };
 
@@ -143,7 +82,7 @@ export default function Services() {
               <FadeIn>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <a 
-                    href="#contact" 
+                    href="/contact"
                     className="group px-8 py-4 rounded-full bg-blue-600 text-white transition-colors duration-300 text-[17px] font-medium hover:bg-blue-700"
                     aria-label="Démarrer votre projet de transformation digitale"
                   >
@@ -156,7 +95,7 @@ export default function Services() {
                   </a>
                   
                   <a 
-                    href="#services" 
+                    href="/contact"
                     className="group px-8 py-4 rounded-full border border-gray-200/50 dark:border-white/[0.1] hover:bg-gray-50 dark:hover:bg-white/[0.02] text-gray-600 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium"
                     aria-label="En savoir plus sur nos services"
                   >
@@ -184,7 +123,7 @@ export default function Services() {
                 </span>
               </h2>
               <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
-                Des solutions modernes qui s'adaptent à votre croissance
+                Des solutions modernes qui s&apos;adaptent à votre croissance
               </p>
             </div>
           }
@@ -198,7 +137,7 @@ export default function Services() {
                     Architecture Cloud Native
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Nous concevons des applications modernes qui s'adaptent naturellement à votre croissance. Notre approche garantit performance, sécurité et évolutivité.
+                    Nous concevons des applications modernes qui s&apos;adaptent naturellement à votre croissance. Notre approche garantit performance, sécurité et évolutivité.
                   </p>
                 </div>
 
@@ -221,7 +160,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                   >
                     <span className="text-lg">En savoir plus</span>
@@ -311,7 +250,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services d'infrastructure et DevOps"
                   >
@@ -353,7 +292,7 @@ export default function Services() {
                     Audit & Accompagnement
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Nous vous guidons dans vos choix technologiques avec une approche pragmatique. Notre expertise vous permet d'optimiser vos solutions et d'accélérer votre croissance.
+                    Nous vous guidons dans vos choix technologiques avec une approche pragmatique. Notre expertise vous permet d&apos;optimiser vos solutions et d&apos;accélérer votre croissance.
                   </p>
                 </div>
 
@@ -376,7 +315,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services de conseil et audit"
                   >
@@ -465,7 +404,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services de support et maintenance"
                   >
@@ -489,7 +428,7 @@ export default function Services() {
               <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">
                 Nos domaines
                 <span className="block bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                  d'expertise
+                  d&apos;expertise
                 </span>
               </h2>
               <p className="mt-6 text-xl text-gray-600/90 dark:text-gray-300/90 max-w-[640px] mx-auto">
@@ -596,7 +535,7 @@ export default function Services() {
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <a 
-                  href="#contact"
+                  href="/contact"
                   className="group px-8 py-4 rounded-full bg-blue-600 text-white transition-colors duration-300 text-[17px] font-medium hover:bg-blue-700"
                   aria-label="Démarrer votre projet de transformation digitale"
                 >
@@ -609,11 +548,11 @@ export default function Services() {
                 </a>
 
                 <a 
-                  href="mailto:contact@wilmore-dynamics.com"
+                  href="mailto:contact@wilmoredynamics.com"
                   className="group text-[17px] font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                   aria-label="Nous contacter par email"
                 >
-                  contact@wilmore-dynamics.com
+                  contact@wilmoredynamics.com
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-2">→</span>
                 </a>
               </div>

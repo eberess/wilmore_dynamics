@@ -31,7 +31,7 @@ export default function ContactSuccess() {
                   href="/"
                   className="px-8 py-3 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white transition-colors text-[15px] font-medium"
                 >
-                  Retour à l'accueil →
+                  Retour à l&apos;accueil →
                 </Link>
                 <Link
                   href="/services"

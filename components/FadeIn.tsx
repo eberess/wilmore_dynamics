@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 type FadeInProps = {
@@ -7,25 +7,24 @@ type FadeInProps = {
   threshold?: number;
 };
 
-const FadeIn = React.forwardRef<HTMLDivElement, FadeInProps>(
-  ({ children, className = '', threshold = 0.1 }, ref) => {
-    const [inViewRef, inView] = useInView({
-      threshold,
-      triggerOnce: true
-    });
+const FadeIn: React.FC<FadeInProps> = ({ children, className = '', threshold = 0.1 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { inView } = useInView({
+    threshold,
+    triggerOnce: true
+  });
 
-    return (
-      <div
-        ref={inViewRef}
-        className={`${className} ${
-          inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+  return (
+    <div
+      ref={ref}
+      className={`${className} ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 FadeIn.displayName = 'FadeIn';
 

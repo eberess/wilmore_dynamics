@@ -98,7 +98,7 @@ export default function Contact() {
                             <h3 className="font-medium mb-1">Email</h3>
                             <a href="mailto:contact@wilmore-dynamics.com" 
                                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                              contact@wilmore-dynamics.com
+                              contact@wilmoredynamics.com
                             </a>
                           </div>
                         </div>
@@ -116,7 +116,7 @@ export default function Contact() {
                             <h3 className="font-medium mb-1">Téléphone</h3>
                             <a href="tel:+33123456789" 
                                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                              +33 1 23 45 67 89
+                              +33 1 48 05 80 26
                             </a>
                           </div>
                         </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                       <div className="flex gap-4">
                         {[
                           { name: 'GitHub', href: 'https://git.wilmoredynamics.com', icon: '/social/github.svg' },
-                          { name: 'LinkedIn', href: 'https://linkedin.com/wilmoredynamics', icon: '/social/linkedin.svg' }
+                          // { name: 'LinkedIn', href: 'https://linkedin.com/wilmoredynamics', icon: '/social/linkedin.svg' }
                         ].map((social) => (
                           <a
                             key={social.name}

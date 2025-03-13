@@ -1,4 +1,4 @@
-import { GRADIENTS, COMMON_CLASSES } from '@/constants/styles';
+import { GRADIENTS } from '@/constants/styles';
 import Badge from './Badge';
 
 interface SectionProps {
