@@ -35,46 +35,49 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Solutions */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-200 mb-4">
-              Solutions
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: 'Applications', href: '/applications' },
-                { name: 'Recyclage', href: '/recyclage' },
-                { name: 'Choisir Linux', href: '/linux' }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} 
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Sections Solutions et Entreprise en grid-cols-2 sur mobile */}
+          <div className="col-span-1 md:col-span-2 grid grid-cols-2 gap-8">
+            {/* Solutions */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-200 mb-4">
+                Solutions
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { name: 'Applications', href: '/applications' },
+                  { name: 'Recyclage', href: '/recyclage' },
+                  { name: 'Choisir Linux', href: '/linux' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link href={item.href} 
+                          className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Entreprise */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-200 mb-4">
-              Entreprise
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: 'Services', href: '/services' },
-                { name: 'Contact', href: '/contact' },
-                { name: 'Ressources', href: '/resources' }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} 
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Entreprise */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-200 mb-4">
+                Entreprise
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { name: 'Services', href: '/services' },
+                  { name: 'Contact', href: '/contact' },
+                  { name: 'Ressources', href: '/resources' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link href={item.href} 
+                          className="text-sm text-gray-600 dark:text-gray-400 hover:text-[#1a73e8] dark:hover:text-[#8ab4f8] transition-colors">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Légal et Contact */}

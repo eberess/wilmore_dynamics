@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Section from '@/components/Section';
 import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
-import ScrollIcon from '@/components/ScrollIcon';
 
 const SECTION_IDS = {
   hero: 'hero',
@@ -82,7 +81,7 @@ export default function Services() {
               <FadeIn>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="group px-8 py-4 rounded-full bg-blue-600 text-white transition-colors duration-300 text-[17px] font-medium hover:bg-blue-700"
                     aria-label="Démarrer votre projet de transformation digitale"
                   >
@@ -95,7 +94,7 @@ export default function Services() {
                   </a>
                   
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="group px-8 py-4 rounded-full border border-gray-200/50 dark:border-white/[0.1] hover:bg-gray-50 dark:hover:bg-white/[0.02] text-gray-600 dark:text-gray-300 transition-all duration-300 text-[17px] font-medium"
                     aria-label="En savoir plus sur nos services"
                   >
@@ -106,8 +105,6 @@ export default function Services() {
               </FadeIn>
             </div>
           </div>
-          
-          <ScrollIcon targetId={SECTION_IDS.cloud} />
         </Section>
 
         {/* Cloud Native Section */}
@@ -160,7 +157,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                   >
                     <span className="text-lg">En savoir plus</span>
@@ -250,7 +247,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services d'infrastructure et DevOps"
                   >
@@ -315,7 +312,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services de conseil et audit"
                   >
@@ -404,7 +401,7 @@ export default function Services() {
 
                 <div>
                   <a 
-                    href="/contact"
+                    href="/contact#form"
                     className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300 group"
                     aria-label="En savoir plus sur nos services de support et maintenance"
                   >
@@ -535,7 +532,7 @@ export default function Services() {
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <a 
-                  href="/contact"
+                  href="/contact#form"
                   className="group px-8 py-4 rounded-full bg-blue-600 text-white transition-colors duration-300 text-[17px] font-medium hover:bg-blue-700"
                   aria-label="Démarrer votre projet de transformation digitale"
                 >

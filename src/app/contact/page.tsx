@@ -4,7 +4,6 @@ import FadeIn from '@/components/FadeIn';
 import ContactForm from '@/components/ContactForm';
 import FAQ from '@/components/FAQ';
 import Section from '@/components/Section';
-import ScrollIcon from '@/components/ScrollIcon';
 
 const contactMetadata = {
   title: 'Contact - Wilmore Dynamics',
@@ -43,7 +42,6 @@ export default function Contact() {
           className="min-h-[90vh] flex flex-col items-center justify-center relative"
         >
           <div />
-          <ScrollIcon targetId={SECTION_IDS.form} />
         </Section>
 
         <Section

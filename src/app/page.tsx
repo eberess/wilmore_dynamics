@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import ContactForm from '@/components/ContactForm';
 import { Metadata } from 'next';
 import Section from '@/components/Section';
-import ScrollIcon from '@/components/ScrollIcon';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wilmoredynamics.com'),
@@ -163,9 +162,6 @@ export default function Home() {
               </a>
             </div>
           </div>
-          
-          {/* Ajout de l'icône de scroll, supprime si pas besoin */}
-          <ScrollIcon targetId={SECTION_IDS.solutions} aria-label="Faites défiler vers les solutions" />
         </Section>
 
         <Section
@@ -238,7 +234,7 @@ export default function Home() {
 
         <Section
           id={SECTION_IDS.about}
-          badge="POURQUOI NOUS CHOISIR"
+          badge="POURQUOI NOUS CHOISIR ?"
           title={
             <div className="text-center max-w-[800px] mx-auto mb-16">
               <h2 className="text-[2.75rem] sm:text-[3.5rem] leading-[1.1] font-medium tracking-[-0.02em] text-gray-900 dark:text-white">

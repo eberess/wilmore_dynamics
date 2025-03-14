@@ -100,7 +100,7 @@ export default function RecyclagePage() {
                 {
                   step: 2,
                   title: "Collecte",
-                  description: "Nous organisons l&apos;enlèvement"
+                  description: "Nous organisons l'enlèvement de votre matériel"
                 },
                 {
                   step: 3,

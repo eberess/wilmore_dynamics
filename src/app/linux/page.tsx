@@ -74,8 +74,7 @@ export default function LinuxPage() {
                 </span>
               </h1>
               <p className="mt-6 sm:mt-10 text-base sm:text-2xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
-                Rapide. Sécurisé. Open Source.<br className="hidden sm:block"/>
-                Et conçu pour durer.
+                Une solution pérenne pour moderniser vos systèmes
               </p>
               
               {/* Image principale */}
@@ -608,7 +607,7 @@ export default function LinuxPage() {
                 Vous avez d&apos;autres questions ?
               </p>
               <a 
-                href="/contact"
+                href="/contact#form"
                 className="inline-flex items-center text-blue-500 hover:text-blue-400 transition-colors"
                 aria-label="Contactez nos experts pour en savoir plus"
               >
@@ -635,7 +634,7 @@ export default function LinuxPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href="/contact"
+                href="/contact#form"
                 className="w-full sm:w-auto px-12 py-6 bg-gradient-to-r from-blue-600 to-blue-500 
                           text-white text-xl rounded-2xl font-semibold 
                           hover:opacity-90 transition-all duration-300"
@@ -643,7 +642,7 @@ export default function LinuxPage() {
                 Démarrer votre projet
               </a>
               <a 
-                href="/contact?type=audit"
+                href="/contact#form"
                 className="text-xl text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
               >
                 Planifier un audit →
