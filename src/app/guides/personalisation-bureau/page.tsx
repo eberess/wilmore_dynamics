@@ -105,7 +105,7 @@ export default function PersonalisationBureauGuide() {
 
               <p className="mt-4">Configuration des raccourcis personnalisés :</p>
               <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                gsettings set org.gnome.desktop.wm.keybindings switch-applications "['&lt;Alt&gt;Tab']"
+                gsettings set org.gnome.desktop.wm.keybindings switch-applications &quot;[&apos;&lt;Alt&gt;Tab&apos;&quot;
               </code>
             </div>
 
@@ -134,7 +134,7 @@ export default function PersonalisationBureauGuide() {
               <p className="mt-4">Configuration du lissage des polices :</p>
               <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
                 # Activer le lissage des polices<br />
-                gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+                gsettings set org.gnome.desktop.interface font-antialiasing &quot;rgba&quot;
               </code>
             </div>
 

@@ -115,20 +115,20 @@ export default function SecuriteLinuxGuide() {
                 <div>
                   <p className="mb-2">1. Générer une nouvelle paire de clés :</p>
                   <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                    ssh-keygen -t ed25519 -C "votre@email.com"
+                    ssh-keygen -t ed25519 -C &quot;votre@email.com&quot;
                   </code>
                   <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                     Utilisez Ed25519 pour une meilleure sécurité. Pour une compatibilité maximale, utilisez RSA avec 4096 bits :
                   </p>
                   <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                    ssh-keygen -t rsa -b 4096 -C "votre@email.com"
+                    ssh-keygen -t rsa -b 4096 -C &quot;votre@email.com&quot;
                   </code>
                 </div>
 
                 <div>
                   <p className="mb-2">2. Copier la clé publique vers un serveur :</p>
                   <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                    ssh-copy-id utilisateur@serveur
+                    ssh-copy-id utilisateur@serveur 
                   </code>
                 </div>
 

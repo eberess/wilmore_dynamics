@@ -46,7 +46,7 @@ export default function CommandesBaseLinuxGuide() {
               </div>
 
               <div className="mb-4">
-                <p className="mb-2">Lister le contenu d'un répertoire :</p>
+                <p className="mb-2">Lister le contenu d&apos;un répertoire :</p>
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
                   ls          # Liste simple<br />
                   ls -l       # Liste détaillée<br />
@@ -59,7 +59,7 @@ export default function CommandesBaseLinuxGuide() {
                 <p className="mb-2">Changer de répertoire :</p>
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
                   cd /chemin/vers/dossier  # Aller vers un dossier<br />
-                  cd ..                    # Remonter d'un niveau<br />
+                  cd ..                    # Remonter d&apos;un niveau<br />
                   cd ~                     # Aller au dossier personnel<br />
                   cd -                     # Retourner au dossier précédent
                 </code>
@@ -113,7 +113,7 @@ export default function CommandesBaseLinuxGuide() {
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
                   grep motif fichier      # Rechercher un motif<br />
                   grep -r motif dossier   # Recherche récursive<br />
-                  find . -name "*.txt"    # Rechercher des fichiers
+                  find . -name &quot;*.txt&quot;    # Rechercher des fichiers
                 </code>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function CommandesBaseLinuxGuide() {
               <div className="mb-4">
                 <p className="mb-2">Afficher les processus :</p>
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                  ps                      # Processus de l'utilisateur<br />
+                  ps                      # Processus de l&apos;utilisateur<br />
                   ps aux                  # Tous les processus<br />
                   top                     # Moniteur de processus
                 </code>
@@ -145,9 +145,9 @@ export default function CommandesBaseLinuxGuide() {
               <div className="mb-4">
                 <p className="mb-2">Commandes utilisateur :</p>
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                  whoami                  # Afficher son nom d'utilisateur<br />
+                  whoami                  # Afficher son nom d&apos;utilisateur<br />
                   id                      # Afficher les IDs<br />
-                  su - utilisateur        # Changer d'utilisateur<br />
+                  su - utilisateur        # Changer d&apos;utilisateur<br />
                   sudo commande           # Exécuter en tant que root
                 </code>
               </div>
@@ -167,10 +167,10 @@ export default function CommandesBaseLinuxGuide() {
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-lg mt-8">
-              <h3 className="text-blue-600 dark:text-blue-400">Conseils d'Utilisation</h3>
+              <h3 className="text-blue-600 dark:text-blue-400">Conseils d&apos;Utilisation</h3>
               <ul>
-                <li>Utilisez la touche Tab pour l'autocomplétion des commandes et chemins</li>
-                <li>Utilisez les flèches haut/bas pour naviguer dans l'historique des commandes</li>
+                <li>Utilisez la touche Tab pour l&apos;autocomplétion des commandes et chemins</li>
+                <li>Utilisez les flèches haut/bas pour naviguer dans l&apos;historique des commandes</li>
                 <li>Ajoutez --help après une commande pour voir son aide</li>
                 <li>Utilisez man commande pour voir le manuel détaillé</li>
               </ul>

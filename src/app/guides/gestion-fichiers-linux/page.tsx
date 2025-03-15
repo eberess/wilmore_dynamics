@@ -128,7 +128,7 @@ export default function GestionFichiersGuide() {
               <div className="mb-4">
                 <p className="mb-2">Recherche avancée avec find :</p>
                 <code className="block bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white p-3 rounded border border-gray-300 dark:border-gray-700 font-mono">
-                  find . -type f -name "*.txt"     # Par nom<br />
+                  find . -type f -name &quot;*.txt&quot;     # Par nom<br />
                   find . -mtime -7                 # Modifiés depuis 7 jours<br />
                   find . -size +100M               # Plus de 100 Mo
                 </code>
@@ -191,7 +191,7 @@ export default function GestionFichiersGuide() {
               <p>
                 Les commandes de suppression et de modification sont irréversibles. 
                 Soyez particulièrement vigilant avec les commandes comme rm -rf et 
-                vérifiez toujours deux fois avant d'exécuter des commandes en tant que root.
+                vérifiez toujours deux fois avant d&apos;exécuter des commandes en tant que root.
               </p>
             </div>
           </article>
