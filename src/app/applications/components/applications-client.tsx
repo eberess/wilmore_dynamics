@@ -18,7 +18,7 @@ const applications = [
     tagline: "Virtualisation open source puissante",
     description: "Plateforme de virtualisation complète pour le datacenter, combinant virtualisation KVM et conteneurs. Proxmox VE inclut une interface web pour une gestion facile de vos machines virtuelles, stockage, réseau et haute disponibilité.",
     category: "Infrastructure",
-    image: "/apps/proxmox.svg",
+    image: "/applications/proxmox.svg",
     bgColor: "from-orange-500/5 to-red-500/5",
     highlights: [
       { title: "Virtualisation KVM" },
@@ -33,7 +33,7 @@ const applications = [
     tagline: "Messagerie sécurisée et décentralisée",
     description: "Client Matrix élégant pour une communication sécurisée et décentralisée. Profitez du chiffrement de bout en bout, des salons publics/privés, et d'une collaboration en temps réel sans compromettre votre vie privée.",
     category: "Collaboration",
-    image: "/apps/element.svg",
+    image: "/applications/element.svg",
     bgColor: "from-green-500/5 to-emerald-500/5",
     highlights: [
       { title: "Chiffrement E2E" },
@@ -63,7 +63,7 @@ const applications = [
     tagline: "Analytics respectueux de la vie privée",
     description: "Alternative éthique à Google Analytics. Matomo vous offre des analyses web complètes tout en respectant la vie privée de vos utilisateurs et en gardant le contrôle total de vos données.",
     category: "Marketing",
-    image: "/apps/matomo.svg",
+    image: "/applications/matomo.svg",
     bgColor: "from-purple-500/5 to-indigo-500/5",
     highlights: [
       { title: "RGPD compatible" },
@@ -93,7 +93,7 @@ const applications = [
     tagline: "Automatisation de workflow puissante",
     description: "Plateforme d'automatisation extensible pour connecter vos applications et données. Créez des workflows complexes avec une interface visuelle intuitive et plus de 200 intégrations prêtes à l'emploi.",
     category: "Automatisation",
-    image: "/apps/n8n.svg",
+    image: "/applications/n8n.svg",
     bgColor: "from-emerald-500/5 to-teal-500/5",
     highlights: [
       { title: "Interface visuelle" },
@@ -108,7 +108,7 @@ const applications = [
     tagline: "Gestion d'identité moderne",
     description: "Solution IAM (Identity and Access Management) flexible et moderne. Authentik centralise l'authentification de vos applications avec le SSO, le MFA, et des politiques d'accès granulaires.",
     category: "Gestion",
-    image: "/apps/authentik.svg",
+    image: "/applications/authentik.svg",
     bgColor: "from-indigo-500/5 to-violet-500/5",
     highlights: [
       { title: "SSO / SAML2" },
@@ -152,7 +152,7 @@ const applications = [
     tagline: "Forum moderne et communauté",
     description: "Plateforme de discussion moderne pour construire une communauté engagée. Discourse offre un forum intelligent avec des fonctionnalités avancées comme la catégorisation, les badges, et une modération efficace.",
     category: "Collaboration",
-    image: "/apps/discourse.svg",
+    image: "/applications/discourse.svg",
     bgColor: "from-pink-500/5 to-rose-500/5",
     highlights: [
       { title: "Discussions structurées" },
@@ -182,7 +182,7 @@ const applications = [
     tagline: "Communication sécurisée pour les équipes",
     description: "Plateforme de collaboration open source pour les équipes exigeantes. Mattermost combine messagerie, partage de fichiers et intégrations dans un environnement hautement sécurisé et personnalisable.",
     category: "Collaboration",
-    image: "/apps/mattermost.svg",
+    image: "/applications/mattermost.svg",
     bgColor: "from-blue-500/5 to-indigo-500/5",
     highlights: [
       { title: "Messagerie sécurisée" },
@@ -197,7 +197,7 @@ const applications = [
     tagline: "Diagrammes et schémas professionnels",
     description: "Outil de création de diagrammes complet et intuitif. Draw.io vous permet de créer des schémas, organigrammes et wireframes avec une interface intuitive et de nombreuses bibliothèques de formes.",
     category: "Productivité",
-    image: "/apps/drawio.svg",
+    image: "/applications/drawio.svg",
     bgColor: "from-orange-500/5 to-amber-500/5",
     highlights: [
       { title: "Bibliothèques riches" },
@@ -227,7 +227,7 @@ const applications = [
     tagline: "Wiki moderne et performant",
     description: "La plateforme wiki la plus puissante et extensible. Wiki.js offre une expérience de documentation collaborative avec éditeur WYSIWYG, gestion des droits avancée et de nombreuses options de stockage.",
     category: "Collaboration",
-    image: "/apps/wikijs.svg",
+    image: "/applications/wikijs.svg",
     bgColor: "from-blue-500/5 to-indigo-500/5",
     highlights: [
       { title: "Éditeur visuel" },
@@ -242,7 +242,7 @@ const applications = [
     tagline: "Tableaux blancs collaboratifs",
     description: "Outil de dessin minimaliste pour créer des diagrammes qui ressemblent à des croquis. Excalidraw est parfait pour les brainstormings, les architectures et les présentations avec un style unique.",
     category: "Productivité",
-    image: "/apps/excalidraw.webp",
+    image: "/applications/excalidraw.svg",
     bgColor: "from-purple-500/5 to-pink-500/5",
     highlights: [
       { title: "Style main levée" },
@@ -302,7 +302,7 @@ const applications = [
     tagline: "Emailing moderne et performant",
     description: "Plateforme d'email marketing auto-hébergée haute performance. Listmonk offre une interface moderne pour gérer vos listes, créer des campagnes et analyser vos résultats, le tout en respectant la vie privée.",
     category: "Marketing",
-    image: "/apps/listmonk.webp",
+    image: "/applications/listmonk.webp",
     bgColor: "from-emerald-500/5 to-green-500/5",
     highlights: [
       { title: "Haute délivrabilité" },
@@ -347,7 +347,7 @@ const applications = [
     tagline: "Signatures électroniques open source",
     description: "Alternative éthique à DocuSign. Documenso offre une solution complète de signature électronique avec une interface moderne, un workflow intuitif et une conformité légale garantie.",
     category: "Productivité",
-    image: "/apps/documenso.svg",
+    image: "/applications/documenso.svg",
     bgColor: "from-fuchsia-500/5 to-pink-500/5",
     highlights: [
       { title: "Signatures légales" },
@@ -392,7 +392,7 @@ const applications = [
     tagline: "Bureau à distance open source",
     description: "Alternative sécurisée à TeamViewer. RustDesk offre une solution de bureau à distance rapide, sécurisée et facile à utiliser, sans nécessiter de configuration complexe du réseau.",
     category: "Infrastructure",
-    image: "/apps/rustdesk.webp",
+    image: "/applications/rustdesk.webp",
     bgColor: "from-red-500/5 to-rose-500/5",
     highlights: [
       { title: "Multi-plateforme" },
@@ -482,7 +482,7 @@ const applications = [
     tagline: "Forge logicielle complète",
     description: "Plateforme de développement logiciel tout-en-un. Forgejo combine gestion de code, CI/CD, gestion de projet et documentation dans une interface unifiée et moderne.",
     category: "Productivité",
-    image: "/apps/forgejo.svg",
+    image: "/applications/forgejo.svg",
     bgColor: "from-rose-500/5 to-pink-500/5",
     highlights: [
       { title: "Git intégré" },
@@ -542,7 +542,7 @@ const applications = [
     tagline: "Gestion de production créative",
     description: "Solution de gestion pour studios d'animation et créatifs. Kitsu (par CGWire) facilite la gestion de projets créatifs avec un suivi des tâches, des assets et une collaboration en temps réel.",
     category: "Gestion",
-    image: "/apps/kitsu.png",
+    image: "/applications/kitsu.png",
     bgColor: "from-purple-500/5 to-indigo-500/5",
     highlights: [
       { title: "Suivi de production" },
@@ -602,7 +602,7 @@ const applications = [
     tagline: "Collaboration documentaire unifiée",
     description: "Plateforme de collaboration documentaire tout-en-un. Docmost centralise vos documents, notes et connaissances dans un espace de travail moderne avec une recherche puissante.",
     category: "Collaboration",
-    image: "/apps/docmost.webp",
+    image: "/applications/docmost.webp",
     bgColor: "from-violet-500/5 to-purple-500/5",
     highlights: [
       { title: "Édition collaborative" },
