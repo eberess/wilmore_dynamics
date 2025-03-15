@@ -78,13 +78,13 @@ export const metadata: Metadata = {
   category: 'technology',
   icons: {
     icon: [
-      { url: '/logo.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico' },
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.png', type: 'image/png' }
     ],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
-    ]
+    ],
+    shortcut: [{ url: '/favicon.ico' }]
   },
 };
 

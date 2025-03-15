@@ -30,6 +30,14 @@ export default function Resources() {
             <ul className="list-disc pl-6">
               <li className="mb-4">
                 <h3 className="text-xl font-semibold">
+                  <a href="/guides/installation-linux" className="text-blue-600 hover:underline" aria-label="Guide d'installation de Linux">Guide d&apos;Installation de Linux</a>
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Un guide complet pour installer Linux sur votre ordinateur en toute simplicité.
+                </p>
+              </li>
+              <li className="mb-4">
+                <h3 className="text-xl font-semibold">
                   <a href="/guides/kit-experience-linux" className="text-blue-600 hover:underline" aria-label="Lire le guide sur le Kit d'Expérience Employé">Linux au Travail : Le Kit d&apos;Expérience Employé</a>
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
