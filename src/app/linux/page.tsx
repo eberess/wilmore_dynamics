@@ -388,7 +388,7 @@ export default function LinuxPage() {
                   },
                   {
                     name: "Linux Mint",
-                    description: "Distribution Linux stable et légère, offrant une expérience familière pour les utilisateurs Windows avec une interface traditionnelle et des outils préconfigurés",
+                    description: "Une distribution Linux stable et légère, offrant une expérience familière pour les utilisateurs Windows avec une interface traditionnelle et des outils préconfigurés",
                     icon: "/distros/mint.svg",
                     useCase: "Utilisateurs Windows",
                     color: "green"
