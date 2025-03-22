@@ -1,0 +1,30 @@
+name: Build and Push Docker Image to Gitea Registry
+
+on:
+  push:
+    branches:
+      - main # Ou votre branche principale
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t git.wilmoredynamics.com/AB/${{ github.event.repository.name }}:${GITHUB_SHA::8} .
+
+      - name: Log in to Gitea Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: git.wilmoredynamics.com
+          username: AB
+          password: MythBusteR48151623427/* # Votre jeton d'accès personnel
+
+      - name: Push Docker image to Gitea Container Registry
+        run: |
+          docker push git.wilmoredynamics.com/AB/${{ github.event.repository.name }}:${GITHUB_SHA::8}
+          docker push git.wilmoredynamics.com/AB/${{ github.event.repository.name }}:latest # Optionnel: tag 'latest'
