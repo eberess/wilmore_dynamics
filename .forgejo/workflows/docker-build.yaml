@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: docker # Utilisation de votre runner nommé "fondation"
+    runs-on: alpine # Utilisation de votre runner nommé "fondation"
 
     steps:
       - name: Checkout code
