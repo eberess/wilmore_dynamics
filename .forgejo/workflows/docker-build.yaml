@@ -16,15 +16,17 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:${GITHUB_SHA::8} .
+          # Tag the image with 'latest'
+          docker tag git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:${GITHUB_SHA::8} git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:latest
 
       - name: Log in to Forgejo Container Registry
         uses: docker/login-action@v2
         with:
           registry: git.wilmoredynamics.com
-          username: Wilmore_Dynamics # Votre nom d'utilisateur ou organisation Forgejo (sensible à la casse pour l'authentification)
+          username: Wilmore_Dynamics # Votre nom d'utilisateur ou organisation Forgejo
           password: ${{ secrets.FORGEJO_TOKEN }} # Votre jeton d'accès personnel Forgejo
 
       - name: Push Docker image to Forgejo Container Registry
         run: |
           docker push git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:${GITHUB_SHA::8}
-          docker push git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:latest # Optionnel: tag 'latest'
+          docker push git.wilmoredynamics.com/wilmore_dynamics/wilmore_dynamics:latest
