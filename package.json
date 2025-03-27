@@ -16,7 +16,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.475.0",
     "marked": "^15.0.7",
-    "next": "15.1.7",
+    "next": "^15.2.4",
     "nodemailer": "^6.10.0",
     "raw-loader": "^4.0.2",
     "react": "^19.0.0",
