@@ -7,6 +7,11 @@ interface ContactFormData {
   email: string;
   subject: string;
   message: string;
+  collectivite?: string;
+  type?: 'commune' | 'epci' | 'autre';
+  taille?: string;
+  fonction?: string;
+  telephone?: string;
 }
 
 const SUBMIT_DELAY = 60000; // 1 minute
@@ -15,15 +20,23 @@ let lastSubmitTime = 0;
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT),
-  secure: true,
+  secure: true, // Pour le port 465
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
   tls: {
     rejectUnauthorized: false
-  },
-  logger: true, // Active les logs détaillés
+  }
+});
+
+// Vérification de la connexion SMTP au démarrage
+transporter.verify(function(error, success) {
+  if (error) {
+    console.error('Erreur de configuration SMTP:', error);
+  } else {
+    console.log('Serveur SMTP prêt à envoyer des emails');
+  }
 });
 
 const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
@@ -87,8 +100,16 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
     text: `
       Nouveau message de contact :
       
+      Collectivité: ${data.collectivite}
+      Type: ${data.type}
+      Taille: ${data.taille}
+      
+      Contact:
       Nom: ${firstname} ${lastname}
+      Fonction: ${data.fonction}
       Email: ${email}
+      Téléphone: ${data.telephone}
+      
       Sujet: ${subject}
       
       Message:
@@ -112,8 +133,17 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
               <h2>Nouveau message de contact</h2>
             </div>
             <div class="content">
+              <h3>Informations de la collectivité</h3>
+              <p><strong>Nom :</strong> ${data.collectivite}</p>
+              <p><strong>Type :</strong> ${data.type}</p>
+              <p><strong>Taille :</strong> ${data.taille}</p>
+              
+              <h3>Contact</h3>
               <p><strong>Nom :</strong> ${firstname} ${lastname}</p>
+              <p><strong>Fonction :</strong> ${data.fonction}</p>
               <p><strong>Email :</strong> ${email}</p>
+              <p><strong>Téléphone :</strong> ${data.telephone}</p>
+              
               <p><strong>Sujet :</strong> ${subject}</p>
               <div class="message">
                 <strong>Message :</strong><br>
@@ -137,29 +167,28 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
-    const { firstname, lastname, email, subject, message } = body;
+    const data: ContactFormData = await request.json();
 
-    // Validation basique côté serveur
-    if (!firstname || !lastname || !email || !subject || !message) {
+    // Validation de base
+    if (!data.firstname || !data.lastname || !data.email || !data.subject || !data.message) {
       return NextResponse.json(
-        { error: 'Tous les champs sont requis' },
+        { error: 'Tous les champs requis doivent être remplis' },
         { status: 400 }
       );
     }
 
-    // Validation email basique
+    // Validation de l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(data.email)) {
       return NextResponse.json(
-        { error: 'Email invalide' },
+        { error: 'Format d\'email invalide' },
         { status: 400 }
       );
     }
 
     // Email pour l'équipe
     console.log('Tentative d\'envoi à l\'équipe...');
-    const teamTemplate = getEmailTemplate(body);
+    const teamTemplate = getEmailTemplate(data);
     const teamResult = await transporter.sendMail({
       from: {
         name: 'Wilmore Dynamics',
@@ -174,13 +203,13 @@ export async function POST(request: Request) {
 
     // Email de confirmation
     console.log('Tentative d\'envoi de confirmation...');
-    const confirmationTemplate = getEmailTemplate(body, true);
+    const confirmationTemplate = getEmailTemplate(data, true);
     const confirmResult = await transporter.sendMail({
       from: {
         name: 'Wilmore Dynamics',
         address: process.env.SMTP_FROM || ''
       },
-      to: email,
+      to: data.email,
       subject: confirmationTemplate.subject,
       text: confirmationTemplate.text,
       html: confirmationTemplate.html,
@@ -188,11 +217,11 @@ export async function POST(request: Request) {
     console.log('Email confirmation envoyé:', confirmResult);
 
     lastSubmitTime = now;
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ message: 'Message envoyé avec succès' });
   } catch (error) {
-    console.error('Erreur détaillée:', error);
+    console.error('Erreur lors de l\'envoi du message:', error);
     return NextResponse.json(
-      { error: 'Erreur lors de l\'envoi du message', details: error instanceof Error ? error.message : 'Erreur inconnue' },
+      { error: 'Une erreur est survenue lors de l\'envoi du message' },
       { status: 500 }
     );
   }
