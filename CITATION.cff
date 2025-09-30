@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please consider citing it using the metadata from this file."
+type: software
+title: "Wilmore Dynamics - Official Website"
+abstract: "Open-source website for Wilmore Dynamics, built with Next.js and featuring modern web technologies for software development services and municipal solutions."
+version: 0.1.0
+date-released: 2024-09-30
+authors:
+  - given-names: EL
+    family-names: Beressa
+    affiliation: "Wilmore Dynamics"
+    email: contact@wilmoredynamics.com
+    orcid: "https://orcid.org/0009-0006-6467-7282"
+repository-code: "https://github.com/eberess/wilmore_dynamics"
+url: "https://wilmoredynamics.com"
+license: MIT
+keywords:
+  - "Next.js"
+  - "TypeScript"
+  - "React"
+  - "Tailwind CSS"
+  - "Docker"
+  - "Web Development"
+  - "Municipal Solutions"
+  - "Open Source"

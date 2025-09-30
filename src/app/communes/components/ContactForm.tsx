@@ -45,8 +45,6 @@ export default function ContactForm() {
     resolver: yupResolver(schema)
   });
 
-  const selectedType = watch('type');
-
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitStatus(null);

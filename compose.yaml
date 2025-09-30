@@ -1,0 +1,15 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    
+    container_name: nextjs-wilmore
+    
+    ports:
+      - '${NODE_APP_PORT}:3000'
+        
+    environment:
+      NODE_ENV: production
+
+    restart: always

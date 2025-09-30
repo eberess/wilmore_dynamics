@@ -23,7 +23,13 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script defer src="https://umami.wilmoredynamics.com/script.js" data-website-id="ea92fbd0-14d0-482b-a781-3e5463850ecf"></script>
+        {process.env.UMAMI_WEBSITE_ID && (
+          <script
+            defer
+            src={process.env.UMAMI_SCRIPT_URL || "https://umami.wilmoredynamics.com/script.js"}
+            data-website-id={process.env.UMAMI_WEBSITE_ID}
+          />
+        )}
       </head>
       <body className={`${inter.className} antialiased`}>
         <script
