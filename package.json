@@ -17,7 +17,7 @@
     "lucide-react": "^0.475.0",
     "marked": "^15.0.7",
     "next": "^15.2.4",
-    "nodemailer": "^6.10.0",
+    "nodemailer": "^7.0.7",
     "raw-loader": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
