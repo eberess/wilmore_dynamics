@@ -147,7 +147,7 @@ export const metadata = {
         'text': 'Innovation constante, Qualité et excellence, Transparence et intégrité, Satisfaction client'
       },
       'sameAs': [
-        'https://git.wilmoredynamics.com',
+        'https://github.com/eberess/',
         /*    'https://linkedin.com/company/wilmore-dynamics' */
       ]
     }

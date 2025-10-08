@@ -129,7 +129,7 @@ export default function Contact() {
                       </h2>
                       <div className="flex gap-4">
                         {[
-                          { name: 'GitHub', href: 'https://git.wilmoredynamics.com', icon: '/social/github.svg' },
+                          { name: 'GitHub', href: 'https://github.com/eberess/', icon: '/social/github.svg' },
                           // { name: 'LinkedIn', href: 'https://linkedin.com/wilmoredynamics', icon: '/social/linkedin.svg' }
                         ].map((social) => (
                           <a

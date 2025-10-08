@@ -60,7 +60,7 @@ NODE_APP_PORT=3000
 
 ### 1. Cloner le projet
 ```bash
-git clone https://github.com/votre-username/wilmore-dynamics.git
+git clone https://github.com/eberess/wilmore-dynamics.git
 cd wilmore-dynamics
 ```
 

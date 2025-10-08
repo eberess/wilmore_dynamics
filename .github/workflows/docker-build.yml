@@ -1,0 +1,58 @@
+# .github/workflows/docker-build.yml
+
+name: Build and Push Multi-Arch Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # --- Configuration pour Build Multi-Architecture (ARM64) ---
+      
+      - name: Set up QEMU (pour l'émulation ARM)
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: all # Nécessaire pour cibler arm64
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # --- Connexion au Registre de Conteneurs GitHub (GHCR) ---
+      
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }} 
+      
+
+      
+      - name: Define image tags (ghcr.io/eberess/wilmore_dynamics)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          # Le nom de l'image sera ghcr.io/eberess/wilmore_dynamics
+          images: ghcr.io/${{ github.repository }} 
+          tags: |
+            type=sha,format=short,prefix= # Tag avec le short SHA (ex: :a1b2c3d4)
+            type=raw,value=latest          # Tag :latest
+
+      # --- Build et Push ---
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64 
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

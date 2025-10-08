@@ -1,5 +1,5 @@
 services:
-  portfolio:
+  wilmore:
     build:
       context: .
       dockerfile: src/Dockerfile

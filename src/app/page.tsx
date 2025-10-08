@@ -100,7 +100,7 @@ const jsonLd = {
     "addressCountry": "FR"
   },
   "sameAs": [
-    "https://git.wilmoredynamics.com",
+    "https://github.com/eberess/",
 /*    "https://linkedin.com/company/wilmore-dynamics" */
   ]
 };
@@ -481,7 +481,7 @@ export default function Home() {
                 </h3>
                 <div className="flex gap-3">
                   {[
-                    { name: 'GitHub', href: 'https://git.wilmoredynamics.com', icon: '/social/github.svg' },
+                    { name: 'GitHub', href: 'https://github.com/eberess/', icon: '/social/github.svg' },
                 /*    { name: 'LinkedIn', href: 'https://linkedin.com/company/wilmore-dynamics', icon: '/social/linkedin.svg' }" */
                   ].map((social) => (
                     <a
