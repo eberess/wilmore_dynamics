@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { escapeHtml } from 'html-entities';
+import { encode } from 'html-entities';
 import { z } from 'zod';
-import { checkRateLimit, isIPWhitelisted, logSuspiciousActivity } from '@/lib/rateLimit';
-import { verifyCSRFToken } from '@/lib/csrf';
 
 // Schéma de validation Zod pour sécurité maximale
 const ContactFormSchema = z.object({
@@ -16,49 +14,40 @@ const ContactFormSchema = z.object({
   type: z.enum(['commune', 'epci', 'autre']).optional(),
   taille: z.string().trim().max(100, 'Taille trop longue').optional().or(z.literal('')),
   fonction: z.string().trim().max(200, 'Fonction trop longue').optional().or(z.literal('')),
-  telephone: z.string().trim().regex(/^[\d\s\-\+\(\)\.]+$/, 'Téléphone invalide').max(20, 'Téléphone trop long').optional().or(z.literal('')),
-  sessionId: z.string().uuid('Session ID invalide'),
-  csrfToken: z.string().min(64, 'Token CSRF invalide')
+  telephone: z.string().trim().regex(/^[\d\s\-\+\(\)\.]+$/, 'Téléphone invalide').max(20, 'Téléphone trop long').optional().or(z.literal(''))
 });
 
 type ContactFormData = z.infer<typeof ContactFormSchema>;
 
+// Configuration SMTP
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: true, // Pour le port 465
+  port: parseInt(process.env.SMTP_PORT || '465'),
+  secure: process.env.SMTP_SECURE === 'true',
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  tls: {
-    rejectUnauthorized: false
-  }
 });
 
-// Vérification de la connexion SMTP au démarrage
-transporter.verify(function(error) {
-  if (error) {
-    console.error('Erreur de configuration SMTP:', error);
-  } else {
-    console.log('Serveur SMTP prêt à envoyer des emails');
-  }
-});
+// Rate limiting basique (mémoire)
+let lastSubmitTime = 0;
+const SUBMIT_DELAY = 3000; // 3 secondes
 
 const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
   const { firstname, lastname, email, subject, message } = data;
   
-  // Échapper toutes les données utilisateur
-  const escapedFirstname = escapeHtml(firstname);
-  const escapedLastname = escapeHtml(lastname);
-  const escapedEmail = escapeHtml(email);
-  const escapedSubject = escapeHtml(subject);
-  const escapedMessage = escapeHtml(message);
-  const escapedCollectivite = escapeHtml(data.collectivite || '');
-  const escapedType = escapeHtml(data.type || '');
-  const escapedTaille = escapeHtml(data.taille || '');
-  const escapedFonction = escapeHtml(data.fonction || '');
-  const escapedTelephone = escapeHtml(data.telephone || '');
+  // Échapper toutes les données utilisateur avec html-entities
+  const escapedFirstname = encode(firstname);
+  const escapedLastname = encode(lastname);
+  const escapedEmail = encode(email);
+  const escapedSubject = encode(subject);
+  const escapedMessage = encode(message);
+  const escapedCollectivite = encode(data.collectivite || '');
+  const escapedType = encode(data.type || '');
+  const escapedTaille = encode(data.taille || '');
+  const escapedFonction = encode(data.fonction || '');
+  const escapedTelephone = encode(data.telephone || '');
   
   if (isConfirmation) {
     return {
@@ -177,40 +166,13 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
 
 export async function POST(request: Request) {
   try {
-    // Obtenir l'IP du client
-    const ip = request.headers.get('x-forwarded-for') ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
-
-    // Vérifier si l'IP est whitelistée
-    const isWhitelisted = await isIPWhitelisted(ip);
-
-    // Rate limiting Redis (sauf si whitelistée)
-    if (!isWhitelisted) {
-      const rateLimitResult = await checkRateLimit(
-        `contact:${ip}`,
-        5,  // 5 requêtes
-        60000  // par minute
+    // Rate limiting basique
+    const now = Date.now();
+    if (now - lastSubmitTime < SUBMIT_DELAY) {
+      return NextResponse.json(
+        { error: 'Veuillez patienter avant de renvoyer un message' },
+        { status: 429 }
       );
-
-      if (!rateLimitResult.allowed) {
-        const retryAfter = Math.ceil(rateLimitResult.resetIn / 1000);
-        return NextResponse.json(
-          {
-            error: `Trop de requêtes. Réessayez dans ${retryAfter}s`,
-            retryAfter,
-          },
-          {
-            status: 429,
-            headers: {
-              'Retry-After': String(retryAfter),
-              'X-RateLimit-Limit': String(rateLimitResult.limit),
-              'X-RateLimit-Remaining': String(rateLimitResult.remaining),
-              'X-RateLimit-Reset': String(Date.now() + rateLimitResult.resetIn),
-            },
-          }
-        );
-      }
     }
 
     // Parsing JSON sécurisé
@@ -219,10 +181,6 @@ export async function POST(request: Request) {
       rawData = await request.json();
     } catch (parseError) {
       console.error('Erreur parsing JSON');
-      await logSuspiciousActivity(ip, {
-        type: 'invalid_json',
-        endpoint: '/api/contact',
-      });
       return NextResponse.json(
         { error: 'Format de requête invalide' },
         { status: 400 }
@@ -235,39 +193,13 @@ export async function POST(request: Request) {
       data = ContactFormSchema.parse(rawData);
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
-        const errorCount = validationError.errors.length;
-        console.error(`Erreurs validation: ${errorCount} erreurs`);
-        
-        // Logger les activités suspectes (plusieurs erreurs de validation)
-        if (errorCount > 3) {
-          await logSuspiciousActivity(ip, {
-            type: 'multiple_validation_errors',
-            errorCount,
-            endpoint: '/api/contact',
-          });
-        }
-
+        console.error(`Erreurs validation`);
         return NextResponse.json(
           { error: 'Données invalides. Veuillez vérifier votre formulaire.' },
           { status: 400 }
         );
       }
       throw validationError;
-    }
-
-    // Vérifier le token CSRF
-    const isCsrfValid = await verifyCSRFToken(data.sessionId, data.csrfToken);
-    if (!isCsrfValid) {
-      console.warn(`CSRF validation failed for session: ${data.sessionId}`);
-      await logSuspiciousActivity(ip, {
-        type: 'csrf_validation_failed',
-        sessionId: data.sessionId,
-        endpoint: '/api/contact',
-      });
-      return NextResponse.json(
-        { error: 'Validation de sécurité échouée. Veuillez réessayer.' },
-        { status: 403 }
-      );
     }
 
     // Envoi des emails
@@ -305,6 +237,7 @@ export async function POST(request: Request) {
       );
     }
 
+    lastSubmitTime = now;
     return NextResponse.json(
       { message: 'Message envoyé avec succès' },
       { status: 200 }
@@ -317,4 +250,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-} 
+}

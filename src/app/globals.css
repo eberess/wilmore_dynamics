@@ -31,23 +31,65 @@ body {
 
 /* Styles pour le contenu Markdown */
 .prose h2 {
-  @apply text-xl font-medium text-gray-900 dark:text-gray-100 mt-8 mb-4;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #171717;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dark .prose h2 {
+  color: #f5f5f5;
 }
 
 .prose p {
-  @apply text-gray-600 dark:text-gray-400 mb-4;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.dark .prose p {
+  color: #d1d5db;
 }
 
 .prose ul {
-  @apply list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400;
+  list-style-type: disc;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #4b5563;
+}
+
+.dark .prose ul {
+  color: #d1d5db;
 }
 
 .prose code {
-  @apply px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: #f3f4f6;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: monospace;
+}
+
+.dark .prose code {
+  background-color: #1f2937;
 }
 
 .prose pre {
-  @apply p-4 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-x-auto my-4;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dark .prose pre {
+  background-color: #1f2937;
 }
 
 @keyframes fade-in {

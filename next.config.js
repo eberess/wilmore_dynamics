@@ -6,8 +6,11 @@ const nextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   
-  // Webpack
-  webpack: (config) => {
+  // Turbopack configuration pour Next.js 16
+  turbopack: {},
+  
+  // Webpack pour raw-loader
+  webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.md$/,
       use: 'raw-loader'
