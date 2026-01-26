@@ -8,8 +8,7 @@ LABEL description="Application Next.js sécurisée"
 LABEL version="2.0"
 
 # Mettre à jour les packages de base pour les patches de sécurité
-RUN apk update && apk upgrade --no-cache && \
-    apk add --no-cache dumb-init
+RUN apk update && apk upgrade --no-cache
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -41,8 +40,10 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-# Build l'application
-RUN npm run build
+# Build l'application avec output standalone
+RUN npm run build && \
+    ls -la .next/ && \
+    ls -la .next/standalone/ 2>/dev/null || echo "No standalone folder"
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -58,13 +59,14 @@ ENV HOSTNAME="0.0.0.0"
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Copier les fichiers publics et build depuis le builder
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copier les fichiers de build
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone/server.js ./server.js
+COPY --from=builder /app/package*.json ./
 
-# Utiliser dumb-init pour une gestion correcte des signaux
-ENTRYPOINT ["/sbin/dumb-init", "--"]
+# Copier node_modules depuis le standalone
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone/node_modules ./node_modules
 
 # Exécuter en tant qu'utilisateur non-root
 USER nextjs

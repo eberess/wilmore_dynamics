@@ -78,11 +78,11 @@ services:
       - no-new-privileges:true
     
     # Lecture seule du système de fichiers (sauf les répertoires nécessaires)
-    read_only: true
+    # Note: Désactivé temporairement car Next.js 16 a besoin d'écrire dans .next
+    # read_only: true
     
     # Répertoires temporaires pour Next.js
     tmpfs:
-      - /app/.next
       - /tmp
     
     # Healthcheck
