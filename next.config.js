@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  
+  // Sécurité
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
+  
+  // Webpack
   webpack: (config) => {
     config.module.rules.push({
       test: /\.md$/,
@@ -8,10 +14,62 @@ const nextConfig = {
     });
     return config;
   },
+  
+  // Images optimisées
   images: {
-    formats: ['image/webp'],
+    formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Sécuriser le chargement des images
+    minimumCacheTTL: 3600,
+  },
+  
+  // En-têtes de sécurité globales
+  async headers() {
+    return [
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload'
+          }
+        ]
+      },
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          }
+        ]
+      }
+    ];
   },
 };
 

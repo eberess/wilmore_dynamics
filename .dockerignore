@@ -4,4 +4,48 @@ node_modules
 npm-debug.log
 README.md
 .next
+# Git
 .git
+.gitignore
+.gitattributes
+
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-error.log
+
+# Testing
+coverage
+.nyc_output
+jest.config.js
+
+# Production
+build
+dist
+.next
+out
+
+# Misc
+.DS_Store
+*.pem
+.env.local
+.env.*.local
+.env
+.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Logs
+logs
+*.log
+
+# OS
+Thumbs.db

@@ -1,18 +1,23 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { escapeHtml } from 'html-entities';
+import { z } from 'zod';
 
-interface ContactFormData {
-  firstname: string;
-  lastname: string;
-  email: string;
-  subject: string;
-  message: string;
-  collectivite?: string;
-  type?: 'commune' | 'epci' | 'autre';
-  taille?: string;
-  fonction?: string;
-  telephone?: string;
-}
+// Schéma de validation Zod pour sécurité maximale
+const ContactFormSchema = z.object({
+  firstname: z.string().trim().min(1, 'Prénom requis').max(100, 'Prénom trop long'),
+  lastname: z.string().trim().min(1, 'Nom requis').max(100, 'Nom trop long'),
+  email: z.string().trim().email('Email invalide').max(254, 'Email trop long'),
+  subject: z.string().trim().min(1, 'Sujet requis').max(500, 'Sujet trop long'),
+  message: z.string().trim().min(10, 'Message trop court').max(5000, 'Message trop long'),
+  collectivite: z.string().trim().max(200, 'Collectivité trop longue').optional().or(z.literal('')),
+  type: z.enum(['commune', 'epci', 'autre']).optional(),
+  taille: z.string().trim().max(100, 'Taille trop longue').optional().or(z.literal('')),
+  fonction: z.string().trim().max(200, 'Fonction trop longue').optional().or(z.literal('')),
+  telephone: z.string().trim().regex(/^[\d\s\-\+\(\)\.]+$/, 'Téléphone invalide').max(20, 'Téléphone trop long').optional().or(z.literal(''))
+});
+
+type ContactFormData = z.infer<typeof ContactFormSchema>;
 
 const SUBMIT_DELAY = 60000; // 1 minute
 let lastSubmitTime = 0;
@@ -42,18 +47,30 @@ transporter.verify(function(error) {
 const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
   const { firstname, lastname, email, subject, message } = data;
   
+  // Échapper toutes les données utilisateur
+  const escapedFirstname = escapeHtml(firstname);
+  const escapedLastname = escapeHtml(lastname);
+  const escapedEmail = escapeHtml(email);
+  const escapedSubject = escapeHtml(subject);
+  const escapedMessage = escapeHtml(message);
+  const escapedCollectivite = escapeHtml(data.collectivite || '');
+  const escapedType = escapeHtml(data.type || '');
+  const escapedTaille = escapeHtml(data.taille || '');
+  const escapedFonction = escapeHtml(data.fonction || '');
+  const escapedTelephone = escapeHtml(data.telephone || '');
+  
   if (isConfirmation) {
     return {
       subject: `Confirmation de votre message - Wilmore Dynamics`,
       text: `
-        Bonjour ${firstname} ${lastname},
+        Bonjour ${escapedFirstname} ${escapedLastname},
 
         Nous avons bien reçu votre message et nous vous en remercions.
         Nous vous répondrons dans les plus brefs délais.
 
         Récapitulatif de votre message :
-        Sujet: ${subject}
-        Message: ${message}
+        Sujet: ${escapedSubject}
+        Message: ${escapedMessage}
 
         Cordialement,
         L'équipe Wilmore Dynamics
@@ -76,13 +93,13 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
                 <h2>Confirmation de votre message</h2>
               </div>
               <div class="content">
-                <p>Bonjour ${firstname} ${lastname},</p>
+                <p>Bonjour ${escapedFirstname} ${escapedLastname},</p>
                 <p>Nous avons bien reçu votre message et nous vous en remercions.<br>
                 Nous vous répondrons dans les plus brefs délais.</p>
                 <div style="margin: 20px 0; padding: 20px; background: #fff; border-radius: 4px;">
                   <h3>Récapitulatif de votre message :</h3>
-                  <p><strong>Sujet :</strong> ${subject}</p>
-                  <p><strong>Message :</strong><br>${message.replace(/\n/g, '<br>')}</p>
+                  <p><strong>Sujet :</strong> ${escapedSubject}</p>
+                  <p><strong>Message :</strong><br>${escapedMessage.replace(/\n/g, '<br>')}</p>
                 </div>
               </div>
               <div class="footer">
@@ -96,24 +113,24 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
   }
 
   return {
-    subject: `Nouveau message de contact - ${subject}`,
+    subject: `Nouveau message de contact - ${escapedSubject}`,
     text: `
       Nouveau message de contact :
       
-      Collectivité: ${data.collectivite}
-      Type: ${data.type}
-      Taille: ${data.taille}
+      Collectivité: ${escapedCollectivite}
+      Type: ${escapedType}
+      Taille: ${escapedTaille}
       
       Contact:
-      Nom: ${firstname} ${lastname}
-      Fonction: ${data.fonction}
-      Email: ${email}
-      Téléphone: ${data.telephone}
+      Nom: ${escapedFirstname} ${escapedLastname}
+      Fonction: ${escapedFonction}
+      Email: ${escapedEmail}
+      Téléphone: ${escapedTelephone}
       
-      Sujet: ${subject}
+      Sujet: ${escapedSubject}
       
       Message:
-      ${message}
+      ${escapedMessage}
     `,
     html: `
       <!DOCTYPE html>
@@ -134,20 +151,20 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
             </div>
             <div class="content">
               <h3>Informations de la collectivité</h3>
-              <p><strong>Nom :</strong> ${data.collectivite}</p>
-              <p><strong>Type :</strong> ${data.type}</p>
-              <p><strong>Taille :</strong> ${data.taille}</p>
+              <p><strong>Nom :</strong> ${escapedCollectivite}</p>
+              <p><strong>Type :</strong> ${escapedType}</p>
+              <p><strong>Taille :</strong> ${escapedTaille}</p>
               
               <h3>Contact</h3>
-              <p><strong>Nom :</strong> ${firstname} ${lastname}</p>
-              <p><strong>Fonction :</strong> ${data.fonction}</p>
-              <p><strong>Email :</strong> ${email}</p>
-              <p><strong>Téléphone :</strong> ${data.telephone}</p>
+              <p><strong>Nom :</strong> ${escapedFirstname} ${escapedLastname}</p>
+              <p><strong>Fonction :</strong> ${escapedFonction}</p>
+              <p><strong>Email :</strong> ${escapedEmail}</p>
+              <p><strong>Téléphone :</strong> ${escapedTelephone}</p>
               
-              <p><strong>Sujet :</strong> ${subject}</p>
+              <p><strong>Sujet :</strong> ${escapedSubject}</p>
               <div class="message">
                 <strong>Message :</strong><br>
-                ${message.replace(/\n/g, '<br>')}
+                ${escapedMessage.replace(/\n/g, '<br>')}
               </div>
             </div>
           </div>
@@ -159,6 +176,7 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
 
 export async function POST(request: Request) {
   try {
+    // Rate limiting basique
     const now = Date.now();
     if (now - lastSubmitTime < SUBMIT_DELAY) {
       return NextResponse.json(
@@ -167,64 +185,80 @@ export async function POST(request: Request) {
       );
     }
 
-    const data: ContactFormData = await request.json();
-
-    // Validation de base
-    if (!data.firstname || !data.lastname || !data.email || !data.subject || !data.message) {
+    // Parsing JSON sécurisé
+    let rawData: unknown;
+    try {
+      rawData = await request.json();
+    } catch (parseError) {
+      console.error('Erreur parsing JSON');
       return NextResponse.json(
-        { error: 'Tous les champs requis doivent être remplis' },
+        { error: 'Format de requête invalide' },
         { status: 400 }
       );
     }
 
-    // Validation de l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      return NextResponse.json(
-        { error: 'Format d\'email invalide' },
-        { status: 400 }
-      );
+    // Validation stricte avec Zod
+    let data: ContactFormData;
+    try {
+      data = ContactFormSchema.parse(rawData);
+    } catch (validationError) {
+      if (validationError instanceof z.ZodError) {
+        const errors = validationError.errors.map(e => `${e.path.join('.')}: ${e.message}`);
+        console.error('Erreurs validation:', errors);
+        return NextResponse.json(
+          { error: 'Données invalides. Veuillez vérifier votre formulaire.' },
+          { status: 400 }
+        );
+      }
+      throw validationError;
     }
 
-    // Email pour l'équipe
-    console.log('Tentative d\'envoi à l\'équipe...');
-    const teamTemplate = getEmailTemplate(data);
-    const teamResult = await transporter.sendMail({
-      from: {
-        name: 'Wilmore Dynamics',
-        address: process.env.SMTP_FROM || ''
-      },
-      to: process.env.CONTACT_EMAIL,
-      subject: teamTemplate.subject,
-      text: teamTemplate.text,
-      html: teamTemplate.html,
-    });
-    console.log('Email équipe envoyé:', teamResult);
+    // Envoi des emails
+    try {
+      // Email pour l'équipe
+      const teamTemplate = getEmailTemplate(data);
+      await transporter.sendMail({
+        from: {
+          name: 'Wilmore Dynamics',
+          address: process.env.SMTP_FROM || ''
+        },
+        to: process.env.CONTACT_EMAIL,
+        subject: teamTemplate.subject,
+        text: teamTemplate.text,
+        html: teamTemplate.html,
+      });
 
-    // Email de confirmation
-    console.log('Tentative d\'envoi de confirmation...');
-    const confirmationTemplate = getEmailTemplate(data, true);
-    const confirmResult = await transporter.sendMail({
-      from: {
-        name: 'Wilmore Dynamics',
-        address: process.env.SMTP_FROM || ''
-      },
-      to: data.email,
-      subject: confirmationTemplate.subject,
-      text: confirmationTemplate.text,
-      html: confirmationTemplate.html,
-    });
-    console.log('Email confirmation envoyé:', confirmResult);
+      // Email de confirmation
+      const confirmationTemplate = getEmailTemplate(data, true);
+      await transporter.sendMail({
+        from: {
+          name: 'Wilmore Dynamics',
+          address: process.env.SMTP_FROM || ''
+        },
+        to: data.email,
+        subject: confirmationTemplate.subject,
+        text: confirmationTemplate.text,
+        html: confirmationTemplate.html,
+      });
+    } catch (emailError) {
+      console.error('Erreur envoi email');
+      return NextResponse.json(
+        { error: 'Une erreur est survenue lors de l\'envoi du message' },
+        { status: 500 }
+      );
+    }
 
     lastSubmitTime = now;
-    return NextResponse.json({ message: 'Message envoyé avec succès' });
-  } catch (error) {
-    console.error('Erreur lors de l\'envoi du message:', error);
     return NextResponse.json(
-      { error: 'Une erreur est survenue lors de l\'envoi du message' },
+      { message: 'Message envoyé avec succès' },
+      { status: 200 }
+    );
+  } catch (error) {
+    // Erreur inattendue - ne pas exposer les détails
+    console.error('Erreur inattendue dans POST /api/contact');
+    return NextResponse.json(
+      { error: 'Une erreur est survenue. Veuillez réessayer ultérieurement.' },
       { status: 500 }
     );
   }
-}
-
-console.log('SMTP_HOST:', process.env.SMTP_HOST); 
+} 

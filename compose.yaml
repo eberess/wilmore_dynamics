@@ -2,14 +2,62 @@ services:
   wilmore:
     build:
       context: .
-      dockerfile: src/Dockerfile
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
     
     container_name: nextjs-wilmore
     
+    # Ne pas exposer inutilement les ports
     ports:
-      - '${NODE_APP_PORT}:3000'
-        
+      - '${NODE_APP_PORT:-3000}:3000'
+    
+    # Variables d'environnement sécurisées
     environment:
       NODE_ENV: production
-
-    restart: always
+      NEXT_TELEMETRY_DISABLED: "1"
+    
+    # Charger les variables sensibles depuis .env (non committé)
+    env_file:
+      - .env
+    
+    # Politique de redémarrage
+    restart: on-failure:5
+    
+    # Limite des ressources
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Sécurité du conteneur
+    security_opt:
+      - no-new-privileges:true
+    
+    # Lecture seule du système de fichiers (sauf les répertoires nécessaires)
+    read_only: true
+    
+    # Répertoires temporaires pour Next.js
+    tmpfs:
+      - /app/.next
+      - /tmp
+    
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=wilmore"
