@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { escapeHtml } from 'html-entities';
 import { z } from 'zod';
+import { checkRateLimit, isIPWhitelisted, logSuspiciousActivity } from '@/lib/rateLimit';
+import { verifyCSRFToken } from '@/lib/csrf';
 
 // Schéma de validation Zod pour sécurité maximale
 const ContactFormSchema = z.object({
@@ -14,13 +16,12 @@ const ContactFormSchema = z.object({
   type: z.enum(['commune', 'epci', 'autre']).optional(),
   taille: z.string().trim().max(100, 'Taille trop longue').optional().or(z.literal('')),
   fonction: z.string().trim().max(200, 'Fonction trop longue').optional().or(z.literal('')),
-  telephone: z.string().trim().regex(/^[\d\s\-\+\(\)\.]+$/, 'Téléphone invalide').max(20, 'Téléphone trop long').optional().or(z.literal(''))
+  telephone: z.string().trim().regex(/^[\d\s\-\+\(\)\.]+$/, 'Téléphone invalide').max(20, 'Téléphone trop long').optional().or(z.literal('')),
+  sessionId: z.string().uuid('Session ID invalide'),
+  csrfToken: z.string().min(64, 'Token CSRF invalide')
 });
 
 type ContactFormData = z.infer<typeof ContactFormSchema>;
-
-const SUBMIT_DELAY = 60000; // 1 minute
-let lastSubmitTime = 0;
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -176,13 +177,40 @@ const getEmailTemplate = (data: ContactFormData, isConfirmation = false) => {
 
 export async function POST(request: Request) {
   try {
-    // Rate limiting basique
-    const now = Date.now();
-    if (now - lastSubmitTime < SUBMIT_DELAY) {
-      return NextResponse.json(
-        { error: 'Veuillez patienter avant de renvoyer un message' },
-        { status: 429 }
+    // Obtenir l'IP du client
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Vérifier si l'IP est whitelistée
+    const isWhitelisted = await isIPWhitelisted(ip);
+
+    // Rate limiting Redis (sauf si whitelistée)
+    if (!isWhitelisted) {
+      const rateLimitResult = await checkRateLimit(
+        `contact:${ip}`,
+        5,  // 5 requêtes
+        60000  // par minute
       );
+
+      if (!rateLimitResult.allowed) {
+        const retryAfter = Math.ceil(rateLimitResult.resetIn / 1000);
+        return NextResponse.json(
+          {
+            error: `Trop de requêtes. Réessayez dans ${retryAfter}s`,
+            retryAfter,
+          },
+          {
+            status: 429,
+            headers: {
+              'Retry-After': String(retryAfter),
+              'X-RateLimit-Limit': String(rateLimitResult.limit),
+              'X-RateLimit-Remaining': String(rateLimitResult.remaining),
+              'X-RateLimit-Reset': String(Date.now() + rateLimitResult.resetIn),
+            },
+          }
+        );
+      }
     }
 
     // Parsing JSON sécurisé
@@ -191,6 +219,10 @@ export async function POST(request: Request) {
       rawData = await request.json();
     } catch (parseError) {
       console.error('Erreur parsing JSON');
+      await logSuspiciousActivity(ip, {
+        type: 'invalid_json',
+        endpoint: '/api/contact',
+      });
       return NextResponse.json(
         { error: 'Format de requête invalide' },
         { status: 400 }
@@ -203,14 +235,39 @@ export async function POST(request: Request) {
       data = ContactFormSchema.parse(rawData);
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
-        const errors = validationError.errors.map(e => `${e.path.join('.')}: ${e.message}`);
-        console.error('Erreurs validation:', errors);
+        const errorCount = validationError.errors.length;
+        console.error(`Erreurs validation: ${errorCount} erreurs`);
+        
+        // Logger les activités suspectes (plusieurs erreurs de validation)
+        if (errorCount > 3) {
+          await logSuspiciousActivity(ip, {
+            type: 'multiple_validation_errors',
+            errorCount,
+            endpoint: '/api/contact',
+          });
+        }
+
         return NextResponse.json(
           { error: 'Données invalides. Veuillez vérifier votre formulaire.' },
           { status: 400 }
         );
       }
       throw validationError;
+    }
+
+    // Vérifier le token CSRF
+    const isCsrfValid = await verifyCSRFToken(data.sessionId, data.csrfToken);
+    if (!isCsrfValid) {
+      console.warn(`CSRF validation failed for session: ${data.sessionId}`);
+      await logSuspiciousActivity(ip, {
+        type: 'csrf_validation_failed',
+        sessionId: data.sessionId,
+        endpoint: '/api/contact',
+      });
+      return NextResponse.json(
+        { error: 'Validation de sécurité échouée. Veuillez réessayer.' },
+        { status: 403 }
+      );
     }
 
     // Envoi des emails
@@ -248,7 +305,6 @@ export async function POST(request: Request) {
       );
     }
 
-    lastSubmitTime = now;
     return NextResponse.json(
       { message: 'Message envoyé avec succès' },
       { status: 200 }

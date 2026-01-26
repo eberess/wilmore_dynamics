@@ -1,4 +1,35 @@
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: wilmore-redis
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:6379:6379'  # Écouter uniquement sur localhost
+    volumes:
+      - redis-data:/data
+    command: |
+      redis-server 
+      --appendonly yes 
+      --requirepass ${REDIS_PASSWORD:-changeme}
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-changeme}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
   wilmore:
     build:
       context: .
@@ -8,6 +39,11 @@ services:
     
     container_name: nextjs-wilmore
     
+    # Dépendre de Redis
+    depends_on:
+      redis:
+        condition: service_healthy
+    
     # Ne pas exposer inutilement les ports
     ports:
       - '${NODE_APP_PORT:-3000}:3000'
@@ -16,6 +52,9 @@ services:
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-changeme}
     
     # Charger les variables sensibles depuis .env (non committé)
     env_file:
@@ -61,3 +100,7 @@ services:
         max-size: "10m"
         max-file: "3"
         labels: "service=wilmore"
+
+volumes:
+  redis-data:
+    driver: local
