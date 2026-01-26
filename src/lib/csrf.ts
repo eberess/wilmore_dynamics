@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { redis } from './rateLimit';
+import { getRedisClient } from './rateLimit';
 
 interface CSRFSession {
   token: string;
@@ -39,7 +39,7 @@ export async function storeCSRFToken(
       createdAt: Date.now(),
       expiresAt: Date.now() + ttl * 1000,
     };
-    await redis.setex(key, ttl, JSON.stringify(session));
+    await getRedisClient().setex(key, ttl, JSON.stringify(session));
   } catch (error) {
     console.error('Store CSRF token error:', error);
     throw new Error('Failed to store CSRF token');
@@ -59,7 +59,7 @@ export async function verifyCSRFToken(
 ): Promise<boolean> {
   try {
     const key = `csrf:${sessionId}`;
-    const stored = await redis.get(key);
+    const stored = await getRedisClient().get(key);
 
     if (!stored) {
       console.warn(`CSRF token not found for session: ${sessionId}`);
@@ -81,14 +81,14 @@ export async function verifyCSRFToken(
     if (isValid && session.expiresAt > Date.now()) {
       // Supprimer le token après vérification pour éviter les replay attacks
       if (deleteAfterVerification) {
-        await redis.del(key);
+        await getRedisClient().del(key);
       }
       return true;
     }
 
     // Token expiré ou invalide, le supprimer
     if (!isValid) {
-      await redis.del(key);
+      await getRedisClient().del(key);
       console.warn(
         `Invalid CSRF token for session: ${sessionId}. Token does not match.`
       );
@@ -131,7 +131,7 @@ export async function getNewCSRFToken(
 export async function invalidateCSRFToken(sessionId: string): Promise<void> {
   try {
     const key = `csrf:${sessionId}`;
-    await redis.del(key);
+    await getRedisClient().del(key);
   } catch (error) {
     console.error('Invalidate CSRF token error:', error);
   }
